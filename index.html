@@ -490,6 +490,156 @@
     .bs-loaded {
       opacity: 1;
     }
+
+    /* About Section Styles */
+    .about {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+      right: 50%;
+      margin-right: -50vw;
+      padding: clamp(3.5rem,8vh,5.5rem) clamp(1rem,4vw,4rem);
+      overflow: hidden;
+      color: var(--bs-text-light);
+      isolation: isolate;
+      z-index: 0;
+    }
+    .about * {
+      overflow: visible;
+    }
+
+    .about::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(60% 90% at 10% 0%, rgba(0,0,0,.18), transparent 60%),
+        radial-gradient(70% 100% at 90% 100%, rgba(0,0,0,.25), transparent 62%),
+        url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Sea-Lion-Snorkel.avif') center/cover no-repeat;
+      filter: saturate(1.06) brightness(.98);
+    }
+    .about::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18) 55%, rgba(0,0,0,.22));
+    }
+
+    .about__wrap {
+      max-width: 1240px;
+      margin-inline: auto;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(1.6rem,3vw,3rem);
+      align-items: center;
+      justify-items: center;
+    }
+
+    @keyframes floatSoft {
+      0%,100% {
+        transform: translateY(0) rotate(0.1deg);
+      }
+      50% {
+        transform: translateY(-14px) rotate(-0.2deg);
+      }
+    }
+
+    .about__media {
+      width: clamp(280px,34vw,420px);
+      aspect-ratio: 1/1;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--bs-shadow-lg);
+      outline: 1px solid var(--bs-glass-border);
+      background: #000;
+      animation: floatSoft 12s ease-in-out infinite;
+      animation-delay: .4s;
+    }
+    .about__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(1.02) contrast(1.02);
+      transform: scale(1.02);
+      display: block;
+    }
+
+    .about__panel {
+      position: relative;
+      width: 100%;
+      border-radius: 28px;
+      padding: clamp(1.6rem,2.8vw,2.6rem) clamp(1.6rem,3vw,3rem);
+      background: linear-gradient(135deg, var(--bs-glass-primary), var(--bs-glass-secondary));
+      outline: 1px solid var(--bs-glass-border);
+      box-shadow: var(--bs-shadow-lg), inset 0 0 0 1px rgba(255,255,255,.05);
+      backdrop-filter: blur(18px) saturate(1.35);
+      -webkit-backdrop-filter: blur(18px) saturate(1.35);
+      color: var(--bs-text-light);
+      animation: floatSoft 14s ease-in-out infinite;
+    }
+    .about__panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+    }
+
+    .about__heading {
+      margin: 0 0 .9rem;
+      font-weight: 800;
+      letter-spacing: .4px;
+      color: var(--bs-primary);
+      font-size: clamp(1.6rem,1.6vw + 1.2rem,2.3rem);
+    }
+    .about__text {
+      margin: 0 0 1rem;
+      font-size: clamp(.98rem,.25vw + .98rem,1.05rem);
+      line-height: 1.65;
+      color: var(--bs-text-muted);
+    }
+
+    .about__btn {
+      display: inline-block;
+      margin-top: 1.1rem;
+      padding: .95rem 1.6rem;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: rgba(10,15,20,.75);
+      color: var(--bs-primary);
+      border: 3px solid var(--bs-primary);
+      box-shadow: 0 10px 24px -12px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.05);
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    }
+    .about__btn:hover,
+    .about__btn:focus {
+      background: var(--bs-primary);
+      color: var(--bs-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px -14px rgba(0,0,0,.7);
+      outline: 0;
+    }
+
+    @media (max-width:980px) {
+      .about__wrap {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+      }
+      .about__panel {
+        width: 100%;
+      }
+      .about__media {
+        order: -1;
+      }
+    }
   </style>
 </head>
 
@@ -625,6 +775,28 @@
         </div>
       </section>
     </div>
+
+    <!-- About Section -->
+    <section class="about" id="About" aria-label="About Us">
+      <div class="about__wrap">
+        <figure class="about__media" aria-hidden="true">
+          <img src="https://bajabelowsurface.com/wp-content/uploads/2025/08/Untitled-design-2.png" alt="Guide at sea">
+        </figure>
+
+        <article class="about__panel">
+          <h2 class="about__heading">Get to Know Us</h2>
+          <p class="about__text">
+            At the heart of our mission lies a simple yet powerful goal: to inspire wonder and foster
+            connection through the incredible diversity of marine life that calls the ocean home.
+          </p>
+          <p class="about__text">
+            Every expedition, day trip, and charter blends responsible exploration with authentic local
+            insight—helping guests experience hidden depths while protecting them for future generations.
+          </p>
+          <a class="about__btn" href="https://bajabelowsurface.com/?page_id=1397">Read&nbsp;More</a>
+        </article>
+      </div>
+    </section>
   </div>
 
   <script>
