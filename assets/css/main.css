@@ -155,7 +155,9 @@ html, body {
 
 /* Services Grid - Center cards when not in 3 columns */
 .services__grid,
-.daytrips .services__grid {
+.daytrips .services__grid,
+.expeditions .services__grid,
+.charter .services__grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(280px, 350px)) !important;
   gap: 2rem !important;
@@ -166,8 +168,10 @@ html, body {
   align-items: center !important;
 }
 
-/* Day Trips: force single column layout on all screens */
-.daytrips .services__grid {
+/* Day Trips, Expeditions, and Charter: force single column layout on all screens */
+.daytrips .services__grid,
+.expeditions .services__grid,
+.charter .services__grid {
   grid-template-columns: 1fr !important;
   max-width: 400px !important;
   gap: 1.5rem !important;
@@ -176,7 +180,9 @@ html, body {
 
 /* Ensure cards are centered within their grid area */
 .services__card,
-.daytrips .services__card {
+.daytrips .services__card,
+.expeditions .services__card,
+.charter .services__card {
   width: 100% !important;
   max-width: 350px !important;
   margin: 0 auto !important;
@@ -723,10 +729,12 @@ html, body {
 }
 
 @media (max-width: 620px) {
-  .daytrips .services__grid {
+  .daytrips .services__grid,
+  .expeditions .services__grid,
+  .charter .services__grid {
     grid-template-columns: 1fr;
   }
-  
+
   .daytrips .services__heading {
     font-size: clamp(1.8rem,8vw,2.4rem);
   }
