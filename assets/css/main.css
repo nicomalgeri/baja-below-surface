@@ -622,7 +622,7 @@ html, body {
   isolation: isolate;
 }
 .expeditions.section {
-    background: url("https://www.dropbox.com/scl/fi/0m8m1nep88t3xouqk1xxb/Expeditions-Photo.jpeg?rlkey=dr2x71m7at8bn69h724lekta9&raw=1") center/cover no-repeat;
+    background: url("https://www.dropbox.com/scl/fi/0m8m1nep88t3xouqk1xxb/Expeditions-Photo.jpeg?rlkey=dr2x71m7at8bn69h724lekta9&st=b5jc3lmw&raw=1") center center/cover no-repeat;
 }
 
 .daytrips .services__heading,
