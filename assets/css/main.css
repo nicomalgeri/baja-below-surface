@@ -1117,6 +1117,7 @@ body.scrolled .elementor-location-header {
 .about__media,
 .about__panel {
   flex: 1;
+  animation: floatForm 8s ease-in-out infinite;
 }
 
 .about__panel {
@@ -1131,8 +1132,13 @@ body.scrolled .elementor-location-header {
 }
 
 .about__panel:hover {
+  animation-play-state: paused;
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
+}
+
+.about__media:hover {
+  animation-play-state: paused;
 }
 
 .about__media img {
