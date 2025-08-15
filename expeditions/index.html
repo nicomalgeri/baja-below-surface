@@ -52,7 +52,7 @@
     </div>
 
     <!-- MEXICAN SARDINE RUN -->
-    <div class="services__card" style="--i:3">
+    <div class="services__card" style="--i:2">
       <div class="services__img"
            style="background-image:url('https://static.wixstatic.com/media/f8cc86_69cc1e8e2f4349fcb5593339f98ed631~mv2.jpg/v1/fill/w_572,h_670,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/baitball%20marlin.jpg');">
       </div>
@@ -68,7 +68,7 @@
     </div>
 
     <!-- WINTER WHALES -->
-    <div class="services__card" style="--i:4">
+    <div class="services__card" style="--i:3">
       <div class="services__img"
            style="background-image:url('https://static.wixstatic.com/media/f8cc86_e8c4187cbd9a44a4874b328af85b8fbb~mv2.jpg/v1/fill/w_572,h_670,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Grey%20whale%20split%20shot.jpg');">
       </div>
@@ -133,6 +133,123 @@
 </a>
 
 <!-- ===== Hamburger Menu ===== -->
+<style>
+  :root{
+    --accent:#f6e7b0;     /* yellow tone */
+    --ink:#21262d;        /* blue/ink tone */
+    --overlay:rgba(10,14,18,.88);
+    --glass:blur(14px) saturate(1.2);
+    --z:99999;
+  }
+
+  /* Hamburger: yellow lines only, no hover bg */
+  .ham{
+    position:fixed; top:clamp(10px,2vh,18px); left:clamp(10px,2vw,18px);
+    width:48px; height:48px; border:0; background:transparent; padding:0; cursor:pointer;
+    display:grid; place-items:center; z-index:var(--z); border-radius:12px;
+  }
+  .ham:hover, .ham:focus, .ham:focus-visible{ background:transparent; box-shadow:none; outline:none; }
+  .ham__icon{ width:24px; height:18px; position:relative; }
+  .ham__bar{
+    position:absolute; left:0; right:0; height:2px; background:var(--accent);
+    border-radius:2px; transform-origin:50% 50%;
+    transition:transform .24s ease, opacity .2s ease, top .24s ease, bottom .24s ease;
+  }
+  .ham__bar--1{ top:0; }
+  .ham__bar--2{ top:8px; }
+  .ham__bar--3{ bottom:0; }
+  .ham[aria-expanded="true"] .ham__bar--1{ top:8px; transform:rotate(45deg); }
+  .ham[aria-expanded="true"] .ham__bar--2{ opacity:0; }
+  .ham[aria-expanded="true"] .ham__bar--3{ bottom:auto; top:8px; transform:rotate(-45deg); }
+
+  /* Overlay */
+  .menu{
+    position:fixed; inset:0; display:none; z-index:calc(var(--z) - 1);
+    background:var(--overlay); -webkit-backdrop-filter:var(--glass); backdrop-filter:var(--glass);
+  }
+  .menu.is-open{ display:block; animation:fadeIn .22s ease forwards; }
+  @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+
+  /* Container:
+     - Desktop: column with titles near upper middle (extra top padding)
+     - Mobile: grid: titles perfectly centered; socials pinned to bottom
+  */
+  .menu__container{
+    height:100%; width:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    padding: 0 20px;
+  }
+
+  /* Titles wrapper (lets us center on mobile without affecting desktop) */
+  .menu__center{
+    width:100%;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  }
+
+  /* Menu list */
+  .menu__list{
+    list-style:none; margin:0; padding:6rem 0 2rem;  /* extra top padding on desktop */
+    display:grid; gap:10px; text-align:center; place-items:center;
+  }
+
+  /* Links with staggered fade-in */
+  .menu__link{
+    display:inline-block; padding:.6rem 1.2rem;
+    border-radius:14px; text-decoration:none; font-weight:800; letter-spacing:.4px;
+    font-size:clamp(1.6rem, 1.4vw + 1rem, 2.2rem);   /* slightly smaller on desktop */
+    color:var(--accent); background:transparent;
+    transition:transform .2s ease, color .2s ease, background .2s ease, box-shadow .2s ease;
+    opacity:0; transform:translateY(10px);
+    animation:rise .4s ease forwards; animation-delay:var(--delay, 0s);
+  }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+
+  /* Active (only one set in JS) */
+  .menu__link.is-active,
+  .menu__link[aria-current="page"]{ background:var(--accent); color:var(--ink); }
+
+  /* Hover */
+  .menu__link:hover, .menu__link:focus{
+    background:var(--accent); color:var(--ink);
+    transform:translateY(-2px); box-shadow:0 16px 34px -14px rgba(0,0,0,.45); outline:0;
+  }
+
+  /* Socials pinned bottom */
+  .mini-icons{
+    width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;
+    padding: 16px 0 28px;
+  }
+  .mini-pair{ display:flex; align-items:center; gap:10px; white-space:nowrap; }
+  .mini-icon{
+    --size:26px; --pad:8px;
+    display:inline-flex; align-items:center; justify-content:center;
+    width:calc(var(--size) + var(--pad)*2); height:calc(var(--size) + var(--pad)*2);
+    color:var(--accent); background:transparent; border-radius:999px; text-decoration:none;
+    transition:background .2s ease, transform .05s ease; flex-shrink:0;
+  }
+  .mini-icon:hover{ background:var(--accent); color:var(--ink); }
+  .mini-icon svg{ width:var(--size); height:var(--size); display:block; }
+  .contact__icon-text{ color:var(--accent); font-weight:600; font-size:1rem; }
+
+  /* ===== MOBILE/TABLET: center titles dead-middle; socials fixed at bottom ===== */
+  @media (max-width: 768px){
+    .menu__container{
+      display:grid;
+      grid-template-rows: 1fr auto;     /* row1 = center area, row2 = socials */
+      align-items:stretch; justify-items:center;
+      padding: 0 20px;
+    }
+    .menu__center{
+      grid-row:1;
+      display:flex; align-items:center; justify-content:center;  /* TRUE vertical centering */
+      width:100%;
+    }
+    .menu__list{
+      padding: 0;                        /* remove desktop top padding on mobile */
+      gap: 12px;
+    }
+  }
+</style>
 <button class="ham" id="ham" aria-label="Open menu" aria-controls="menu" aria-expanded="false">
   <span class="ham__icon" aria-hidden="true">
     <span class="ham__bar ham__bar--1"></span>
