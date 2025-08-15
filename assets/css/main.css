@@ -624,6 +624,9 @@ html, body {
   padding: clamp(4rem,10vh,6rem) clamp(2rem,6vw,6rem);
   isolation: isolate;
 }
+.expeditions.section {
+  background: url("https://bajabelowsurface.com/wp-content/uploads/2025/07/WHALE-SHARK.jpg") center/cover no-repeat;
+}
 
 .daytrips .services__heading,
 .expeditions .services__heading {
