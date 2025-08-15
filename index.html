@@ -1401,7 +1401,11 @@
       .bs-row-wrap { height: 52vh; padding: 0 0.5rem; }
     }
     @media (max-width: 768px) {
-      .bs-fullscreen-gallery { padding: var(--bs-section-padding) 1rem; }
+      /* Reduce vertical spacing and keep consistent gaps on mobile */
+      .bs-fullscreen-gallery {
+        --bs-section-padding: 1.5rem;
+        padding: var(--bs-section-padding) 1rem;
+      }
       .bs-row-wrap { height: 44vh; }
     }
   </style>
