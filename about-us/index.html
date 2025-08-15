@@ -77,6 +77,15 @@
   }
   .ham:hover, .ham:focus, .ham:focus-visible{ background:transparent; box-shadow:none; outline:none; }
   .ham__icon{ width:24px; height:18px; position:relative; }
+  .ham__text{
+    position:absolute; top:50%; left:100%; margin-left:8px;
+    transform:translateY(-50%);
+    color:var(--accent); font-weight:700; white-space:nowrap;
+    opacity:0; transition:opacity .2s ease;
+    pointer-events:none;
+  }
+  .ham:hover .ham__text,
+  .ham[aria-expanded="true"] .ham__text{ opacity:1; }
   .ham__bar{
     position:absolute; left:0; right:0; height:2px; background:var(--accent);
     border-radius:2px; transform-origin:50% 50%;
@@ -167,6 +176,7 @@
     <span class="ham__bar ham__bar--2"></span>
     <span class="ham__bar ham__bar--3"></span>
   </span>
+  <span class="ham__text"></span>
 </button>
 
 <!-- Fullscreen Menu -->
@@ -215,13 +225,20 @@
   const btn = document.getElementById('ham');
   const menu = document.getElementById('menu');
   const links = menu.querySelectorAll('.menu__link');
+  const hamText = btn.querySelector('.ham__text');
   let lastFocus = null;
 
   // Ensure ONLY one active link
   const norm = (u)=>{ try{ const x=new URL(u, location.origin); return (x.origin+x.pathname+x.search).replace(/\/+$/,''); } catch(e){ return u; } };
   const here = norm(location.href);
   links.forEach(l => { l.classList.remove('is-active'); l.removeAttribute('aria-current'); });
-  links.forEach(a => { if (norm(a.href) === here) { a.classList.add('is-active'); a.setAttribute('aria-current','page'); } });
+  links.forEach(a => {
+    if (norm(a.href) === here) {
+      a.classList.add('is-active');
+      a.setAttribute('aria-current','page');
+      if(hamText) hamText.textContent = a.textContent.trim();
+    }
+  });
 
   const lock = (on)=>{ document.documentElement.style.overflow = on ? 'hidden' : ''; };
 
