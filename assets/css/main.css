@@ -166,6 +166,14 @@ html, body {
   align-items: center !important;
 }
 
+/* Day Trips: force single column layout on all screens */
+.daytrips .services__grid {
+  grid-template-columns: 1fr !important;
+  max-width: 400px !important;
+  gap: 1.5rem !important;
+  justify-content: center !important;
+}
+
 /* Ensure cards are centered within their grid area */
 .services__card,
 .daytrips .services__card {
@@ -176,8 +184,7 @@ html, body {
 
 /* For smaller screens, ensure single column is centered */
 @media (max-width: 768px) {
-  .services__grid,
-  .daytrips .services__grid {
+  .services__grid {
     grid-template-columns: 1fr !important;
     max-width: 400px !important;
     gap: 1.5rem !important;
