@@ -638,7 +638,14 @@ html, body {
   line-height: 1.4;
 }
 
-.daytrips .services__grid,
+.daytrips .services__grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: clamp(1.5rem,4vw,2.5rem);
+  justify-content: center;
+  justify-items: center;
+}
+
 .expeditions .services__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
