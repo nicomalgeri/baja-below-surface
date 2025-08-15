@@ -205,7 +205,11 @@
   .menu__center{
     grid-row:1;
     width:100%;
-    display:flex; align-items:center; justify-content:center;  /* TRUE vertical centering */
+    display:flex;
+    align-items:center;
+    justify-content:center;  /* TRUE vertical centering */
+    padding:clamp(80px,10vh,120px) 0;
+    box-sizing:border-box;
   }
 
   /* Menu list */
