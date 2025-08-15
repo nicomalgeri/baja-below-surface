@@ -1250,3 +1250,22 @@ body.scrolled .elementor-location-header {
   color: #f5e6af;
 }
 
+/* ===== DAY TRIPS: MOBILE LAYOUT MATCHING EXPEDITIONS ===== */
+@media (max-width: 768px) {
+  .daytrips .services__grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: none !important;
+  }
+
+  .daytrips .services__card {
+    max-width: 100% !important;
+  }
+
+  .daytrips .services__img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 32px 32px 0 0 !important;
+  }
+}
+
