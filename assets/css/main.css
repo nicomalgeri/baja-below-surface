@@ -969,6 +969,12 @@ body.scrolled .elementor-location-header {
   padding: 0 1rem;
 }
 
+/* Day Trips: show one card per row */
+.daytrips .services__grid {
+  grid-template-columns: 1fr !important;
+  max-width: 400px !important;
+}
+
 /* Center the last card when alone (7th card in a 3-column grid) */
 .services__grid:has(.services__card:nth-child(7):last-child) .services__card:nth-child(7) {
   grid-column: 2;
@@ -985,6 +991,11 @@ body.scrolled .elementor-location-header {
   .services__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+
+  /* Ensure Day Trips remains single column on small screens */
+  .daytrips .services__grid {
+    grid-template-columns: 1fr !important;
   }
   
   /* On mobile with 2 columns, center last card when alone */
