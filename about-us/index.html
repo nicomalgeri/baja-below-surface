@@ -1,28 +1,167 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>About Us – Below Surface</title>
-    <meta name="description" content="About Us">
-    <link rel="stylesheet" href="../assets/css/main.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a href="../">Home</a>
-        <a href="../day-trips/">Day Trips</a>
-        <a href="../expeditions/">Expeditions</a>
-        <a href="../charter/">Charter</a>
-        <a href="../about-us/">About Us</a>
-      </nav>
-    </header>
-    <main>
-    <section class="page-hero"><h1>About Us</h1><p>Replace with full content.</p></section>
-    </main>
-    <footer class="site-footer">
-      <p>© Below Surface</p>
-    </footer>
-    <script src="../assets/js/main.js" defer></script>
-  </body>
-</html>
+<!-- ============ ABOUT (FULL-WIDTH, ONE BACKGROUND, ALTERNATING PANELS, CENTER TITLE) ============ -->
+<style>
+  :root{
+    --highlight:#f6e7b0;
+    --ink:#0c1418;
+    --glass1:rgba(13,24,30,.72);
+    --glass2:rgba(13,24,30,.55);
+    --stroke:rgba(255,255,255,.08);
+    --text:#e7eef1;
+    --shadow:0 22px 48px -18px rgba(0,0,0,.6), 0 6px 16px -6px rgba(0,0,0,.45);
+  }
+
+  /* Full-bleed section (single shared background) */
+  .about{
+    position:relative;
+    width:100vw;
+    left:50%; margin-left:-50vw;
+    right:50%; margin-right:-50vw;
+    padding:clamp(5rem,12vh,8rem) clamp(1rem,4vw,4rem) clamp(4rem,10vh,6rem);
+    overflow:hidden;
+    color:#fff;
+    isolation:isolate;
+    z-index:0;
+  }
+  .about *{ overflow:visible; }
+
+  .about::before{
+    content:"";
+    position:absolute; inset:0; z-index:-2;
+    background:
+      radial-gradient(60% 90% at 10% 0%, rgba(0,0,0,.18), transparent 60%),
+      radial-gradient(70% 100% at 90% 100%, rgba(0,0,0,.25), transparent 62%),
+      url('https://bajabelowsurface.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-12-at-21.09.42-scaled.jpeg') center/cover no-repeat;
+    filter:saturate(1.06) brightness(.98);
+  }
+  .about::after{
+    content:"";
+    position:absolute; inset:0; z-index:-1;
+    background:linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18) 55%, rgba(0,0,0,.22));
+  }
+
+  .about__title{
+    max-width:1240px;
+    margin:0 auto clamp(2rem,4vh,3rem);
+    text-align:center;
+    font-weight:800;
+    letter-spacing:.4px;
+    color:var(--highlight);
+    font-size:clamp(2rem,3.2vw + 1rem,3.4rem);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:20vh; /* ensures vertical centring within padding area */
+  }
+
+  .about__wrap{
+    max-width:1240px;
+    margin-inline:auto;
+    display:grid;
+    gap:clamp(2rem,4vh,3rem);
+  }
+
+  .about__row{
+    display:grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap:clamp(1.6rem,3vw,3rem);
+    align-items:center;
+    justify-items:center;
+  }
+  .about__row.reverse{ grid-template-columns: 1.1fr 1fr; }
+
+  @keyframes floatSoft{
+    0%,100%{transform:translateY(0) rotate(0.1deg);}
+    50%{transform:translateY(-14px) rotate(-0.2deg);}
+  }
+
+  .about__media{
+    width:clamp(280px,34vw,420px);
+    aspect-ratio:1/1;
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    outline:1px solid var(--stroke);
+    background:#000;
+    animation:floatSoft 12s ease-in-out infinite;
+    animation-delay:.4s;
+  }
+  .about__media img{
+    width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    filter:saturate(1.02) contrast(1.02);
+    transform:scale(1.02);
+    display:block;
+  }
+
+  .about__panel{
+    position:relative;
+    width:100%;
+    border-radius:28px;
+    padding:clamp(1.6rem,2.8vw,2.6rem) clamp(1.6rem,3vw,3rem);
+    background:linear-gradient(135deg, var(--glass1), var(--glass2));
+    outline:1px solid var(--stroke);
+    box-shadow:var(--shadow), inset 0 0 0 1px rgba(255,255,255,.05);
+    backdrop-filter:blur(18px) saturate(1.35);
+    -webkit-backdrop-filter:blur(18px) saturate(1.35);
+    color:var(--text);
+    animation:floatSoft 14s ease-in-out infinite;
+  }
+  .about__panel::after{
+    content:"";
+    position:absolute; inset:0; border-radius:28px; pointer-events:none;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+  }
+
+  .about__heading{
+    margin:0 0 .9rem;
+    font-weight:800; letter-spacing:.4px;
+    color:var(--highlight);
+    font-size:clamp(1.4rem,1.2vw + 1.1rem,2.1rem);
+  }
+  .about__text{
+    margin:0 0 1rem;
+    font-size:clamp(.98rem,.25vw + .98rem,1.05rem);
+    line-height:1.65;
+    color:#dfe7eb;
+  }
+
+  /* Responsive */
+  @media (max-width:980px){
+    .about__row, .about__row.reverse{ grid-template-columns:1fr; }
+    .about__media{ order:-1; }
+    .about__title{ min-height:auto; }
+  }
+</style>
+
+<section class="about" id="About" aria-label="About Us">
+  <h2 class="about__title">About Us</h2>
+
+  <div class="about__wrap">
+    <div class="about__row">
+      <figure class="about__media" aria-hidden="true">
+        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/08/Untitled-design-2.png" alt="Guide at sea">
+      </figure>
+      <article class="about__panel">
+        <h3 class="about__heading">Who We Are</h3>
+        <p class="about__text">At the heart of our mission lies a simple yet powerful goal: to inspire wonder and foster connection through the incredible diversity of marine life that calls the ocean home.</p>
+        <p class="about__text">We believe that education is the first step toward meaningful change. By learning about the mysteries of the deep, we grow a greater appreciation for the ocean's vital role in our world and our place within it.</p>
+        <p class="about__text">Our journeys are about more than exploration. They're about uncovering the unknown, encountering rare and fascinating marine species, and sharing these experiences in a way that sparks excitement and understanding.</p>
+        <p class="about__text">Attention to detail and personalised service are the cornerstones of our guest experience—because no two ocean lovers are alike. Whether you're an experienced diver or embarking on your first adventure at sea, we'll design an itinerary that reflects your passions.</p>
+        <p class="about__text">Above all, we are protectors of the ocean. Sustainability sits at the core of everything we do, from onboard practices to the conservation initiatives we support.</p>
+      </article>
+    </div>
+
+    <div class="about__row reverse" id="Meet-Dani">
+      <article class="about__panel">
+        <h3 class="about__heading">Meet Dani — Founder & Expedition Leader</h3>
+        <p class="about__text">Born and raised on the Mediterranean coast, Dani grew up with the sea as his playground. At 14, a first scuba dive became a life-defining moment—turning passion into purpose.</p>
+        <p class="about__text">At 18, he moved to London, then to Australia to earn his scuba certifications while exploring world-class marine ecosystems.</p>
+        <p class="about__text">In 2019, he settled in Baja California Sur, spending five years on liveaboard expeditions to the Socorro Islands and the Sea of Cortez.</p>
+        <p class="about__text">With thousands of dives and a global network, Dani now shares the secrets of the sea—especially the Mexican waters that have captured his heart.</p>
+      </article>
+      <figure class="about__media" aria-hidden="true">
+        <img src="https://static.wixstatic.com/media/f8cc86_47eeeb1cdd4b4fca8da318161e2e60fb~mv2.jpg" alt="Dani - Founder & Expedition Leader">
+      </figure>
+    </div>
+  </div>
+</section>
