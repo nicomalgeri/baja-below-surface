@@ -419,9 +419,10 @@
       .bs-hero__text {
         font-size: clamp(1rem, 4.6vw, 1.5rem);
       }
-      
+
       .bs-hero__scroll {
-        bottom: 24px;
+        bottom: 64px;
+        bottom: calc(env(safe-area-inset-bottom) + 64px);
         width: 44px;
         height: 44px;
       }
