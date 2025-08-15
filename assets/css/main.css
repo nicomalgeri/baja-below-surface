@@ -1165,3 +1165,61 @@ body.scrolled .elementor-location-header \\
   background: #21262d;
   color: #f5e6af;
 }
+/* ===== CONTACT SECTION STYLES ===== */
+.mini-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+}
+.mini-pair {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.mini-icon {
+  --size: 26px;
+  --pad: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--size) + var(--pad) * 2);
+  height: calc(var(--size) + var(--pad) * 2);
+  color: #f5e6af;
+  background: transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.05s ease;
+  flex-shrink: 0;
+}
+.mini-icon:hover { background: #f5e6af; color: #21262d; }
+.mini-icon:active { transform: translateY(1px); }
+.mini-icon:focus-visible { outline: 2px solid #f5e6af; outline-offset: 2px; }
+.mini-icon svg { width: var(--size); height: var(--size); display: block; }
+.contact__icon-text {
+  color: #f5e6af; font-weight: 600; font-size: 1rem;
+  overflow: hidden; text-overflow: ellipsis; text-align: center;
+}
+@media (max-width: 640px) {
+  .mini-icons { align-items: center; }
+  .contact__icon-text { font-size: 0.95rem; max-width: 250px; }
+}
+.contact__form input[type="text"],
+.contact__form input[type="email"],
+.contact__form textarea {
+  width: 100%; padding: 12px; border-radius: 6px; border: none;
+  background: transparent; border: 2px solid #f5e6af; color: #f5e6af;
+  font-size: 1rem; font-weight: 500; margin-bottom: 12px;
+}
+.contact__form input::placeholder,
+.contact__form textarea::placeholder { color: #f5e6af; opacity: 0.7; }
+.contact__form textarea { resize: vertical; min-height: 100px; }
+.contact__btn {
+  background: #f5e6af; color: #21262d; border: none;
+  padding: 12px 20px; font-weight: 700; cursor: pointer; border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.contact__btn:hover { background: #21262d; color: #f5e6af; }
