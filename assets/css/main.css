@@ -1042,7 +1042,7 @@ body.scrolled .elementor-location-header {
 .mini-pair {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   white-space: nowrap;
 }
 
@@ -1177,7 +1177,7 @@ body.scrolled .elementor-location-header {
 .mini-pair {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   white-space: nowrap;
 }
 .mini-icon {
