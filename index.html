@@ -103,6 +103,7 @@
       margin-right: -50vw;
       overflow: hidden;
       isolation: isolate;
+      background: url('https://bajabelowsurface.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-12-at-21.09.42-scaled.jpeg') center/cover no-repeat;
     }
 
     .bs-hero-video {
@@ -497,14 +498,15 @@
 
 <body>
   <div class="bs-container">
-    <div class="bs-hero-wrapper">
+  <div class="bs-hero-wrapper">
       <!-- Video Background -->
-      <video 
-        id="bsMainVideo" 
-        class="bs-hero-video" 
-        autoplay 
-        muted 
-        loop 
+      <video
+        id="bsMainVideo"
+        class="bs-hero-video bs-loading"
+        poster="https://bajabelowsurface.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-12-at-21.09.42-scaled.jpeg"
+        autoplay
+        muted
+        loop
         playsinline
         preload="metadata"
         aria-hidden="true"
@@ -718,6 +720,7 @@
           }
 
           this.video.pause();
+          this.video.classList.remove('bs-loaded');
           this.video.innerHTML = '';
           
           const newSource = document.createElement('source');
@@ -751,6 +754,7 @@
 
           this.video.addEventListener('loadeddata', () => {
             console.log('BS: Video loaded successfully');
+            this.video.classList.add('bs-loaded');
           });
         }
       };
