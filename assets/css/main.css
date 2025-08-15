@@ -609,9 +609,10 @@ html, body {
   }
 }
 
-/* ===== DAY TRIPS & EXPEDITIONS SECTION ===== */
+/* ===== DAY TRIPS, EXPEDITIONS & CHARTER SECTION ===== */
 .daytrips.section,
-.expeditions.section {
+.expeditions.section,
+.charter.section {
   position: relative;
   width: 100vw;
   left: 50%;
@@ -624,9 +625,13 @@ html, body {
 .expeditions.section {
     background: url("https://www.dropbox.com/scl/fi/0m8m1nep88t3xouqk1xxb/Expeditions-Photo.jpeg?rlkey=dr2x71m7at8bn69h724lekta9&raw=1") center/cover no-repeat;
 }
+.charter.section {
+    background: url("https://www.dropbox.com/scl/fi/jby8gnjuw2f4woceofvpw/Sharks.jpg?rlkey=fgqpa6ul4fi9uu2l49of66lvp&raw=1") center/cover no-repeat;
+}
 
 .daytrips .services__heading,
-.expeditions .services__heading {
+.expeditions .services__heading,
+.charter .services__heading {
   text-align: center;
   font: 700 clamp(2rem,4vw,3rem)/1.2 inherit;
   color: var(--highlight);
@@ -634,7 +639,8 @@ html, body {
 }
 
 .daytrips .services__desc,
-.expeditions .services__desc {
+.expeditions .services__desc,
+.charter .services__desc {
   max-width: 600px;
   margin: 0 auto clamp(3rem,6vh,4rem);
   text-align: center;
@@ -643,15 +649,9 @@ html, body {
   line-height: 1.4;
 }
 
-.daytrips .services__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  gap: clamp(1.5rem,4vw,2.5rem);
-  justify-content: center;
-  justify-items: center;
-}
-
-.expeditions .services__grid {
+.daytrips .services__grid,
+.expeditions .services__grid,
+.charter .services__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
   gap: clamp(1.5rem,4vw,2.5rem);
@@ -667,7 +667,8 @@ html, body {
 }
 
 .daytrips .services__card,
-.expeditions .services__card {
+.expeditions .services__card,
+.charter .services__card {
   --ft: 10s;
   width: 100%;
   max-width: 360px;
@@ -681,7 +682,8 @@ html, body {
 }
 
 .daytrips .services__img,
-.expeditions .services__img {
+.expeditions .services__img,
+.charter .services__img {
   width: 100%;
   aspect-ratio: 16/9;
   background-size: cover;
@@ -692,7 +694,8 @@ html, body {
 }
 
 .daytrips .services__overlay,
-.expeditions .services__overlay {
+.expeditions .services__overlay,
+.charter .services__overlay {
   padding: clamp(1.5rem,2.4vw,2.4rem) clamp(1.5rem,2.4vw,2.6rem);
   background: rgba(33,38,45,0.7);
   border-bottom-left-radius: 32px;
@@ -705,7 +708,8 @@ html, body {
 }
 
 .daytrips .services__title,
-.expeditions .services__title {
+.expeditions .services__title,
+.charter .services__title {
   margin: 0 0 .75rem;
   font-size: clamp(1.4rem,2.5vw,1.8rem);
   font-weight: 700;
@@ -713,7 +717,8 @@ html, body {
 }
 
 .daytrips .services__text,
-.expeditions .services__text {
+.expeditions .services__text,
+.charter .services__text {
   margin: 0 0 1.5rem;
   font-size: clamp(.95rem,1.2vw,1.1rem);
   line-height: 1.5;
@@ -722,7 +727,8 @@ html, body {
 }
 
 .daytrips .services__btn,
-.expeditions .services__btn {
+.expeditions .services__btn,
+.charter .services__btn {
   align-self: flex-start;
   background: var(--highlight);
   color: var(--ink);
@@ -735,19 +741,22 @@ html, body {
 }
 
 .daytrips .services__btn:hover,
-.expeditions .services__btn:hover {
+.expeditions .services__btn:hover,
+.charter .services__btn:hover {
   background: #fff;
   transform: translateY(-2px);
 }
 
 .daytrips .services__card:hover,
-.expeditions .services__card:hover {
+.expeditions .services__card:hover,
+.charter .services__card:hover {
   transform: scale(1.05);
   box-shadow: 0 20px 60px rgba(0,0,0,0.7);
 }
 
 .daytrips .services__card:hover .services__overlay,
-.expeditions .services__card:hover .services__overlay {
+.expeditions .services__card:hover .services__overlay,
+.charter .services__card:hover .services__overlay {
   background: rgba(33,38,45,0.85);
   box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
   filter: brightness(1.05) contrast(1.05);
@@ -761,7 +770,8 @@ html, body {
   }
 
   .daytrips .services__heading,
-  .expeditions .services__heading {
+  .expeditions .services__heading,
+  .charter .services__heading {
     font-size: clamp(1.8rem,8vw,2.4rem);
   }
 }
@@ -945,7 +955,8 @@ body.scrolled .elementor-location-header {
   .contact__panel,
   .whatsapp-button,
   .daytrips .services__card,
-  .expeditions .services__card {
+  .expeditions .services__card,
+  .charter .services__card {
     animation: none !important;
   }
   
@@ -960,7 +971,8 @@ body.scrolled .elementor-location-header {
 .review__nav:focus,
 .contact__btn:focus,
 .daytrips .services__btn:focus,
-.expeditions .services__btn:focus {
+.expeditions .services__btn:focus,
+.charter .services__btn:focus {
   outline: 2px solid var(--highlight);
   outline-offset: 3px;
 }
