@@ -1786,7 +1786,7 @@
 </script>
 
 </body>
-<section class="contact" id="Contact" aria-label="Contact Us">
+  <section class="contact" id="Contact" aria-label="Contact Us">
   <div class="contact__wrap">
     <div class="contact__panel">
 
@@ -1820,8 +1820,7 @@
       </div>
 
       <!-- Contact Form -->
-      <form class="contact__form" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>" method="post">
-        <input type="hidden" name="action" value="cf7_submit">
+      <form class="contact__form" action="mailto:dani@bajabelowsurface.com" method="post" enctype="text/plain">
         <input type="text" name="your-name" placeholder="Your Name" class="contact__input" required>
         <input type="email" name="your-email" placeholder="Your Email" class="contact__input" required>
         <textarea name="your-message" placeholder="Your Message" class="contact__textarea" required></textarea>
