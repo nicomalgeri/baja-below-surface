@@ -157,12 +157,9 @@ html, body {
 }
 
 /* Services Grid - Center cards when not in 3 columns */
-.services__grid,
-.daytrips .services__grid,
-.expeditions .services__grid,
-.charter .services__grid {
+.services__grid {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 350px)) !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
   gap: 2rem !important;
   max-width: 1400px !important;
   margin: 0 auto !important;
