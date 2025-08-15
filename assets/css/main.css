@@ -177,6 +177,12 @@ html, body {
   justify-content: center !important;
 }
 
+/* Day Trips: three columns on desktop */
+.daytrips .services__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  max-width: 1100px !important;
+}
+
 /* Ensure cards are centered within their grid area */
 .services__card,
 .daytrips .services__card,
@@ -194,6 +200,10 @@ html, body {
     max-width: 400px !important;
     gap: 1.5rem !important;
     justify-content: center !important;
+  }
+  .daytrips .services__grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px !important;
   }
 }
 
