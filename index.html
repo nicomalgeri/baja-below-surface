@@ -1,44 +1,991 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Below Surface – Marine Adventures</title>
-    <meta name="description" content="Marine adventures in Baja">
-    <link rel="stylesheet" href="assets/css/main.css">
-  </head>
-  <body>
-    <header class="site-header">
-      <nav class="nav">
-        <a href="">Home</a>
-        <a href="day-trips/">Day Trips</a>
-        <a href="expeditions/">Expeditions</a>
-        <a href="charter/">Charter</a>
-        <a href="about-us/">About Us</a>
-      </nav>
-    </header>
-    <main>
-    
-<section class="hero" aria-label="Hero">
-  <div class="hero__content">
-    <h1 class="hero__title">Unlock The Underwater Mysteries</h1>
-    <p class="hero__subtitle">Join us for an experience where the hidden depths come to life.</p>
-    <a class="btn" href="day-trips/">Explore Services</a>
-  </div>
-</section>
-<section class="services" id="services" aria-labelledby="services-heading">
-  <h2 id="services-heading" class="section-title">Our Marine Adventure Services</h2>
-  <div class="services__grid">
-    <article class="services__card"><h3>Day Trips</h3><p>Single-day marine adventures.</p><a class="btn" href="day-trips/">Learn more</a></article>
-    <article class="services__card"><h3>Expeditions</h3><p>Multi-day exploration.</p><a class="btn" href="expeditions/">Learn more</a></article>
-    <article class="services__card"><h3>Charter</h3><p>Private vessel, bespoke itinerary.</p><a class="btn" href="charter/">Learn more</a></article>
-  </div>
-</section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Below Surface - Marine Adventures</title>
+  
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://bajabelowsurface.com">
+  <link rel="preload" href="https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video.mov" as="video" type="video/mp4">
+  
+  <style>
+    /* ========================================
+       🎨 DESIGN SYSTEM & CSS CUSTOM PROPERTIES
+       ======================================== */
+    :root {
+      /* Colors */
+      --bs-primary: #f6e7b0;
+      --bs-secondary: #d2d7db;
+      --bs-dark: #0c1418;
+      --bs-bg-dark: #0f1a26;
+      --bs-text-light: #e7eef1;
+      --bs-text-muted: #dfe7eb;
+      
+      /* Glass morphism */
+      --bs-glass-primary: rgba(13,24,30,.72);
+      --bs-glass-secondary: rgba(13,24,30,.55);
+      --bs-glass-border: rgba(255,255,255,.08);
+      --bs-glass-blur: 18px;
+      
+      /* Spacing */
+      --bs-radius-sm: 16px;
+      --bs-radius-md: 24px;
+      --bs-radius-lg: 32px;
+      --bs-radius-xl: 40px;
+      --bs-gap-sm: clamp(1rem,2vw,1.5rem);
+      --bs-gap-md: clamp(1.5rem,3vw,2.5rem);
+      --bs-gap-lg: clamp(2rem,4vw,4rem);
+      
+      /* Animations */
+      --bs-duration-fast: .25s;
+      --bs-duration-normal: .5s;
+      --bs-duration-slow: .8s;
+      --bs-easing: cubic-bezier(.25,.8,.3,1);
+      
+      /* Float animation */
+      --bs-float-distance: 42px;
+      --bs-float-angle: 5deg;
+      --bs-float-scale: 1.024;
+      --bs-float-duration: 14s;
+      
+      /* Shadows */
+      --bs-shadow-sm: 0 2px 8px -2px rgba(0,0,0,.3);
+      --bs-shadow-md: 0 8px 28px -10px rgba(0,0,0,.55);
+      --bs-shadow-lg: 0 22px 48px -18px rgba(0,0,0,.6), 0 6px 16px -6px rgba(0,0,0,.45);
+      --bs-shadow-glow: 0 10px 26px rgba(33,38,45,.4);
+    }
 
-    </main>
-    <footer class="site-footer">
-      <p>© Below Surface</p>
-    </footer>
-    <script src="assets/js/main.js" defer></script>
-  </body>
+    /* ========================================
+       🔧 RESET & BASE STYLES
+       ======================================== */
+    .bs-container * {
+      box-sizing: border-box;
+    }
+    
+    .bs-container {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding: 0 !important;
+      border: 0 !important;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bs-bg-dark);
+      color: var(--bs-text-light);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      isolation: isolate;
+    }
+
+    /* Elementor compatibility - reset inherited styles */
+    .bs-container .elementor-widget-container,
+    .bs-container .elementor-element,
+    .bs-container .elementor-column,
+    .bs-container .elementor-row {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+
+    /* ========================================
+       🎬 HERO VIDEO SECTION
+       ======================================== */
+    .bs-hero-wrapper {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .bs-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      pointer-events: none;
+      z-index: 0;
+      filter: brightness(.85) saturate(1.1);
+    }
+
+    .bs-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.70) 0%,
+        rgba(0,0,0,.50) 16%,
+        rgba(0,0,0,.30) 34%,
+        rgba(0,0,0,.18) 52%,
+        rgba(0,0,0,.12) 64%,
+        rgba(0,0,0,.10) 72%,
+        rgba(0,0,0,.08) 85%,
+        rgba(0,0,0,.10) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ========================================
+       🦸 HERO CONTENT
+       ======================================== */
+    .bs-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      z-index: 2;
+    }
+
+    .bs-hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bs-hero__text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(1000px, 92vw);
+      margin: 0;
+      font: 700 clamp(1.2rem, 1.6vw + 1rem, 2.2rem) / 1.25 inherit;
+      color: var(--bs-primary);
+      opacity: 0;
+      text-align: center;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-wrap: balance;
+      animation: bs-fade-text 10s infinite;
+      pointer-events: none;
+    }
+
+    .bs-hero__text--2 {
+      animation-delay: 5s;
+    }
+
+    @keyframes bs-fade-text {
+      0%, 50%, 100% { opacity: 0; }
+      8%, 40% { opacity: 1; }
+    }
+
+    .bs-hero__scroll {
+      position: absolute;
+      left: 50%;
+      bottom: clamp(16px, 3vh, 32px);
+      transform: translateX(-50%);
+      width: clamp(44px, 8vw, 52px);
+      height: clamp(44px, 8vw, 52px);
+      background: rgba(255,255,255,.05);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      transition: all var(--bs-duration-fast) var(--bs-easing);
+      animation: bs-bounce 2s infinite;
+      border: none;
+      text-decoration: none;
+    }
+
+    .bs-hero__scroll:hover {
+      background: rgba(33,38,45,.8);
+      box-shadow: var(--bs-shadow-glow);
+      transform: translateX(-50%) translateY(-4px);
+    }
+
+    .bs-hero__scroll svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--bs-primary);
+      stroke-width: 2;
+      fill: none;
+      transition: transform var(--bs-duration-fast) ease;
+    }
+
+    @keyframes bs-bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(8px); }
+      60% { transform: translateX(-50%) translateY(4px); }
+    }
+
+    /* ========================================
+       🛠️ SERVICES SECTION
+       ======================================== */
+     .bs-services {
+       position: relative;
+       z-index: 2;
+       width: 100vw;
+       left: 50%;
+       right: 50%;
+       margin-left: -50vw;
+       margin-right: -50vw;
+       padding: var(--bs-gap-lg) var(--bs-gap-md);
+       background: transparent;
+       display: flex;
+       justify-content: center;
+     }
+
+    .bs-services__grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--bs-gap-md);
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem var(--bs-gap-md) 3rem;
+      border-radius: var(--bs-radius-xl);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+      backdrop-filter: blur(var(--bs-glass-blur)) saturate(1.45);
+      -webkit-backdrop-filter: blur(var(--bs-glass-blur)) saturate(1.45);
+      box-shadow: var(--bs-shadow-lg), inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+
+    .bs-service-card {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 280px;
+      max-width: 360px;
+      aspect-ratio: 4/5;
+      border-radius: var(--bs-radius-md);
+      overflow: hidden;
+      background: var(--bs-bg-dark);
+      cursor: pointer;
+      box-shadow: var(--bs-shadow-md);
+      transform: translateZ(0);
+      animation: bs-float var(--bs-float-duration) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      transition: all var(--bs-duration-normal) var(--bs-easing);
+    }
+
+    @keyframes bs-float {
+      0%, 100% { transform: translateY(0) rotate(0) scale(1); }
+      20% { 
+        transform: translateY(calc(var(--bs-float-distance) * -0.35)) 
+                   rotate(calc(var(--bs-float-angle) * -0.4)) 
+                   scale(var(--bs-float-scale)); 
+      }
+      40% { 
+        transform: translateY(calc(var(--bs-float-distance) * -0.85)) 
+                   rotate(calc(var(--bs-float-angle) * -1)) 
+                   scale(1); 
+      }
+      60% { 
+        transform: translateY(calc(var(--bs-float-distance) * -0.5)) 
+                   rotate(calc(var(--bs-float-angle) * 0.6)) 
+                   scale(var(--bs-float-scale)); 
+      }
+      80% { 
+        transform: translateY(calc(var(--bs-float-distance) * -0.18)) 
+                   rotate(calc(var(--bs-float-angle) * 0.25)) 
+                   scale(1); 
+      }
+    }
+
+    .bs-service-card__media {
+      position: absolute;
+      inset: 0;
+      background: var(--img) center/cover no-repeat;
+      filter: brightness(.92) saturate(1.08);
+      transition: filter var(--bs-duration-slow) ease, transform var(--bs-duration-slow) ease;
+      z-index: 0;
+    }
+
+    .bs-service-card__content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 36%, rgba(6,10,14,.88) 100%);
+      padding: 1.2rem 1.4rem 1.3rem;
+    }
+
+    .bs-service-card__title {
+      margin: 0 0 .5rem;
+      font-size: clamp(1.1rem, .9vw + .85rem, 1.6rem);
+      font-weight: 700;
+      letter-spacing: .5px;
+      color: var(--bs-primary);
+      text-shadow: 0 2px 6px rgba(0,0,0,.55);
+    }
+
+    .bs-service-card__details {
+      transform: translateY(120%);
+      opacity: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: transform var(--bs-duration-normal) var(--bs-easing), 
+                  opacity var(--bs-duration-normal) var(--bs-easing);
+    }
+
+    .bs-service-card__text {
+      margin: 0;
+      font-size: .9rem;
+      line-height: 1.5;
+      letter-spacing: .3px;
+      color: var(--bs-secondary);
+      flex: 1;
+    }
+
+    .bs-service-card__cta {
+      position: relative;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--bs-duration-fast) ease;
+      color: var(--bs-primary);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .bs-service-card__cta svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+      transition: transform var(--bs-duration-fast) ease;
+    }
+
+    .bs-service-card__cta:hover {
+      background: rgba(33,38,45,.9);
+      transform: scale(1.1);
+      box-shadow: var(--bs-shadow-glow);
+    }
+
+    .bs-service-card__cta:hover svg {
+      transform: translateX(2px) scale(1.1);
+    }
+
+    .bs-service-card:is(:hover, :focus-within) {
+      animation-play-state: paused !important;
+      box-shadow: 0 28px 56px -20px rgba(0,0,0,.85);
+    }
+
+    .bs-service-card:is(:hover, :focus-within) .bs-service-card__media {
+      filter: brightness(.55) saturate(1.05) blur(6px);
+      transform: scale(1.08);
+    }
+
+    .bs-service-card:is(:hover, :focus-within) .bs-service-card__details {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ========================================
+       📱 RESPONSIVE DESIGN
+       ======================================== */
+    @media (max-width: 1100px) {
+      .bs-service-card {
+        max-width: 100%;
+        aspect-ratio: 5/4;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bs-hero__text {
+        font-size: clamp(1rem, 4.6vw, 1.5rem);
+      }
+      
+      .bs-hero__scroll {
+        bottom: 24px;
+        width: 44px;
+        height: 44px;
+      }
+      
+      .bs-services {
+        padding: var(--bs-gap-md) 1rem;
+      }
+      
+      .bs-services__grid {
+        padding: 2rem 1.5rem 2.5rem;
+      }
+    }
+
+    /* ========================================
+       ♿ ACCESSIBILITY & REDUCED MOTION
+       ======================================== */
+    @media (prefers-reduced-motion: reduce) {
+      .bs-service-card,
+      .bs-hero__text {
+        animation: none !important;
+        transform: none !important;
+      }
+      
+      .bs-hero__scroll {
+        animation: none;
+      }
+      
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus indicators for accessibility */
+    .bs-service-card:focus-within,
+    .bs-hero__scroll:focus {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 4px;
+    }
+
+    .bs-service-card__cta:focus {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: 3px;
+    }
+
+    /* ========================================
+       🎭 UTILITY CLASSES
+       ======================================== */
+    .bs-sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .bs-loading {
+      opacity: 0;
+      transition: opacity var(--bs-duration-normal) ease;
+    }
+
+    .bs-loaded {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bs-container">
+    <div class="bs-hero-wrapper">
+      <!-- Video Background -->
+      <video 
+        id="bsMainVideo" 
+        class="bs-hero-video" 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video.mov" type="video/mp4">
+        <div class="bs-sr-only">Your browser does not support the video tag.</div>
+      </video>
+      
+      <div class="bs-hero-overlay" aria-hidden="true"></div>
+
+      <!-- Hero Section -->
+      <header class="bs-hero" id="bsTop" role="banner">
+        <div class="bs-hero__content">
+          <h1 class="bs-hero__text bs-hero__text--1">
+            Unlock The Underwater Mysteries
+          </h1>
+          <h1 class="bs-hero__text bs-hero__text--2" aria-hidden="true">
+            Join Us for an Experience Where the Hidden Depths Come to Life
+          </h1>
+          
+          <a 
+            href="#bsServices" 
+            class="bs-hero__scroll" 
+            aria-label="Scroll to Services section"
+            role="button"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="bs-sr-only">Scroll to Services</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Services Section -->
+      <section class="bs-services" id="bsServices" aria-labelledby="bsServicesHeading">
+        <h2 id="bsServicesHeading" class="bs-sr-only">Our Marine Adventure Services</h2>
+        
+        <div class="bs-services__grid" role="list">
+          <!-- Day Trips -->
+          <article 
+            class="bs-service-card bs-loading" 
+            style="--delay: 0s; --img: url('https://bajabelowsurface.com/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-08-at-05.59.56-scaled.jpeg')"
+            role="listitem"
+            data-url="https://bajabelowsurface.com/?page_id=1215"
+          >
+            <div class="bs-service-card__media" aria-hidden="true"></div>
+            <div class="bs-service-card__content">
+              <h3 class="bs-service-card__title">Day Trips</h3>
+              <div class="bs-service-card__details">
+                <p class="bs-service-card__text">
+                  Single-day marine adventures: reefs, wildlife encounters &amp; expert guides.
+                </p>
+                <button 
+                  class="bs-service-card__cta" 
+                  aria-label="Learn more about Day Trips"
+                  data-service="day-trips"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Expeditions -->
+          <article 
+            class="bs-service-card bs-loading" 
+            style="--delay: .45s; --img: url('https://bajabelowsurface.com/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-08-at-06.00.23-scaled.jpeg')"
+            role="listitem"
+            data-url="https://bajabelowsurface.com/?page_id=1384"
+          >
+            <div class="bs-service-card__media" aria-hidden="true"></div>
+            <div class="bs-service-card__content">
+              <h3 class="bs-service-card__title">Expeditions</h3>
+              <div class="bs-service-card__details">
+                <p class="bs-service-card__text">
+                  Multi-day remote exploration, research support &amp; immersive learning.
+                </p>
+                <button 
+                  class="bs-service-card__cta" 
+                  aria-label="Learn more about Expeditions"
+                  data-service="expeditions"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Charter -->
+          <article 
+            class="bs-service-card bs-loading" 
+            style="--delay: .9s; --img: url('https://bajabelowsurface.com/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-08-at-06.00.36.jpeg')"
+            role="listitem"
+            data-url="https://bajabelowsurface.com/?page_id=1386"
+          >
+            <div class="bs-service-card__media" aria-hidden="true"></div>
+            <div class="bs-service-card__content">
+              <h3 class="bs-service-card__title">Charter</h3>
+              <div class="bs-service-card__details">
+                <p class="bs-service-card__text">
+                  Private vessel, bespoke itinerary, full crew &amp; logistics handled.
+                </p>
+                <button 
+                  class="bs-service-card__cta" 
+                  aria-label="Learn more about Charter services"
+                  data-service="charter"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Below Surface - Enhanced JavaScript Module
+     * Optimized for WordPress/Elementor compatibility
+     */
+    (function() {
+      'use strict';
+      
+      // Performance and error handling utilities
+      const BSUtils = {
+        // Debounce function for performance
+        debounce: function(func, wait) {
+          let timeout;
+          return function executedFunction(...args) {
+            const later = () => {
+              clearTimeout(timeout);
+              func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+          };
+        },
+
+        // Safe DOM query with error handling
+        safeQuery: function(selector, context = document) {
+          try {
+            return context.querySelector(selector);
+          } catch (e) {
+            console.warn(`BS: Invalid selector "${selector}":`, e);
+            return null;
+          }
+        },
+
+        // Check if element is in viewport
+        isInViewport: function(element) {
+          if (!element) return false;
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+          );
+        },
+
+        // Smooth scroll with fallback
+        smoothScroll: function(target) {
+          if (target) {
+            if ('scrollBehavior' in document.documentElement.style) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+              // Fallback for older browsers
+              const targetPosition = target.offsetTop;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }
+      };
+
+      // Video Management Module
+      const VideoManager = {
+        init: function() {
+          this.video = BSUtils.safeQuery('#bsMainVideo');
+          if (!this.video) return;
+
+          this.setupResponsiveVideo();
+          this.setupVideoErrorHandling();
+          
+          // Resize listener with debouncing
+          window.addEventListener('resize', BSUtils.debounce(this.setupResponsiveVideo.bind(this), 250));
+        },
+
+        setupResponsiveVideo: function() {
+          if (!this.video) return;
+
+          const desktopSrc = 'https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video-1.mov';
+          const mobileSrc = 'https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video.mov';
+          const isMobile = window.innerWidth < 768;
+          const targetSrc = isMobile ? mobileSrc : desktopSrc;
+          
+          const currentSource = this.video.querySelector('source');
+          if (currentSource && currentSource.getAttribute('src') === targetSrc) {
+            return; // Source is already correct
+          }
+
+          this.video.pause();
+          this.video.innerHTML = '';
+          
+          const newSource = document.createElement('source');
+          newSource.src = targetSrc;
+          newSource.type = 'video/mp4';
+          
+          this.video.appendChild(newSource);
+          this.video.load();
+          
+          // Auto-play with error handling
+          const playPromise = this.video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.warn('BS: Video autoplay failed:', error);
+              // Video autoplay was prevented, which is normal on some devices
+            });
+          }
+        },
+
+        setupVideoErrorHandling: function() {
+          if (!this.video) return;
+
+          this.video.addEventListener('error', (e) => {
+            console.error('BS: Video error:', e);
+            // Hide video overlay on error to prevent black screen
+            const overlay = BSUtils.safeQuery('.bs-hero-overlay');
+            if (overlay) {
+              overlay.style.opacity = '0.9';
+            }
+          });
+
+          this.video.addEventListener('loadeddata', () => {
+            console.log('BS: Video loaded successfully');
+          });
+        }
+      };
+
+      // Service Cards Module
+      const ServiceCards = {
+        init: function() {
+          this.cards = document.querySelectorAll('.bs-service-card');
+          this.setupClickHandlers();
+          this.setupKeyboardNavigation();
+          this.setupIntersectionObserver();
+        },
+
+        setupClickHandlers: function() {
+          this.cards.forEach(card => {
+            const button = card.querySelector('.bs-service-card__cta');
+            const url = card.dataset.url;
+            
+            if (button && url) {
+              button.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.handleServiceClick(button, url);
+              });
+
+              // Also handle card click
+              card.addEventListener('click', (e) => {
+                if (e.target === button || button.contains(e.target)) return;
+                this.handleServiceClick(button, url);
+              });
+            }
+          });
+        },
+
+        setupKeyboardNavigation: function() {
+          this.cards.forEach(card => {
+            card.setAttribute('tabindex', '0');
+            
+            card.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const url = card.dataset.url;
+                if (url) {
+                  const button = card.querySelector('.bs-service-card__cta');
+                  this.handleServiceClick(button, url);
+                }
+              }
+            });
+          });
+        },
+
+        setupIntersectionObserver: function() {
+          if (!('IntersectionObserver' in window)) {
+            // Fallback: just add loaded class to all cards
+            this.cards.forEach(card => card.classList.add('bs-loaded'));
+            return;
+          }
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('bs-loaded');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, {
+            rootMargin: '50px',
+            threshold: 0.1
+          });
+
+          this.cards.forEach(card => observer.observe(card));
+        },
+
+        handleServiceClick: function(button, url) {
+          if (!button || !url) return;
+
+          // Visual feedback
+          this.createRippleEffect(button);
+          
+          // Track analytics if available
+          if (typeof gtag === 'function') {
+            gtag('event', 'service_click', {
+              'service_type': button.dataset.service || 'unknown',
+              'destination_url': url
+            });
+          }
+
+          // Navigate after brief delay for visual feedback
+          setTimeout(() => {
+            window.location.href = url;
+          }, 200);
+        },
+
+        createRippleEffect: function(button) {
+          const existingRipple = button.querySelector('.bs-ripple');
+          if (existingRipple) {
+            existingRipple.remove();
+          }
+
+          const ripple = document.createElement('span');
+          ripple.className = 'bs-ripple';
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            background: rgba(246,231,176,.25);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform: scale(0);
+            opacity: 0.4;
+            transition: none;
+          `;
+
+          button.appendChild(ripple);
+
+          requestAnimationFrame(() => {
+            ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
+            ripple.style.transform = 'scale(1.8)';
+            ripple.style.opacity = '0';
+          });
+
+          // Clean up ripple element
+          setTimeout(() => {
+            if (ripple.parentNode) {
+              ripple.parentNode.removeChild(ripple);
+            }
+          }, 600);
+        }
+      };
+
+      // Navigation Module
+      const Navigation = {
+        init: function() {
+          this.setupScrollButton();
+          this.setupSmoothScrolling();
+        },
+
+        setupScrollButton: function() {
+          const scrollButton = BSUtils.safeQuery('.bs-hero__scroll');
+          if (!scrollButton) return;
+
+          scrollButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = scrollButton.getAttribute('href');
+            const target = BSUtils.safeQuery(targetId);
+            
+            if (target) {
+              BSUtils.smoothScroll(target);
+              
+              // Focus target for accessibility
+              setTimeout(() => {
+                target.setAttribute('tabindex', '-1');
+                target.focus();
+              }, 500);
+            }
+          });
+        },
+
+        setupSmoothScrolling: function() {
+          // Handle any internal links with smooth scrolling
+          const internalLinks = document.querySelectorAll('a[href^="#bs"]');
+          
+          internalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              const targetId = link.getAttribute('href');
+              const target = BSUtils.safeQuery(targetId);
+              
+              if (target) {
+                BSUtils.smoothScroll(target);
+              }
+            });
+          });
+        }
+      };
+
+      // Error Handling Module
+      const ErrorHandler = {
+        init: function() {
+          window.addEventListener('error', this.handleError);
+          window.addEventListener('unhandledrejection', this.handlePromiseRejection);
+        },
+
+        handleError: function(event) {
+          console.error('BS: Runtime error:', event.error);
+          // Don't break the entire page for individual component errors
+        },
+
+        handlePromiseRejection: function(event) {
+          console.error('BS: Promise rejection:', event.reason);
+          // Prevent unhandled promise rejections from breaking the page
+          event.preventDefault();
+        }
+      };
+
+      // Main Initialization
+      const BelowSurface = {
+        init: function() {
+          try {
+            // Wait for DOM to be ready
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', () => this.bootstrap());
+            } else {
+              this.bootstrap();
+            }
+          } catch (error) {
+            console.error('BS: Initialization failed:', error);
+          }
+        },
+
+        bootstrap: function() {
+          console.log('BS: Initializing Below Surface components...');
+          
+          // Initialize error handling first
+          ErrorHandler.init();
+          
+          // Initialize all modules
+          VideoManager.init();
+          ServiceCards.init();
+          Navigation.init();
+          
+          // Mark as initialized
+          document.body.classList.add('bs-initialized');
+          
+          console.log('BS: Initialization complete');
+        }
+      };
+
+      // Auto-initialize
+      BelowSurface.init();
+
+      // Expose for external use if needed
+      window.BelowSurface = BelowSurface;
+      
+    })();
+  </script>
+</body>
 </html>
