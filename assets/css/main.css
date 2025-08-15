@@ -1,0 +1,7 @@
+:root { --highlight:#f6e7b0; --ink:#21262d; --bg:#0f1a26; --max:1200px }
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.site-header,.site-footer,main{max-width:var(--max);margin:0 auto;padding:16px}.nav a{margin-right:16px;color:#fff;text-decoration:none}
+.section-title{text-align:center;font-weight:800;color:var(--highlight)}.hero{min-height:60vh;display:grid;place-items:center;background:#000;border-radius:20px}
+.hero__content{text-align:center}.btn{display:inline-block;padding:.6rem 1rem;border-radius:999px;border:2px solid var(--highlight);color:var(--highlight);text-decoration:none;margin-top:1rem}
+.btn:hover{background:var(--highlight);color:var(--ink)}.services__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:24px}
+.services__card{background:rgba(255,255,255,.06);padding:16px;border-radius:12px;outline:1px solid rgba(255,255,255,.12)}
