@@ -1,14 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Charter – Below Surface</title>
-    <meta name="description" content="Charter">
-    <link rel="stylesheet" href="../assets/css/main.css">
-  </head>
-  <body>
-<!-- ===== Hamburger Menu (titles centered; socials pinned bottom) ===== -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Charter – Below Surface</title>
+  <meta name="description" content="Charter" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+<body>
+
+<section class="charter section" id="charter" aria-label="Charter">
+  <h2 class="services__heading">Charter</h2>
+  <p class="services__desc" style="max-width:600px; margin:0 auto 3rem; text-align:center; font-size:clamp(1.1rem,2vw,1.4rem); color:var(--text-light);">
+    Choose from our adventure-ready boats.
+  </p>
+
+  <div class="services__grid">
+
+    <!-- Mangata -->
+    <div class="services__card" style="--i:0">
+      <div class="services__img"
+           style="background-image:url('https://www.dropbox.com/scl/fi/5byvbqo4cr9k9v7vshezw/Boat.jpg?rlkey=17laykgdh1pp3kqy62yc46yqr&raw=1');">
+      </div>
+      <div class="services__overlay">
+        <h3 class="services__title">Mangata</h3>
+        <p class="services__text">Our adventure diving boat.</p>
+        <a class="services__btn"
+           href="https://wa.me/526242104724?text=Hi!%20I%20want%20to%20book%20the%20Mangata%20charter.">
+          Book
+        </a>
+      </div>
+    </div>
+
+    <!-- Siete mares -->
+    <div class="services__card" style="--i:1">
+      <div class="services__img"
+           style="background-image:url('https://www.dropbox.com/scl/fi/kclwgxg8us4irplse2rks/Charter-Luxury.jpg?rlkey=4k802w7dyk48n8n6q4uc48vev&raw=1');">
+      </div>
+      <div class="services__overlay">
+        <h3 class="services__title">Siete mares</h3>
+        <p class="services__text">Our adventure luxury boat.</p>
+        <a class="services__btn"
+           href="https://wa.me/526242104724?text=Hi!%20I%20want%20to%20book%20the%20Siete%20mares%20charter.">
+          Book
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WhatsApp Floating Button -->
+<a
+  href="https://wa.me/526242104724"
+  class="whatsapp-button"
+  target="_blank"
+  aria-label="Chat on WhatsApp">
+  <img
+    src="https://www.svgrepo.com/show/303280/whatsapp-glyph-black-logo.svg"
+    alt="WhatsApp"
+    style="width:2rem;height:2rem;display:block;"
+  />
+</a>
+
+<!-- ===== Hamburger Menu ===== -->
 <style>
   :root{
     --accent:#f6e7b0;     /* yellow tone */
@@ -123,19 +178,19 @@
   }
   .mini-pair{ display:flex; align-items:center; gap:10px; white-space:nowrap; }
   .mini-icon{
-    --size:26px; --pad:8px;
-    display:inline-flex; align-items:center; justify-content:center;
-    width:calc(var(--size) + var(--pad)*2); height:calc(var(--size) + var(--pad)*2);
-    color:var(--accent); background:transparent; border-radius:999px; text-decoration:none;
-    transition:background .2s ease, transform .05s ease; flex-shrink:0;
+    --size:26px;
+    width:var(--size); height:var(--size); display:block; color:var(--accent);
+    transition:transform .3s ease;
   }
-  .mini-icon:hover{ background:var(--accent); color:var(--ink); }
+  .mini-icon:hover{ transform:scale(1.1); }
   .mini-icon svg{ width:var(--size); height:var(--size); display:block; }
   .contact__icon-text{ color:var(--accent); font-weight:600; font-size:1rem; }
 
   /* Titles remain centered across all viewport widths */
+  @media (max-width:600px){
+    .menu__center{ padding:80px 0; }
+  }
 </style>
-
 <!-- Sticky Header -->
 <header class="bs-header">
   <button class="ham" id="ham" aria-label="Open menu" aria-controls="menu" aria-expanded="false">
@@ -151,10 +206,8 @@
   </a>
 </header>
 
-<!-- Fullscreen Menu -->
 <nav class="menu" id="menu" aria-hidden="true">
   <div class="menu__container">
-    <!-- CENTERED TITLES AREA -->
     <div class="menu__center">
       <ul class="menu__list" role="menu" aria-label="Main menu">
         <li role="none"><a class="menu__link" role="menuitem" href="https://nicomalgeri.github.io/baja-below-surface/" style="--delay:.00s">Home</a></li>
@@ -164,8 +217,6 @@
         <li role="none"><a class="menu__link" role="menuitem" href="https://nicomalgeri.github.io/baja-below-surface/about-us" style="--delay:.32s">About Us</a></li>
       </ul>
     </div>
-
-    <!-- SOCIALS AT BOTTOM -->
     <div class="mini-icons">
       <div class="mini-pair">
         <a class="mini-icon" href="https://instagram.com/bajabelowsurface" aria-label="Instagram" target="_blank" rel="noopener">
@@ -190,13 +241,6 @@
   </div>
 </nav>
 
-<main>
-  <section class="page-hero"><h1>Charter</h1><p>Replace with full content.</p></section>
-</main>
-<footer class="site-footer">
-  <p>© Below Surface</p>
-</footer>
-
 <script>
 (function(){
   const btn = document.getElementById('ham');
@@ -205,7 +249,6 @@
   const hamText = btn.querySelector('.ham__text');
   let lastFocus = null;
 
-  // Ensure ONLY one active link
   const norm = (u)=>{ try{ const x=new URL(u, location.origin); return (x.origin+x.pathname+x.search).replace(/\/+$/,''); } catch(e){ return u; } };
   const here = norm(location.href);
   links.forEach(l => { l.classList.remove('is-active'); l.removeAttribute('aria-current'); });
@@ -249,6 +292,9 @@
   links.forEach(a => a.addEventListener('click', closeMenu));
 })();
 </script>
+
 <script src="../assets/js/dropbox.js"></script>
-  </body>
+
+</body>
 </html>
+
