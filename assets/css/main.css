@@ -168,8 +168,7 @@ html, body {
   align-items: center !important;
 }
 
-/* Day Trips, Expeditions, and Charter: force single column layout on all screens */
-.daytrips .services__grid,
+/* Expeditions and Charter: force single column layout on all screens */
 .expeditions .services__grid,
 .charter .services__grid {
   grid-template-columns: 1fr !important;
@@ -640,7 +639,7 @@ html, body {
 
 .daytrips .services__grid {
   display: grid;
-  grid-template-columns: 1fr !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
   gap: clamp(1.5rem,4vw,2.5rem);
   justify-content: center;
   justify-items: center;
@@ -959,7 +958,7 @@ body.scrolled .elementor-location-header {
   outline: 2px solid var(--highlight);
   outline-offset: 3px;
 }
-/* ===== DAY TRIPS SERVICES GRID ===== */
+/* ===== SERVICES GRID ===== */
 .services__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -967,12 +966,6 @@ body.scrolled .elementor-location-header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-}
-
-/* Day Trips: show one card per row */
-.daytrips .services__grid {
-  grid-template-columns: 1fr !important;
-  max-width: 400px !important;
 }
 
 /* Center the last card when alone (7th card in a 3-column grid) */
@@ -996,6 +989,7 @@ body.scrolled .elementor-location-header {
   /* Ensure Day Trips remains single column on small screens */
   .daytrips .services__grid {
     grid-template-columns: 1fr !important;
+    max-width: 400px !important;
   }
   
   /* On mobile with 2 columns, center last card when alone */
