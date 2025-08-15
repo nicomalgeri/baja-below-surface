@@ -988,32 +988,10 @@ body.scrolled .elementor-location-header {
 
 @media (max-width: 768px) {
   .services__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-
-  /* Ensure Day Trips, Expeditions and Charter remain single column on small screens */
-  .daytrips .services__grid,
-  .expeditions .services__grid,
-  .charter .services__grid {
-    grid-template-columns: 1fr !important;
-    max-width: 400px !important;
-  }
   
-  /* On mobile with 2 columns, center last card when alone */
-  .services__grid:has(.services__card:nth-child(7):last-child) .services__card:nth-child(7) {
-    grid-column: span 2;
-    justify-self: center;
-    max-width: 300px;
-  }
-  
-  @supports not selector(:has(*)) {
-    .services__card:nth-child(7):last-child {
-      grid-column: span 2;
-      justify-self: center;
-      max-width: 300px;
-    }
-  }
 }
 
 @media (max-width: 480px) {
@@ -1272,9 +1250,3 @@ body.scrolled .elementor-location-header {
   color: #f5e6af;
 }
 
-/* Force single-column layout on Day Trips for mobile screens */
-@media (max-width: 768px) {
-  .daytrips .services__grid {
-    grid-template-columns: 1fr !important;
-  }
-}
