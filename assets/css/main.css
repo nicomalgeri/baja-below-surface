@@ -1,3 +1,1047 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Colors */
+    --highlight: #f6e7b0;
+    --text-light: #d2d7db;
+    --text-muted: #e4ecef;
+    --ink: #21262d;
+    --bg-dark: #0f1a26;
+    --bg-glass: rgba(13,24,30,.72);
+    --bg-glass2: rgba(13,24,30,.55);
+    --stroke: rgba(255,255,255,.08);
+    
+    /* Layout */
+    --radius-lg: 32px;
+    --bg-panel-blur: 18px;
+    
+    /* Animation */
+    --float-time: 14s;
+    --float-dist: 42px;
+    --float-angle: 5deg;
+    --float-scale: 1.024;
+    --gallery-float: 36px;
+    --transition: .35s cubic-bezier(.25,.8,.3,1);
+    --ease: cubic-bezier(.25,.8,.3,1);
+    
+    /* Navigation */
+    --nav-bg: rgba(33,38,45,.85);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ===== RESET & BASE ===== */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #000;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* WordPress/Elementor compatibility */
+.site,
+.site-header,
+#masthead,
+.elementor-location-header,
+.elementor-section,
+.elementor-top-section,
+.site-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+/* Services Grid - Center cards when not in 3 columns */
+.services__grid,
+.daytrips .services__grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 350px)) !important;
+  gap: 2rem !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Ensure cards are centered within their grid area */
+.services__card,
+.daytrips .services__card {
+  width: 100% !important;
+  max-width: 350px !important;
+  margin: 0 auto !important;
+}
+
+/* For smaller screens, ensure single column is centered */
+@media (max-width: 768px) {
+  .services__grid,
+  .daytrips .services__grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px !important;
+    gap: 1.5rem !important;
+    justify-content: center !important;
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+
+@media (max-width: 620px) {
+  .hero__subtitle {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* ===== SERVICES SECTION ===== */
+.services {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: clamp(4rem,10vh,6rem) clamp(2rem,6vw,6rem);
+  isolation: isolate;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: clamp(4rem,10vh,6rem) clamp(2rem,6vw,6rem);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.55) 60%,
+    rgba(0,0,0,0.65)
+  );
+  color: #fff;
+  isolation: isolate;
+  overflow: visible;
+}
+
+/* ===== GALLERY SECTION ===== */
+.parallax-gallery {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: clamp(4rem,10vh,6rem) clamp(2rem,6vw,6rem);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.55) 60%,
+    rgba(0,0,0,0.65)
+  );
+  color: #fff;
+  isolation: isolate;
+  overflow: visible;
+}
+
+.gallery__heading {
+  font: 700 clamp(2rem,5vw,3rem)/1.2 inherit;
+  color: var(--highlight);
+  margin-bottom: clamp(2rem,5vh,3rem);
+  text-align: center;
+}
+
+.fullscreen-gallery {
+  overflow: visible;
+}
+
+.gallery-column,
+.gallery-strip,
+.gallery-strip .tile,
+.gallery-strip img {
+  position: relative;
+  z-index: 5;
+}
+
+.gallery-strip img:hover {
+  transform: scale(1.08);
+  z-index: 10;
+}
+
+.gallery-column {
+  z-index: 8;
+}
+
+/* ===== PARALLAX GALLERY ANIMATIONS ===== */
+.parallax-row {
+  display: flex;
+  gap: clamp(1rem,2vw,2rem);
+  width: 200%;
+  overflow: hidden;
+}
+
+.parallax-row--slow { 
+  animation: scroll-left 60s linear infinite; 
+}
+
+.parallax-row--medium { 
+  animation: scroll-right 45s linear infinite; 
+}
+
+.parallax-row--fast { 
+  animation: scroll-left 30s linear infinite; 
+}
+
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.parallax-card {
+  flex: 0 0 auto;
+  width: clamp(180px,18vw,220px);
+  height: clamp(180px,18vw,220px);
+  margin-right: clamp(1rem,2vw,2rem);
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: box-shadow .3s ease;
+  cursor: pointer;
+}
+
+.parallax-card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: clamp(4rem, 10vh, 6rem) clamp(2rem, 6vw, 6rem);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, .25),
+      rgba(0, 0, 0, .55) 60%,
+      rgba(0, 0, 0, .65)
+    ),
+    url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Giant-Manta_-scaled.jpg')
+      center/cover no-repeat;
+  isolation: isolate;
+}
+
+.contact__wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.contact__panel {
+  width: clamp(320px, 50vw, 600px);
+  background: rgba(15, 27, 33, .25);
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 32px;
+  backdrop-filter: blur(8px) saturate(1.4);
+  -webkit-backdrop-filter: blur(8px) saturate(1.4);
+  box-shadow: 0 8px 28px -10px rgba(0, 0, 0, .55);
+  animation: floatForm 8s ease-in-out infinite;
+  transition: backdrop-filter .4s ease;
+}
+
+.contact__panel:hover {
+  animation-play-state: paused;
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+}
+
+@keyframes floatForm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+.contact__heading {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  color: var(--highlight);
+  text-align: center;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact__input,
+.contact__textarea {
+  width: 100%;
+  padding: .75rem 1rem;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-radius: 8px;
+  color: #e4ecef;
+  font: 1rem inherit;
+  transition: border-color .3s ease;
+}
+
+.contact__input::placeholder,
+.contact__textarea::placeholder {
+  color: var(--text-light);
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  border-color: var(--highlight);
+  outline: none;
+}
+
+.contact__textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact__btn {
+  align-self: flex-start;
+  padding: .75rem 1.75rem;
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--highlight);
+  border: 2px solid var(--highlight);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background .35s ease, transform .35s ease;
+}
+
+.contact__btn:hover,
+.contact__btn:focus {
+  background: var(--highlight);
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 620px) {
+  .contact {
+    padding: clamp(3rem, 8vh, 4rem) clamp(1.2rem, 5vw, 2rem);
+  }
+}
+
+/* ===== REVIEW SECTION ===== */
+.review {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding-block: clamp(4rem, 10vh, 6rem);
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.30),
+      rgba(0,0,0,.60) 60%,
+      rgba(0,0,0,.70)
+    ),
+    url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Sea-lion.jpg')
+      center/cover no-repeat;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.review__heading {
+  text-align: center;
+  font-size: clamp(2rem,4vw,3rem);
+  font-weight: 600;
+  color: var(--highlight);
+  margin-bottom: clamp(2rem,4vh,3rem);
+}
+
+.review__viewport {
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding-block: 15px;
+  padding-inline-start: clamp(2rem, 6vw, 6rem);
+}
+
+.review__carousel {
+  display: flex;
+  gap: clamp(2rem,4vw,3rem);
+  transition: transform 0.6s ease;
+  will-change: transform;
+  cursor: grab;
+}
+
+.review__carousel:active {
+  cursor: grabbing;
+}
+
+@keyframes reviewFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.review-card {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 100%;
+  max-width: 720px;
+  background: rgba(15,27,33,.25);
+  padding: clamp(2rem,3vw,3rem);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 32px;
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow: 0 8px 28px -10px rgba(0,0,0,.55);
+  color: #e4ecef;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: reviewFloat var(--float-time,12s) ease-in-out infinite;
+}
+
+.review-card:nth-child(even) {
+  animation-delay: calc(var(--float-time,12s)/2);
+}
+
+.review-card:hover,
+.review-card:focus-within {
+  animation-play-state: paused;
+  z-index: 2;
+}
+
+.review-card p {
+  margin: 0;
+  font-size: clamp(0.95rem,0.35vw+0.9rem,1.05rem);
+  line-height: 1.55;
+}
+
+.review-card .author {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--highlight);
+  text-align: right;
+  font-size: clamp(0.95rem,0.35vw+0.9rem,1.05rem);
+}
+
+.review__nav-container {
+  display: flex;
+  justify-content: center;
+  gap: clamp(2rem,4vw,3rem);
+  margin-block-start: clamp(4rem,8vh,6rem);
+}
+
+.review__nav {
+  background: var(--ink);
+  color: var(--highlight);
+  border: 2px solid var(--highlight);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .3s ease, color .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review__nav:hover:not(:disabled) {
+  background: rgba(33,38,45,0.9);
+  color: #fff;
+}
+
+.review__nav:active,
+.review__nav:focus {
+  background: var(--highlight);
+  color: var(--ink);
+}
+
+.review__nav:disabled {
+  opacity: .4;
+  cursor: default;
+}
+
+@media (max-width: 980px) {
+  .review-card { 
+    max-width: 90%; 
+  }
+}
+
+/* ===== DAY TRIPS SECTION ===== */
+.daytrips.section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: clamp(4rem,10vh,6rem) clamp(2rem,6vw,6rem);
+  isolation: isolate;
+}
+
+.daytrips .services__heading {
+  text-align: center;
+  font: 700 clamp(2rem,4vw,3rem)/1.2 inherit;
+  color: var(--highlight);
+  margin-bottom: clamp(1rem,2vh,1.5rem);
+}
+
+.daytrips .services__desc {
+  max-width: 600px;
+  margin: 0 auto clamp(3rem,6vh,4rem);
+  text-align: center;
+  font-size: clamp(1.1rem,2vw,1.4rem);
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.daytrips .services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+  gap: clamp(1.5rem,4vw,2.5rem);
+  justify-content: center;
+  justify-items: center;
+}
+
+@keyframes floatXY {
+  0%,100% { transform: translate(0,0); }
+  25% { transform: translate(10px,-10px); }
+  50% { transform: translate(0,-20px); }
+  75% { transform: translate(-10px,-10px); }
+}
+
+.daytrips .services__card {
+  --ft: 10s;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 32px;
+  background: rgba(15,27,33,0.2);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  overflow: visible;
+  transition: transform .3s ease, box-shadow .3s ease;
+  animation: floatXY var(--ft) ease-in-out infinite;
+  animation-delay: calc(var(--i,0) * -1.2s);
+}
+
+.daytrips .services__img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  transition: transform .3s ease;
+}
+
+.daytrips .services__overlay {
+  padding: clamp(1.5rem,2.4vw,2.4rem) clamp(1.5rem,2.4vw,2.6rem);
+  background: rgba(33,38,45,0.7);
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background .3s ease, box-shadow .3s ease, filter .3s ease;
+}
+
+.daytrips .services__title {
+  margin: 0 0 .75rem;
+  font-size: clamp(1.4rem,2.5vw,1.8rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.daytrips .services__text {
+  margin: 0 0 1.5rem;
+  font-size: clamp(.95rem,1.2vw,1.1rem);
+  line-height: 1.5;
+  color: #e4ecef;
+  max-height: 3.3em;
+}
+
+.daytrips .services__btn {
+  align-self: flex-start;
+  background: var(--highlight);
+  color: var(--ink);
+  padding: .75rem 1.5rem;
+  font-size: .9rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 2px solid var(--highlight);
+  transition: background .3s ease, transform .3s ease;
+}
+
+.daytrips .services__btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.daytrips .services__card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+.daytrips .services__card:hover .services__overlay {
+  background: rgba(33,38,45,0.85);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.2);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+@media (max-width: 620px) {
+  .daytrips .services__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .daytrips .services__heading {
+    font-size: clamp(1.8rem,8vw,2.4rem);
+  }
+}
+
+/* ===== WHATSAPP FLOATING BUTTON ===== */
+.whatsapp-button {
+  position: fixed;
+  bottom: clamp(3rem,6vh,4rem);
+  right: clamp(3rem,6vw,4rem);
+  width: 70px;
+  height: 70px;
+  background: var(--highlight);
+  color: var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 1000;
+  animation:
+    fadeIn 0.8s ease-in-out 2s forwards,
+    floatLoop 12s ease-in-out 2.8s infinite,
+    jump 0.6s ease-in-out infinite paused;
+}
+
+.whatsapp-button:hover {
+  animation-play-state: paused, paused, running;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  to { opacity: 0.8; }
+}
+
+@keyframes floatLoop {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes jump {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.whatsapp-button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+.site-header,
+.bs-nav,
+#masthead,
+.elementor-location-header {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(33,38,45,0.75);
+  transition: background .35s ease, box-shadow .35s ease, padding .25s ease;
+}
+
+.site-header.scrolled,
+.bs-nav.scrolled,
+body.scrolled .site-header,
+body.scrolled #masthead,
+body.scrolled .elementor-location-header {
+  background: rgba(246,231,176,0.5);
+  box-shadow: 0 12px 38px -8px rgba(0,0,0,.45);
+}
+
+.site-header a,
+.bs-nav a,
+.bs-nav .sub-toggle {
+  color: #e7eef1;
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+.site-header a:hover,
+.bs-nav a:hover,
+.bs-nav .sub-toggle:hover {
+  color: var(--highlight);
+}
+
+.site-header .container,
+.bs-nav__inner {
+  padding: 0.75rem 1rem;
+}
+
+/* Burger Menu */
+.bs-burger {
+  position: fixed;
+  top: 14px;
+  left: 16px;
+  width: 34px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bs-burger span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--highlight);
+  transition: transform .35s var(--ease), opacity .25s ease;
+}
+
+.bs-menu {
+  position: fixed;
+  inset: 0;
+  transform: translateX(-100%);
+  transition: transform .45s var(--ease);
+  background: rgba(33,38,45,.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 99990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 4vw;
+}
+
+.bs-menu:target {
+  transform: translateX(0);
+}
+
+.bs-menu__close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  color: var(--highlight);
+  font-size: 34px;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bs-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.bs-menu__list li + li {
+  margin-top: 1.1rem;
+}
+
+.bs-menu__list a {
+  color: var(--highlight);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: .5px;
+  font-size: clamp(2rem,5vw,3rem);
+  transition: opacity .25s ease;
+}
+
+.bs-menu__list a:hover {
+  opacity: .85;
+}
+
+@media (max-width: 900px) {
+  .site-header,
+  .bs-nav {
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* ===== ACCESSIBILITY & REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-row,
+  .review-card,
+  .contact__panel,
+  .whatsapp-button,
+  .daytrips .services__card {
+    animation: none !important;
+  }
+  
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus indicators */
+.review__nav:focus,
+.contact__btn:focus,
+.daytrips .services__btn:focus {
+  outline: 2px solid var(--highlight);
+  outline-offset: 3px;
+}
+/* ===== DAY TRIPS SERVICES GRID ===== */
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Center the last card when alone (7th card in a 3-column grid) */
+.services__grid:has(.services__card:nth-child(7):last-child) .services__card:nth-child(7) {
+  grid-column: 2;
+}
+
+/* Fallback for browsers that don't support :has() */
+@supports not selector(:has(*)) {
+  .services__card:nth-child(7):last-child {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* On mobile with 2 columns, center last card when alone */
+  .services__grid:has(.services__card:nth-child(7):last-child) .services__card:nth-child(7) {
+    grid-column: span 2;
+    justify-self: center;
+    max-width: 300px;
+  }
+  
+  @supports not selector(:has(*)) {
+    .services__card:nth-child(7):last-child {
+      grid-column: span 2;
+      justify-self: center;
+      max-width: 300px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .services__card:nth-child(7):last-child {
+    grid-column: 1;
+    justify-self: stretch;
+    max-width: none;
+  }
+}
+/* Center Instagram and Email lines inside the contact panel */
+.mini-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* horizontal centering */
+  justify-content: center;
+  gap: 10px;
+}
+
+.mini-pair {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.contact__icon-text {
+  color: #f5e6af;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.mini-icon {
+  --size: 26px;
+  --pad: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--size) + var(--pad)*2);
+  height: calc(var(--size) + var(--pad)*2);
+  color: #f5e6af;
+  background: transparent;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background .2s ease, transform .05s ease;
+}
+
+.mini-icon:hover { background: #f5e6af; color: #21262d; }
+.mini-icon svg { width: var(--size); height: var(--size); display: block; }
+
+@media (max-width: 640px) {
+  .contact__icon-text {
+    font-size: 0.95rem;
+    max-width: 250px; /* prevent wrapping */
+  }
+}
+.wpcf7 form.sent .wpcf7-response-output {
+  color: #f5e6af;
+  background: transparent;
+  border: none;
+  padding: 10px 0 0 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertical centring */
+}
+
+.about__title {
+  margin: 0; /* remove extra margin */
+}
 /* ===== CONTACT SECTION ===== */
 .mini-icons {
   display: flex;
