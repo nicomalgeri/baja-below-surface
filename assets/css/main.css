@@ -1271,3 +1271,10 @@ body.scrolled .elementor-location-header {
   background: #21262d;
   color: #f5e6af;
 }
+
+/* Force single-column layout on Day Trips for mobile screens */
+@media (max-width: 768px) {
+  .daytrips .services__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
