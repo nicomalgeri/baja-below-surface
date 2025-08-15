@@ -36,6 +36,7 @@
       --bs-gap-sm: clamp(1rem,2vw,1.5rem);
       --bs-gap-md: clamp(1.5rem,3vw,2.5rem);
       --bs-gap-lg: clamp(2rem,4vw,4rem);
+      --bs-section-padding: clamp(4rem,10vh,6rem);
       
       /* Animations */
       --bs-duration-fast: .25s;
@@ -238,11 +239,11 @@
        position: relative;
        z-index: 2;
        width: 100vw;
-       left: 50%;
-       right: 50%;
-       margin-left: -50vw;
-       margin-right: -50vw;
-       padding: var(--bs-gap-lg) var(--bs-gap-md);
+     left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+       padding: var(--bs-section-padding) var(--bs-gap-md);
        background: transparent;
        display: flex;
        justify-content: center;
@@ -256,7 +257,7 @@
       width: 100%;
       max-width: 1280px;
       margin: 0 auto;
-      padding: 2.5rem var(--bs-gap-md) 3rem;
+      padding: var(--bs-section-padding) var(--bs-gap-md);
       border-radius: var(--bs-radius-xl);
       background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
       backdrop-filter: blur(var(--bs-glass-blur)) saturate(1.45);
@@ -1007,7 +1008,7 @@
     margin-left:-50vw;         /* pull left by half viewport */
     right:50%;
     margin-right:-50vw;        /* pull right by half viewport (robust on nested cols) */
-    padding:clamp(3.5rem,8vh,5.5rem) clamp(1rem,4vw,4rem);
+    padding:var(--bs-section-padding) clamp(1rem,4vw,4rem);
     overflow:hidden;
     color:#fff;
     isolation:isolate;
@@ -1162,7 +1163,6 @@
       --bs-row-height: 78vh;
       --bs-thumb-radius: 20px;
       --bs-gap: 20px;
-      --bs-section-padding: 2.5rem; /* controls all vertical spacing */
     }
 
     * { box-sizing: border-box; }
@@ -1561,7 +1561,7 @@
 
     .review{
       position:relative;width:100vw;left:50%;margin-left:-50vw;
-      padding:clamp(4rem,10vh,6rem) 0;
+      padding:var(--bs-section-padding) 0;
       background:
         linear-gradient(to bottom,rgba(0,0,0,.30),rgba(0,0,0,.60) 60%,rgba(0,0,0,.70)),
         url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Sea-lion.jpg') center/cover no-repeat;
