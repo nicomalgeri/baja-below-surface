@@ -1338,24 +1338,32 @@ body.scrolled .elementor-location-header {
   color: #f5e6af;
 }
 
-/* ===== DAY TRIPS: MOBILE LAYOUT MATCHING EXPEDITIONS ===== */
+/* ===== SERVICES CARDS: MOBILE LAYOUT ===== */
 @media (max-width: 768px) {
-  .daytrips.section {
+  .daytrips.section,
+  .expeditions.section,
+  .charter.section {
     min-height: 100vh;
   }
-  .daytrips .services__grid {
+  .daytrips .services__grid,
+  .expeditions .services__grid,
+  .charter .services__grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
     max-width: 400px !important;
     justify-content: center !important;
   }
 
-  .daytrips .services__card {
+  .daytrips .services__card,
+  .expeditions .services__card,
+  .charter .services__card {
     max-width: 360px !important;
     margin: 0 auto !important;
   }
 
-  .daytrips .services__img {
+  .daytrips .services__img,
+  .expeditions .services__img,
+  .charter .services__img {
     width: 100% !important;
     height: auto !important;
     border-radius: 32px 32px 0 0 !important;
