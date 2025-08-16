@@ -1484,6 +1484,16 @@ body.scrolled .elementor-location-header {
   .exp-subtitle {
     color: #fff;
 
+  }
+  .exp-hero .page-title,
+  .exp-hero .exp-subtitle {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+
     @media (max-width: 768px) {
     .exp-hero {
       padding-top: calc(var(--bs-section-padding) + 2rem);
