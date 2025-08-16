@@ -1401,6 +1401,9 @@ body.scrolled .elementor-location-header {
 @media (max-width: 768px) {
   .exp-hero {
     padding-top: calc(var(--bs-section-padding) + 2rem);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
   }
   .exp-subtitle {
     color: #fff;
