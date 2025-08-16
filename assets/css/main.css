@@ -1317,3 +1317,22 @@ body.scrolled .elementor-location-header {
 @media (max-width: 768px){
   .exp-body{ grid-template-columns: 1fr; }
 }
+/* Day Trips — force 1 card per row on mobile/tablet */
+@media (max-width: 980px){
+  /* hit the grid no matter what parent classes are present */
+  .services__grid,
+  .daytrips .services__grid,
+  body.page-day-trips .services__grid {
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    gap: 1.25rem !important;
+  }
+
+  .services__card,
+  .daytrips .services__card,
+  body.page-day-trips .services__card {
+    width: 100% !important;
+    max-width: 560px !important;
+    margin: 0 auto !important;
+  }
+}
