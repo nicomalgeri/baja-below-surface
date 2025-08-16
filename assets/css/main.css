@@ -391,7 +391,7 @@ html, body {
       rgba(0, 0, 0, .55) 60%,
       rgba(0, 0, 0, .65)
     ),
-    url('https://previews.dropbox.com/p/thumb/ACsTewZSsES4FsAt1aVBMDvkarZt68B_Uz1Z1NicpYi0EXJzwGb4jmoxCNr4vRezMp68nkrFNuVJ5dTuvGcA8wKYPFLNGfM-W6wds38uf-zvWQyE4xwPUf0IubhJTteuqXf9iqj_b-7LtTft8kfhZAbcXQsQ9_JqlM7lmlYVyhFTDhNFYN-GH-MV1RO4T8CjdzdL1ViO66ixsTZgD8wzxN_YHOxSsLPWF9ZycmxJoI5H25edHgFi2gtzeFP5_LpfJ3X2Taj4xPHl0JuXrMJxa678ohk_zE0_ihpPguU8udpMXHaQobKUHMR1BAOxOHE52CA/p.jpeg')
+    url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Whale%20Watching.jpeg?raw=true')
       center/cover no-repeat;
   isolation: isolate;
 }
@@ -498,7 +498,7 @@ html, body {
         rgba(0, 0, 0, .55) 60%,
         rgba(0, 0, 0, .65)
       ),
-      url('https://previews.dropbox.com/p/thumb/ACsTewZSsES4FsAt1aVBMDvkarZt68B_Uz1Z1NicpYi0EXJzwGb4jmoxCNr4vRezMp68nkrFNuVJ5dTuvGcA8wKYPFLNGfM-W6wds38uf-zvWQyE4xwPUf0IubhJTteuqXf9iqj_b-7LtTft8kfhZAbcXQsQ9_JqlM7lmlYVyhFTDhNFYN-GH-MV1RO4T8CjdzdL1ViO66ixsTZgD8wzxN_YHOxSsLPWF9ZycmxJoI5H25edHgFi2gtzeFP5_LpfJ3X2Taj4xPHl0JuXrMJxa678ohk_zE0_ihpPguU8udpMXHaQobKUHMR1BAOxOHE52CA/p.jpeg')
+      url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Whale%20Watching.jpeg?raw=true')
       center/cover no-repeat;
   }
 }
@@ -1517,13 +1517,16 @@ body.scrolled .elementor-location-header {
 
 @media (max-width: 768px) {
   .exp-hero {
-    padding: clamp(1.5rem,4vh,2rem) 1rem 1rem;
+    padding: clamp(2rem,6vh,3rem) 1rem 1rem;
     background-size: cover;
     background-position: center;
   }
   .exp-subtitle {
     color: #fff;
     margin: 0 auto 0.75rem;
+  }
+  .exp-hero .page-title {
+    padding-top: clamp(4rem,12vh,6rem);
   }
   .exp-hero .page-title,
   .exp-hero .exp-subtitle {
