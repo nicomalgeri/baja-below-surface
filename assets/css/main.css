@@ -702,14 +702,17 @@ html, body {
 .daytrips .services__overlay,
 .expeditions .services__overlay,
 .charter .services__overlay {
-  padding: clamp(1.5rem,2.4vw,2.4rem) clamp(1.5rem,2.4vw,2.6rem);
+  padding: clamp(1rem,2vw,2rem) clamp(1.5rem,2.4vw,2.6rem);
   background: rgba(33,38,45,0.7);
   border-bottom-left-radius: 32px;
   border-bottom-right-radius: 32px;
   min-height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
   transition: background .3s ease, box-shadow .3s ease, filter .3s ease;
 }
 
@@ -728,7 +731,7 @@ html, body {
   margin: 0 0 1.5rem;
   font-size: clamp(.95rem,1.2vw,1.1rem);
   line-height: 1.5;
-  color: #e4ecef;
+  color: #fff;
   max-height: 3.3em;
 }
 
@@ -736,7 +739,7 @@ html, body {
 .expeditions .services__btn,
 .charter .services__btn,
 .exp-cta .services__btn {
-  align-self: flex-start;
+  align-self: center;
   background: var(--highlight);
   color: var(--ink);
   padding: .75rem 1.5rem;
@@ -751,8 +754,18 @@ html, body {
 .expeditions .services__btn:hover,
 .charter .services__btn:hover,
 .exp-cta .services__btn:hover {
-  background: #fff;
+  background: var(--bg-dark);
+  color: var(--highlight);
   transform: translateY(-2px);
+}
+
+.daytrips .services__btn:active,
+.expeditions .services__btn:active,
+.charter .services__btn:active,
+.exp-cta .services__btn:active {
+  background: var(--bg-dark);
+  color: var(--highlight);
+  transform: translateY(0);
 }
 
 .daytrips .services__card:hover,
@@ -1315,9 +1328,9 @@ body.scrolled .elementor-location-header {
 .exp-title{ color: var(--highlight); font-weight: 800; font-size: clamp(2rem,4vw,3rem); margin: 0 0 .5rem; }
 .exp-subtitle{ color: #fff; font-size: clamp(1.05rem,2.6vw,1.35rem); margin: 0 auto 1.25rem; max-width: 820px; }
 
-.exp-body{ max-width: 980px; margin: 0 auto; padding: clamp(1rem,3vw,1.5rem); display: grid; gap: clamp(1rem,2.8vw,1.75rem); }
+.exp-body{ max-width: 980px; margin: 0 auto; padding: clamp(.5rem,2vw,1rem); display: grid; gap: clamp(1rem,2.8vw,1.75rem); place-items: center; }
 
-.exp-block{ background: rgba(15,27,33,.25); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: clamp(1rem,3vw,1.5rem); backdrop-filter: blur(10px) saturate(1.25); -webkit-backdrop-filter: blur(10px) saturate(1.25); color: var(--highlight); }
+.exp-block{ background: rgba(15,27,33,.25); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: clamp(1rem,3vw,1.5rem); backdrop-filter: blur(10px) saturate(1.25); -webkit-backdrop-filter: blur(10px) saturate(1.25); color: #fff; }
 .exp-block h2{ margin: 0 0 .6rem; color: var(--highlight); font-size: clamp(1.25rem,2.4vw,1.6rem); }
 .exp-list{ margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; }
 .exp-list li{ line-height: 1.55; }
@@ -1330,7 +1343,14 @@ body.scrolled .elementor-location-header {
 .exp-img{ width:100%; aspect-ratio:16/9; border-radius:32px; overflow:hidden; }
 .exp-img img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-.exp-cta{ display:flex; justify-content:center; padding: .5rem 0 1rem; }
+.exp-cta{ display:flex; justify-content:center; padding: .25rem 0 1rem; }
+.exp-cta:last-child{ padding-bottom:2rem; }
+@media (max-width:768px){
+  .exp-cta:last-child{ padding-bottom:3rem; }
+}
+@media (max-width:768px){
+  .expeditions .services__btn{ margin-bottom:1rem; }
+}
 @media (max-width: 768px){
   .exp-body{ grid-template-columns: 1fr; }
 }
