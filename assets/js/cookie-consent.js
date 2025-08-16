@@ -22,7 +22,7 @@
         right: 1rem;
         padding: 1.5rem;
         background: rgba(8, 20, 29, 0.9);
-        color: #ffd700;
+        color: #F5E6B0;
         border-radius: 12px;
         z-index: 10000;
         display: flex;
@@ -49,15 +49,15 @@
       }
       .cookie-banner button {
         background: transparent;
-        border: 2px solid #ffd700;
-        color: #ffd700;
+        border: 2px solid #F5E6B0;
+        color: #F5E6B0;
         padding: 0.5rem 1rem;
         border-radius: 6px;
         cursor: pointer;
       }
       .cookie-banner button:hover {
-        background: #ffd700;
-        color: #001a33;
+        background: #001a33;
+        color: #F5E6B0;
       }
       @keyframes float {
         from { transform: translateY(0); }
