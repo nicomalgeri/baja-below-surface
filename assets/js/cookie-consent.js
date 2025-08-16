@@ -21,7 +21,7 @@
         left: 1rem;
         right: 1rem;
         padding: 1.5rem;
-        background: #001a33;
+        background: rgba(8, 20, 29, 0.9);
         color: #ffd700;
         border-radius: 12px;
         z-index: 10000;
@@ -33,6 +33,11 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         font-size: 1.1rem;
         animation: float 3s ease-in-out infinite alternate;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .cookie-banner.visible {
+        opacity: 1;
       }
       .cookie-banner h2 {
         margin: 0;
@@ -60,7 +65,12 @@
       }
     `;
     document.head.appendChild(style);
-    document.body.appendChild(banner);
+    setTimeout(function(){
+      document.body.appendChild(banner);
+      requestAnimationFrame(function(){
+        banner.classList.add('visible');
+      });
+    }, 1000);
 
     banner.querySelector('.cookie-accept').addEventListener('click', function(){
       localStorage.setItem('cookieConsent', 'accepted');
