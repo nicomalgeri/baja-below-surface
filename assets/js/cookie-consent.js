@@ -7,6 +7,7 @@
     banner.innerHTML = `
       <h2>This website uses cookies</h2>
       <p>We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.</p>
+      <a href="/cookies-policy/" class="cookie-link">Cookie Policy</a>
       <div class="cookie-buttons">
         <button class="cookie-accept">Allow</button>
         <button class="cookie-deny">Deny</button>
@@ -22,13 +23,13 @@
         right: 1rem;
         padding: 1.5rem;
         background: rgba(8, 20, 29, 0.9);
-        color: #F5E6B0;
-        border-radius: 12px;
+        color: var(--highlight);
+        border-radius: var(--radius-lg);
         z-index: 10000;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.75rem;
+        gap: 1rem;
         text-align: center;
         box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         font-size: 1.1rem;
@@ -43,21 +44,33 @@
         margin: 0;
         font-size: 1.4rem;
       }
+      .cookie-banner a {
+        color: var(--highlight);
+        text-decoration: underline;
+      }
       .cookie-banner .cookie-buttons {
         display: flex;
-        gap: 0.5rem;
+        gap: 1rem;
       }
       .cookie-banner button {
-        background: transparent;
-        border: 2px solid #F5E6B0;
-        color: #F5E6B0;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
+        align-self: flex-start;
+        background: var(--highlight);
+        color: var(--ink);
+        padding: .75rem 1.5rem;
+        font-size: .9rem;
+        font-weight: 600;
+        border-radius: 50px;
+        border: 2px solid var(--highlight);
+        transition: background .3s ease, transform .3s ease;
         cursor: pointer;
       }
       .cookie-banner button:hover {
-        background: #001a33;
-        color: #F5E6B0;
+        background: var(--bg-dark);
+        color: var(--highlight);
+        transform: translateY(-2px);
+      }
+      .cookie-banner button:active {
+        transform: translateY(0);
       }
       @keyframes float {
         from { transform: translateY(0); }
