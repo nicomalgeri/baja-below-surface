@@ -263,8 +263,15 @@ html, body {
 
 @media (max-width: 768px) {
   .about {
-    background-position: top center;
-    background-size: contain;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.55) 60%,
+        rgba(0,0,0,0.65)
+      ),
+      url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About-Us-Mobile.jpg?raw=true")
+        top center / contain no-repeat;
     min-height: 100vh;
   }
 }
@@ -657,6 +664,15 @@ html, body {
 }
 .charter.section {
     background: url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sharks.jpg?raw=true") center/cover no-repeat;
+}
+
+@media (max-width: 768px) {
+  .daytrips.section {
+    background: url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Day-trips-mobile.jpg?raw=true") center center/cover no-repeat;
+  }
+  .expeditions.section {
+    background: url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions-Mobile.jpg?raw=true") center center/cover no-repeat;
+  }
 }
 
 /* Consistent page titles */
