@@ -695,6 +695,12 @@ html, body {
   margin: 0 0 clamp(1rem,2vh,1.5rem);
 }
 
+.daytrips .page-title,
+.expeditions .page-title,
+.charter .page-title {
+  padding-top: clamp(2rem, 8vh, 3rem);
+}
+
 .daytrips .services__desc,
 .expeditions .services__desc,
 .charter .services__desc {
