@@ -543,6 +543,12 @@ body.about-page .site-footer {
   overflow-y: visible;
 }
 
+@media (max-width: 768px) {
+  .review {
+    padding-block-start: clamp(2rem, 5vh, 3rem);
+  }
+}
+
 .review__heading {
   text-align: center;
   font-size: clamp(2.5rem,5vw,3.5rem);
