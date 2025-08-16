@@ -680,36 +680,6 @@
               </div>
             </div>
           </article>
-
-          <!-- Gallery -->
-          <article
-            class="bs-service-card bs-gallery-card bs-loading"
-            id="bsGalleryCard"
-            style="--delay: 1.35s;"
-            role="listitem"
-          >
-            <div class="bs-gallery-card__thumbs" aria-hidden="true">
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" alt="" />
-              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" alt="" />
-            </div>
-            <div class="bs-gallery-card__overlay">
-              <span class="bs-gallery-card__text">Photo Gallery</span>
-              <svg class="bs-gallery-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
-              </svg>
-            </div>
-          </article>
-        </div>
-      </section>
     </div>
   </div>
 
@@ -1593,49 +1563,34 @@
 
 </section>
 
-<!-- Lightbox -->
-<div class="bs-lightbox" id="bsLightbox">
-  <div class="bs-lightbox-content">
-    <button class="bs-close-btn" id="bsCloseLightbox" aria-label="Close Gallery">&times;</button>
-    <button class="bs-nav-btn bs-prev-btn" id="bsPrevBtn" aria-label="Previous Image">&#10094;</button>
-    <div class="bs-lightbox-img-wrapper">
-      <img loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" id="bsLightboxImg" alt="Expanded gallery image" draggable="false" />
-    </div>
-    <button class="bs-nav-btn bs-next-btn" id="bsNextBtn" aria-label="Next Image">&#10095;</button>
-  </div>
-</div>
-
-<script>
-  /* ===== Gallery navigation via buttons on all devices ===== */
-  const row = document.getElementById('bsGalleryRow');
-  const prevRowBtn = document.querySelector('.bs-row-prev');
-  const nextRowBtn = document.querySelector('.bs-row-next');
-  const galleryImages = Array.from(document.querySelectorAll('.bs-gallery-row img'));
-  let currentRowIndex = 0;
-
-  function cardWidth() {
-    const first = galleryImages[0];
-    if (!first) return 300;
-    const styles = getComputedStyle(row);
-    const gap = parseFloat(styles.gap || 20);
-    return first.getBoundingClientRect().width + gap;
-  }
-
-  function updateRow() {
-    row.style.transform = `translateX(-${currentRowIndex * cardWidth()}px)`;
-  }
-
-  prevRowBtn.addEventListener('click', () => {
-    currentRowIndex = (currentRowIndex - 1 + galleryImages.length) % galleryImages.length;
-    updateRow();
-  });
-  nextRowBtn.addEventListener('click', () => {
-    currentRowIndex = (currentRowIndex + 1) % galleryImages.length;
-    updateRow();
-  });
-
-  window.addEventListener('resize', updateRow);
-  updateRow();
+<!-- Gallery -->
+          <article
+            class="bs-service-card bs-gallery-card bs-loading"
+            id="bsGalleryCard"
+            style="--delay: 1.35s;"
+            role="listitem"
+          >
+            <div class="bs-gallery-card__thumbs" aria-hidden="true">
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" alt="" />
+            </div>
+            <div class="bs-gallery-card__overlay">
+              <span class="bs-gallery-card__text">Photo Gallery</span>
+              <svg class="bs-gallery-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
+              </svg>
+            </div>
+          </article>
+        </div>
 
   /* ===== Lightbox ===== */
   const lightbox = document.getElementById('bsLightbox');
