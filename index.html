@@ -7,7 +7,8 @@
 
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="preconnect" href="https://bajabelowsurface.com">
-  <link rel="preload" href="https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video.mov" as="video" type="video/mp4">
+  <link rel="preload" href="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" as="video" type="video/mp4" media="(max-width: 767px)">
+  <link rel="preload" href="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" as="video" type="video/mp4" media="(min-width: 768px)">
 
   <style>
     /* ========================================
@@ -103,6 +104,13 @@
       margin-right: -50vw;
       overflow: hidden;
       isolation: isolate;
+      background: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true') center center/cover no-repeat;
+    }
+
+    @media (max-width: 767px) {
+      .bs-hero-wrapper {
+        background-image: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Mobile%20Static.png?raw=true');
+      }
     }
 
     .bs-hero-video {
@@ -421,8 +429,8 @@
       }
 
       .bs-hero__scroll {
-        bottom: 64px;
-        bottom: calc(env(safe-area-inset-bottom) + 64px);
+        bottom: 32px;
+        bottom: calc(env(safe-area-inset-bottom) + 32px);
         width: 44px;
         height: 44px;
       }
@@ -497,21 +505,22 @@
 
 <body>
   <div class="bs-container">
-    <div class="bs-hero-wrapper">
+  <div class="bs-hero-wrapper">
       <!-- Video Background -->
-      <video 
-        id="bsMainVideo" 
-        class="bs-hero-video" 
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video.mov" type="video/mp4">
-        <div class="bs-sr-only">Your browser does not support the video tag.</div>
-      </video>
+        <video
+          id="bsMainVideo"
+          class="bs-hero-video bs-loading"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
+          <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
+          <div class="bs-sr-only">Your browser does not support the video tag.</div>
+        </video>
       
       <div class="bs-hero-overlay" aria-hidden="true"></div>
 
@@ -547,9 +556,9 @@
           <!-- Day Trips -->
           <article 
             class="bs-service-card bs-loading"
-            style="--delay: 0s; --img: url('https://bajabelowsurface.com/wp-content/uploads/2025/07/DAY-TRIP-scaled.jpg')"
+            style="--delay: 0s; --img: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/DAY%20TRIP.jpg?raw=true')"
             role="listitem"
-            data-url="https://bajabelowsurface.com/?page_id=1215"
+            data-url="https://nicomalgeri.github.io/baja-below-surface/day-trips"
           >
             <div class="bs-service-card__media" aria-hidden="true"></div>
             <div class="bs-service-card__content">
@@ -574,9 +583,9 @@
           <!-- Expeditions -->
           <article 
             class="bs-service-card bs-loading"
-            style="--delay: .45s; --img: url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Shipwreck-Turtle-scaled.jpg')"
+            style="--delay: .45s; --img: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true')"
             role="listitem"
-            data-url="https://bajabelowsurface.com/?page_id=1384"
+            data-url="https://nicomalgeri.github.io/baja-below-surface/expeditions"
           >
             <div class="bs-service-card__media" aria-hidden="true"></div>
             <div class="bs-service-card__content">
@@ -601,9 +610,9 @@
           <!-- Charter -->
           <article 
             class="bs-service-card bs-loading"
-            style="--delay: .9s; --img: url('https://bajabelowsurface.com/wp-content/uploads/2025/07/IMG_7764.heic')"
+            style="--delay: .9s; --img: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Charter%20Luxury.jpg?raw=true')"
             role="listitem"
-            data-url="https://bajabelowsurface.com/?page_id=1386"
+            data-url="https://nicomalgeri.github.io/baja-below-surface/charter"
           >
             <div class="bs-service-card__media" aria-hidden="true"></div>
             <div class="bs-service-card__content">
@@ -707,8 +716,8 @@
         setupResponsiveVideo: function() {
           if (!this.video) return;
 
-          const desktopSrc = 'https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video-1.mov';
-          const mobileSrc = 'https://bajabelowsurface.com/wp-content/uploads/2025/07/Main-Video.mov';
+          const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
+          const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
           const isMobile = window.innerWidth < 768;
           const targetSrc = isMobile ? mobileSrc : desktopSrc;
           
@@ -718,6 +727,7 @@
           }
 
           this.video.pause();
+          this.video.classList.remove('bs-loaded');
           this.video.innerHTML = '';
           
           const newSource = document.createElement('source');
@@ -751,6 +761,14 @@
 
           this.video.addEventListener('loadeddata', () => {
             console.log('BS: Video loaded successfully');
+            this.video.classList.add('bs-loaded');
+            // Ensure autoplay once enough data is loaded
+            const playPromise = this.video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(error => {
+                console.warn('BS: Video autoplay failed:', error);
+              });
+            }
           });
         }
       };
@@ -1025,7 +1043,7 @@
     background:
       radial-gradient(60% 90% at 10% 0%, rgba(0,0,0,.18), transparent 60%),
       radial-gradient(70% 100% at 90% 100%, rgba(0,0,0,.25), transparent 62%),
-      url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Sea-Lion-Snorkel.avif') center/cover no-repeat;
+      url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true') center center / cover no-repeat;
     filter:saturate(1.06) brightness(.98);
   }
   .about::after{
@@ -1139,7 +1157,7 @@
 <section class="about" id="About" aria-label="About Us">
   <div class="about__wrap">
     <figure class="about__media" aria-hidden="true">
-      <img src="https://bajabelowsurface.com/wp-content/uploads/2025/08/Untitled-design-2.png" alt="Guide at sea">
+      <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo.png?raw=true" alt="Dani Tormo">
     </figure>
 
     <article class="about__panel">
@@ -1189,7 +1207,7 @@
       background:
         radial-gradient(60% 90% at 10% 0%, rgba(0,0,0,.15), transparent 60%),
         radial-gradient(70% 100% at 90% 100%, rgba(0,0,0,.2), transparent 62%),
-        url('https://bajabelowsurface.com/wp-content/uploads/2025/07/Baitball-Marlin-scaled.jpg') center/cover no-repeat; /* no parallax */
+        url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true') center/cover no-repeat; /* no parallax */
     }
 
     /* Title */
@@ -1313,6 +1331,33 @@
       display: block;
     }
 
+    .bs-video-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .3s ease;
+    }
+    .bs-video-play::before {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-left: 22px solid #fff;
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+    }
+    .bs-video-play:hover { background: rgba(0,0,0,0.8); }
+    .bs-video-wrapper.bs-playing .bs-video-play { display: none; }
+
     /* Lightbox (unchanged) */
     .bs-lightbox {
       position: fixed;
@@ -1421,13 +1466,18 @@
 
       <div class="bs-gallery-row" id="bsGalleryRow">
         <!-- ONE STRIPE ONLY — NO REPEATS -->
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Scuba-Diving-1.avif" alt="Scuba Diving Adventure" />
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Sea-Lion-Snorkel-1.avif" alt="Sea Lion Snorkelling" />
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Sunset-in-Paradise-1.avif" alt="Sunset in Paradise" />
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Whale-Watching-1.avif" alt="Whale Watching" />
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Whale-Shark-Snorkel-1.avif" alt="Whale Shark Snorkel" />
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Sport-Fishing-1.avif" alt="Sport Fishing" />
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/Ocean-Safari-1.avif" alt="Ocean Safari" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" />
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" />
+
       </div>
 
       <button class="bs-row-btn bs-row-next" aria-label="Scroll next" type="button">&#10095;</button>
@@ -1436,10 +1486,11 @@
 
   <div class="bs-video-column">
     <div class="bs-video-wrapper">
-      <video id="bsMainVideo" controls playsinline preload="metadata">
-        <source src="https://bajabelowsurface.com/wp-content/uploads/2025/08/Main-Video-1.mov" type="video/mp4">
+      <video id="bsGalleryVideo" playsinline preload="metadata" poster="https://previews.dropbox.com/p/thumb/ACvvlCWcoUpbm9HatgOVxjQSbjON6mZP25KoHhqngcyXOQJ2whjmR4EZjtw14RIrvOaerfn8cBYLoA2hinC-soBJ9OGBenFBv8SRMXaSA0ite-3LYKI9WETJDZNfPX5yqMtMaYipXkU50HHfw2CQOgUbvRy3xz4bwue6hnI2CLEyGEcw-BWS_RknyWBE0gkBTJyhaXii4KQ_3rIB0AmxIvtw0r56hxWbiY9R4dBWf1miMjH43lOcoYsvOver3PHx-ZP1_8l1GElVQ6t5CKNHN1h-CwgAeRsmQwCBnBoRXOrQicfHVzYKSvn7P64yeJclmxg/p.jpeg">
+        <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+      <button class="bs-video-play" id="bsVideoPlay" aria-label="Play Video"></button>
     </div>
   </div>
 
@@ -1451,7 +1502,7 @@
     <button class="bs-close-btn" id="bsCloseLightbox" aria-label="Close Gallery">&times;</button>
     <button class="bs-nav-btn bs-prev-btn" id="bsPrevBtn" aria-label="Previous Image">&#10094;</button>
     <div class="bs-lightbox-img-wrapper">
-      <img src="" id="bsLightboxImg" alt="Expanded gallery image" draggable="false" />
+      <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" id="bsLightboxImg" alt="Expanded gallery image" draggable="false" />
     </div>
     <button class="bs-nav-btn bs-next-btn" id="bsNextBtn" aria-label="Next Image">&#10095;</button>
   </div>
@@ -1560,6 +1611,22 @@
     if (e.key === 'ArrowRight') showNext();
     if (e.key === 'Escape') closeLB();
   });
+
+  // Video play overlay
+  const mainVideo = document.getElementById('bsGalleryVideo');
+  const playBtn = document.getElementById('bsVideoPlay');
+  if (mainVideo && playBtn) {
+    playBtn.addEventListener('click', () => {
+      mainVideo.controls = true;
+      mainVideo.play();
+    });
+    mainVideo.addEventListener('play', () => {
+      mainVideo.parentElement.classList.add('bs-playing');
+    });
+    mainVideo.addEventListener('pause', () => {
+      mainVideo.parentElement.classList.remove('bs-playing');
+    });
+  }
 </script>
   <style>
     body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;background:#f8fafc;overflow-x:hidden;}
@@ -2008,7 +2075,7 @@ document.addEventListener('scroll',function(){
     display:flex;
     align-items:center;
     justify-content:center;  /* TRUE vertical centering */
-    padding:clamp(80px,10vh,120px) 0;
+    padding:clamp(40px,10vh,100px) 0;
     box-sizing:border-box;
   }
 
@@ -2041,9 +2108,9 @@ document.addEventListener('scroll',function(){
   }
 
   /* Socials pinned bottom */
-  .mini-icons{
+  .menu .mini-icons{
     width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;
-    padding: 16px 0 28px;
+    padding: 8px 0 16px;
   }
   .mini-pair{ display:flex; align-items:center; gap:10px; white-space:nowrap; }
   .mini-icon{
@@ -2071,7 +2138,7 @@ document.addEventListener('scroll',function(){
     <span class="ham__text"></span>
   </button>
   <a class="bs-logo" href="https://nicomalgeri.github.io/baja-below-surface/">
-    <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/logo1-scaled.png" alt="Baja Below Surface logo">
+    <img src="https://uc7928edac4eb9278eef5b4e6c7b.previews.dropboxusercontent.com/p/thumb/ACuOC0MUfsJZriIeG4v5MdKO5XpcYKDTrqFR6MtTUJH5eI9OVxYBGZQH-99HsytdlvmUkq9VwdNJPvE9jYNQT5WnISjLbUOG0oGp_ZFvkf2hDGZvtN8PeJHxrRlGZw6jJd4XeBuu3n-x4Z4d3qCkVStFU28UsJaBLh6T1y01jl9s6mCtVO-GLKeBKKKg72E7-449n4kYDg5XbkNlnKoWIzuzY6dOi_dLWllGaukACJuj7oNUwnp_0k_Dv1YVGWP-t8PzMrod2BFMlNxkv8yuQbfDZXgGhz_Xfdh46QsFxqnATp2zJn-T0SMFsVr3ZaYpHf3rL8Wp_BbRpJ-eCVYWHC4ZA5R83VhTpJsZd5DS2M6B5jTmaUaSot7IW3XvOKi22AjxYPC4DE9QcfMgFIgkfHj3/p.png?is_prewarmed=true" alt="Baja Below Surface logo">
   </a>
 </header>
 
@@ -2168,5 +2235,6 @@ document.addEventListener('scroll',function(){
   links.forEach(a => a.addEventListener('click', closeMenu));
 })();
 </script>
+<script src="assets/js/dropbox.js"></script>
 </body>
 </html>

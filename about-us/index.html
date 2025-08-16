@@ -16,9 +16,9 @@
   <h2 class="about__title">About Us</h2>
 
   <div class="about__wrap">
-    <div class="about__row">
+    <div class="about__row reverse">
       <figure class="about__media" aria-hidden="true">
-        <img src="https://bajabelowsurface.com/wp-content/uploads/2025/08/Untitled-design-2.png" alt="Guide at sea">
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo.png?raw=true" alt="Guide at sea">
       </figure>
       <article class="about__panel">
         <h3 class="about__heading">Who We Are</h3>
@@ -30,7 +30,10 @@
       </article>
     </div>
 
-    <div class="about__row reverse" id="Meet-Dani">
+    <div class="about__row" id="Meet-Dani">
+      <figure class="about__media" aria-hidden="true">
+        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" alt="Dani - Founder & Expedition Leader">
+      </figure>
       <article class="about__panel">
         <h3 class="about__heading">Meet Dani — Founder & Expedition Leader</h3>
         <p class="about__text">Born and raised on the Mediterranean coast, Dani grew up with the sea as his playground. At 14, a first scuba dive became a life-defining moment—turning passion into purpose.</p>
@@ -38,9 +41,6 @@
         <p class="about__text">In 2019, he settled in Baja California Sur, spending five years on liveaboard expeditions to the Socorro Islands and the Sea of Cortez.</p>
         <p class="about__text">With thousands of dives and a global network, Dani now shares the secrets of the sea—especially the Mexican waters that have captured his heart.</p>
       </article>
-      <figure class="about__media" aria-hidden="true">
-        <img src="https://static.wixstatic.com/media/f8cc86_47eeeb1cdd4b4fca8da318161e2e60fb~mv2.jpg" alt="Dani - Founder & Expedition Leader">
-      </figure>
     </div>
   </div>
 </section>
@@ -135,7 +135,7 @@
     display:flex;
     align-items:center;
     justify-content:center;  /* TRUE vertical centering */
-    padding:clamp(80px,10vh,120px) 0;
+    padding:clamp(40px,10vh,100px) 0;
     box-sizing:border-box;
   }
 
@@ -168,9 +168,9 @@
   }
 
   /* Socials pinned bottom */
-  .mini-icons{
+  .menu .mini-icons{
     width:100%; display:flex; flex-direction:column; align-items:center; gap:10px;
-    padding: 16px 0 28px;
+    padding: 8px 0 16px;
   }
   .mini-pair{ display:flex; align-items:center; gap:10px; white-space:nowrap; }
   .mini-icon{
@@ -197,7 +197,7 @@
     <span class="ham__text"></span>
   </button>
   <a class="bs-logo" href="https://nicomalgeri.github.io/baja-below-surface/">
-    <img src="https://bajabelowsurface.com/wp-content/uploads/2025/07/logo1-scaled.png" alt="Baja Below Surface logo">
+    <img src="https://uc7928edac4eb9278eef5b4e6c7b.previews.dropboxusercontent.com/p/thumb/ACuOC0MUfsJZriIeG4v5MdKO5XpcYKDTrqFR6MtTUJH5eI9OVxYBGZQH-99HsytdlvmUkq9VwdNJPvE9jYNQT5WnISjLbUOG0oGp_ZFvkf2hDGZvtN8PeJHxrRlGZw6jJd4XeBuu3n-x4Z4d3qCkVStFU28UsJaBLh6T1y01jl9s6mCtVO-GLKeBKKKg72E7-449n4kYDg5XbkNlnKoWIzuzY6dOi_dLWllGaukACJuj7oNUwnp_0k_Dv1YVGWP-t8PzMrod2BFMlNxkv8yuQbfDZXgGhz_Xfdh46QsFxqnATp2zJn-T0SMFsVr3ZaYpHf3rL8Wp_BbRpJ-eCVYWHC4ZA5R83VhTpJsZd5DS2M6B5jTmaUaSot7IW3XvOKi22AjxYPC4DE9QcfMgFIgkfHj3/p.png?is_prewarmed=true" alt="Baja Below Surface logo">
   </a>
 </header>
 
@@ -294,6 +294,8 @@
   links.forEach(a => a.addEventListener('click', closeMenu));
 })();
 </script>
+
+<script src="../assets/js/dropbox.js"></script>
 
 </body>
 </html>
