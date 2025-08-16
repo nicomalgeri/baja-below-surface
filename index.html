@@ -1257,24 +1257,17 @@
       display: flex;
       gap: var(--bs-gap);
       height: 100%;
-      overflow-x: auto;                   /* enable horizontal scroll */
-      overflow-y: hidden;                 /* lock vertical movement */
-      -webkit-overflow-scrolling: touch;  /* iOS momentum */
-      scroll-behavior: smooth;            /* smooth for button/programmatic scroll */
+      overflow: hidden;                  /* hide overflow; no manual scroll */
       border-radius: 24px;
-      touch-action: pan-x;                /* restrict swipe to horizontal */
-      overscroll-behavior: contain;       /* prevent vertical page scroll */
-      /* hide scrollbars */
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      transition: transform .4s ease;    /* smooth movement via JS */
     }
-    .bs-gallery-row::-webkit-scrollbar { display: none; }
 
     .bs-gallery-row img {
       height: 100%;
       width: auto;
       object-fit: cover;
       display: block;
+      flex-shrink: 0;                     /* keep width for slider */
       border-radius: var(--bs-thumb-radius);
       background: #0e1a2c;
       box-shadow: var(--bs-shadow);
@@ -1534,41 +1527,38 @@
 </div>
 
 <script>
-  /* ===== Desktop-only: disable drag; use buttons. Mobile/tablet: native swipe. ===== */
+  /* ===== Gallery navigation via buttons on all devices ===== */
   const row = document.getElementById('bsGalleryRow');
   const prevRowBtn = document.querySelector('.bs-row-prev');
   const nextRowBtn = document.querySelector('.bs-row-next');
+  const galleryImages = Array.from(document.querySelectorAll('.bs-gallery-row img'));
+  let currentRowIndex = 0;
 
   function cardWidth() {
-    const first = row.querySelector('img');
+    const first = galleryImages[0];
     if (!first) return 300;
     const styles = getComputedStyle(row);
     const gap = parseFloat(styles.gap || 20);
     return first.getBoundingClientRect().width + gap;
   }
 
-  // Buttons work on all devices
-  prevRowBtn.addEventListener('click', () => row.scrollBy({ left: -cardWidth(), behavior: 'smooth' }));
-  nextRowBtn.addEventListener('click', () => row.scrollBy({ left:  cardWidth(), behavior: 'smooth' }));
-
-  // IMPORTANT: No pointer drag handlers on desktop (so no grab). We rely on native touch only on coarse pointers.
-  const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-
-  if (!isCoarse) {
-    // Desktop: ensure default cursor (no grabbing) and prevent accidental horizontal wheel hijack
-    row.style.cursor = 'default';
-    row.addEventListener('wheel', e => {
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        row.scrollBy({ left: e.deltaY });
-      }
-    }, { passive: false });
+  function updateRow() {
+    row.style.transform = `translateX(-${currentRowIndex * cardWidth()}px)`;
   }
-  // Mobile/tablet: no JS needed; native horizontal swipe works due to overflow-x:auto.
-  // Vertical page scroll remains smooth because we do not block default touch events.
+
+  prevRowBtn.addEventListener('click', () => {
+    currentRowIndex = (currentRowIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateRow();
+  });
+  nextRowBtn.addEventListener('click', () => {
+    currentRowIndex = (currentRowIndex + 1) % galleryImages.length;
+    updateRow();
+  });
+
+  window.addEventListener('resize', updateRow);
+  updateRow();
 
   /* ===== Lightbox ===== */
-  const galleryImages = Array.from(document.querySelectorAll('.bs-gallery-row img'));
   const lightbox = document.getElementById('bsLightbox');
   const lightboxImg = document.getElementById('bsLightboxImg');
   const closeLightbox = document.getElementById('bsCloseLightbox');
