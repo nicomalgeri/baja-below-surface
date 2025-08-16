@@ -270,6 +270,9 @@ html, body {
         rgba(0,0,0,0.55) 60%,
         rgba(0,0,0,0.65)
       ),
+      url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About-Us-Mobile.jpg?raw=true")
+        top center/cover no-repeat;
+    background-attachment: scroll, fixed;
       url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true")
         top center / contain no-repeat;
     min-height: 100vh;
