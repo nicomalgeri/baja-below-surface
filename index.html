@@ -462,6 +462,7 @@
 
     /* Gallery preview layout */
     .bs-gallery-preview {
+      --bs-section-padding: 2rem;
       width: 100vw;
       margin-left: calc(50% - 50vw);
       padding: var(--bs-section-padding) 3vw;
@@ -478,20 +479,12 @@
     @media (max-width: 768px) {
       .bs-gallery-preview {
         --bs-gallery-gap: 2rem;
-        padding-top: var(--bs-gallery-gap);
-        padding-bottom: var(--bs-gallery-gap);
+        padding: var(--bs-section-padding) 3vw;
         gap: var(--bs-gallery-gap);
-        padding-top: 2rem;
-        padding-bottom: 2rem;
       }
       .bs-gallery-content {
         flex-direction: column;
         gap: var(--bs-gallery-gap);
-      }
-      .bs-gallery-content .bs-gallery-card {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 360px;
       }
       .bs-gallery-content .bs-gallery-card {
         flex: 0 0 auto;
@@ -1709,6 +1702,8 @@
   const prevBtn = document.getElementById('bsPrevBtn');
   const nextBtn = document.getElementById('bsNextBtn');
   const galleryImages = document.querySelectorAll('#bsGalleryRow img');
+  const galleryCard = document.getElementById('bsGalleryCard');
+  const gallerySection = document.getElementById('bsGallerySection');
   let currentIndex = 0;
 
   function openLightbox(idx) {
@@ -1721,6 +1716,12 @@
   function closeLB() {
     lightbox.classList.remove('bs-show');
     document.body.style.overflow = '';
+    if (gallerySection) {
+      gallerySection.classList.remove('bs-open');
+    }
+    if (galleryCard) {
+      galleryCard.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   function showPrev() {
@@ -1795,8 +1796,6 @@
   }
 
   // Gallery preview card interaction
-  const galleryCard = document.getElementById('bsGalleryCard');
-  const gallerySection = document.getElementById('bsGallerySection');
   if (galleryCard && gallerySection) {
     const overlayText = galleryCard.querySelector('.bs-gallery-card__text');
     if (window.matchMedia('(hover: none)').matches) {
