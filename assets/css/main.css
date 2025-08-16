@@ -254,6 +254,8 @@ html, body {
 @media (max-width: 768px) {
   .about {
     background-position: top center;
+    background-size: contain;
+    min-height: 100vh;
   }
 }
 
