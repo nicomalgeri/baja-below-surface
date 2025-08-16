@@ -108,12 +108,12 @@
     }
 
     .bs-hero-wrapper.bs-fallback {
-      background: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true') center center/cover no-repeat;
+      background: url('assets/mediaimages/Desktop%20Static.png') center center/cover no-repeat;
     }
 
     @media (max-width: 767px) {
       .bs-hero-wrapper.bs-fallback {
-        background-image: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Mobile%20Static.png?raw=true');
+        background-image: url('assets/mediaimages/Mobile%20Static.png');
       }
     }
 
@@ -509,7 +509,7 @@
 
 <body>
   <div class="bs-container">
-  <div class="bs-hero-wrapper">
+  <div class="bs-hero-wrapper bs-fallback">
       <!-- Video Background -->
       <video
         id="bsMainVideo"
@@ -520,6 +520,7 @@
         playsinline
         preload="auto"
         aria-hidden="true"
+        style="display: none;"
       >
           <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
           <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
@@ -721,9 +722,9 @@
           if (!this.video) return;
           const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
           if (wrapper) {
-            wrapper.classList.remove('bs-fallback');
+            wrapper.classList.add('bs-fallback');
           }
-          this.video.style.display = '';
+          this.video.style.display = 'none';
 
           const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
           const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
@@ -744,7 +745,7 @@
           
           this.video.appendChild(newSource);
           this.video.load();
-          
+
           // Auto-play with error handling
           const playPromise = this.video.play();
           if (playPromise !== undefined) {
@@ -773,6 +774,7 @@
             if (wrapper) {
               wrapper.classList.remove('bs-fallback');
             }
+            this.video.style.display = '';
             const playPromise = this.video.play();
             if (playPromise !== undefined) {
               playPromise.catch(error => {
@@ -1167,7 +1169,7 @@
 <section class="about" id="About" aria-label="About Us">
   <div class="about__wrap">
     <figure class="about__media" aria-hidden="true">
-      <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo.png?raw=true" alt="Dani Tormo">
+      <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo.png?raw=true" alt="Dani Tormo">
     </figure>
 
     <article class="about__panel">
@@ -1488,17 +1490,17 @@
 
       <div class="bs-gallery-row" id="bsGalleryRow">
         <!-- ONE STRIPE ONLY — NO REPEATS -->
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" />
-        <img src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" />
+        <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" />
 
       </div>
 
@@ -1525,7 +1527,7 @@
     <button class="bs-close-btn" id="bsCloseLightbox" aria-label="Close Gallery">&times;</button>
     <button class="bs-nav-btn bs-prev-btn" id="bsPrevBtn" aria-label="Previous Image">&#10094;</button>
     <div class="bs-lightbox-img-wrapper">
-      <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" id="bsLightboxImg" alt="Expanded gallery image" draggable="false" />
+      <img loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" id="bsLightboxImg" alt="Expanded gallery image" draggable="false" />
     </div>
     <button class="bs-nav-btn bs-next-btn" id="bsNextBtn" aria-label="Next Image">&#10095;</button>
   </div>
@@ -2018,6 +2020,7 @@
   aria-label="Chat on WhatsApp"
 >
   <img
+    loading="lazy"
     src="https://www.svgrepo.com/show/303280/whatsapp-glyph-black-logo.svg"
     alt="WhatsApp"
     style="width:2rem;height:2rem;display:block;"
