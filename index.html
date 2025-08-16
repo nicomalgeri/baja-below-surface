@@ -93,43 +93,53 @@
       background: transparent !important;
     }
 
+    <style>
     /* ========================================
-       🎬 HERO VIDEO SECTION
+       🎬 HERO VIDEO SECTION (updated)
        ======================================== */
-    .bs-hero-wrapper {
+    .bs-hero {
       position: relative;
       width: 100vw;
       left: 50%;
       right: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
+      min-height: 100vh;             /* full-viewport */
       overflow: hidden;
       isolation: isolate;
       background: #000;
     }
 
-    .bs-hero-wrapper.bs-fallback {
-      background: url('assets/mediaimages/Desktop%20Static.png') center center/cover no-repeat;
+    /* Fallback images if video can't play */
+    .bs-hero.bs-fallback {
+      background: url('assets/mediaimages/Desktop%20Static.png') center center / cover no-repeat;
     }
-
     @media (max-width: 767px) {
-      .bs-hero-wrapper.bs-fallback {
+      .bs-hero.bs-fallback {
         background-image: url('assets/mediaimages/Mobile%20Static.png');
       }
     }
 
-    .bs-hero-video {
+    /* Two separate <video> tags so CSS decides which shows */
+    .bs-hero video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      pointer-events: none;
-      z-index: 0;
       filter: brightness(.85) saturate(1.1);
+      z-index: 0;
+    }
+    .bs-hero .bs-video--desktop { display: block; }
+    .bs-hero .bs-video--mobile  { display: none; }
+
+    @media (max-width: 767px) {
+      .bs-hero .bs-video--desktop { display: none; }
+      .bs-hero .bs-video--mobile  { display: block; }
     }
 
+    /* Gradient overlay on top of video */
     .bs-hero-overlay {
       position: absolute;
       inset: 0;
@@ -147,6 +157,20 @@
       z-index: 1;
       pointer-events: none;
     }
+
+    /* (Optional) content placed over the video */
+    .bs-hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: inherit;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      color: #fff;
+    }
+  </style>
+</head>
 
     /* ========================================
        🦸 HERO CONTENT
