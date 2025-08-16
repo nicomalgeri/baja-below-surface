@@ -405,8 +405,8 @@ html, body {
 
 .contact__heading {
   margin-bottom: 1.5rem;
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 600;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
   color: var(--highlight);
   text-align: center;
 }
@@ -506,8 +506,8 @@ html, body {
 
 .review__heading {
   text-align: center;
-  font-size: clamp(2rem,4vw,3rem);
-  font-weight: 600;
+  font-size: clamp(2.5rem,5vw,3.5rem);
+  font-weight: 700;
   color: var(--highlight);
   margin-bottom: clamp(2rem,4vh,3rem);
 }
@@ -647,7 +647,7 @@ html, body {
 /* Consistent page titles */
 .page-title {
   text-align: center;
-  font: 700 clamp(2rem,4vw,3rem)/1.2 inherit;
+  font: 700 clamp(2.5rem,5vw,3.5rem)/1.2 inherit;
   color: var(--highlight);
   margin: 0 0 clamp(1rem,2vh,1.5rem);
 }
@@ -728,9 +728,9 @@ html, body {
 .expeditions .services__title,
 .charter .services__title {
   margin: 0 0 .75rem;
-  font-size: clamp(1.4rem,2.5vw,1.8rem);
+  font-size: clamp(1.6rem,2.8vw,2rem);
   font-weight: 700;
-  color: #fff;
+  color: var(--highlight);
 }
 
 .daytrips .services__text,
@@ -1171,7 +1171,8 @@ body.scrolled .elementor-location-header {
 
 .about__heading {
   margin: 0 0 1rem;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
   color: var(--highlight);
 }
 
@@ -1336,7 +1337,7 @@ body.scrolled .elementor-location-header {
 .exp-body{ max-width: 980px; margin: 0 auto; padding: 0 clamp(.5rem,2vw,1rem); display: grid; gap: clamp(1rem,2.8vw,1.75rem); justify-items: stretch; }
 
 .exp-block{ width:100%; background: rgba(15,27,33,.25); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: clamp(1rem,3vw,1.5rem); backdrop-filter: blur(10px) saturate(1.25); -webkit-backdrop-filter: blur(10px) saturate(1.25); color: #fff; }
-.exp-block h2{ margin: 0 0 .6rem; color: var(--highlight); font-size: clamp(1.25rem,2.4vw,1.6rem); }
+.exp-block h2{ margin: 0 0 .6rem; color: var(--highlight); font-size: clamp(1.6rem,2.8vw,2rem); font-weight:700; }
 .exp-list{ margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; }
 .exp-list li{ line-height: 1.55; }
 .exp-note{ font-weight: 600; }
@@ -1411,3 +1412,13 @@ body.scrolled .elementor-location-header {
     background-repeat: no-repeat !important;
   }
 }
+
+/* Global heading styles */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--highlight);
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(3rem, 6vw, 4rem); }
+h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+h3 { font-size: clamp(2rem, 4vw, 3rem); }
