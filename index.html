@@ -1256,13 +1256,12 @@
       gap: var(--bs-gap);
       height: 100%;
       overflow-x: auto;                   /* enable horizontal scroll */
-      overflow-y: visible;                /* allow scaling beyond row height */
+      overflow-y: hidden;                 /* lock vertical movement */
       -webkit-overflow-scrolling: touch;  /* iOS momentum */
       scroll-behavior: smooth;            /* smooth for button/programmatic scroll */
       border-radius: 24px;
-      /* keep page vertical scroll responsive */
-      overscroll-behavior-x: contain;     /* prevent horizontal overscroll bouncing page */
-      overscroll-behavior-y: auto;        /* allow normal vertical scroll */
+      touch-action: pan-x;                /* restrict swipe to horizontal */
+      overscroll-behavior: contain;       /* prevent vertical page scroll */
       /* hide scrollbars */
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -1394,7 +1393,11 @@
       align-items: center;
       justify-content: center;
       gap: 2rem;
+      opacity: 0;
+      transform: scale(.95);
+      transition: opacity .4s cubic-bezier(.25,.8,.25,1), transform .4s cubic-bezier(.25,.8,.25,1);
     }
+    .bs-lightbox.bs-show .bs-lightbox-content { opacity: 1; transform: scale(1); }
 
     .bs-lightbox-img-wrapper {
       position: relative;
@@ -1462,6 +1465,15 @@
         padding: var(--bs-section-padding) 1rem;
       }
       .bs-row-wrap { height: 44vh; }
+      .bs-close-btn,
+      .bs-nav-btn {
+        position: fixed;
+        background: none;
+        backdrop-filter: none;
+      }
+      .bs-prev-btn { left: 0.5rem; }
+      .bs-next-btn { right: 0.5rem; }
+      .bs-close-btn { top: 0.5rem; right: 0.5rem; }
     }
   </style>
 
@@ -1542,11 +1554,17 @@
   if (!isCoarse) {
     // Desktop: ensure default cursor (no grabbing) and prevent accidental horizontal wheel hijack
     row.style.cursor = 'default';
+    row.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        row.scrollBy({ left: e.deltaY });
+      }
+    }, { passive: false });
   }
   // Mobile/tablet: no JS needed; native horizontal swipe works due to overflow-x:auto.
   // Vertical page scroll remains smooth because we do not block default touch events.
 
-  /* ===== Lightbox (unchanged) ===== */
+  /* ===== Lightbox ===== */
   const galleryImages = Array.from(document.querySelectorAll('.bs-gallery-row img'));
   const lightbox = document.getElementById('bsLightbox');
   const lightboxImg = document.getElementById('bsLightboxImg');
@@ -1557,27 +1575,14 @@
 
   function openLightbox(idx) {
     currentIndex = idx;
-    lightboxImg.src = galleryImages[currentIndex].src;
-    lightboxImg.alt = galleryImages[currentIndex].alt;
+    updateImage(false);
     lightbox.classList.add('bs-show');
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => {
-      lightboxImg.style.transform = 'scale(0.9)';
-      lightboxImg.style.opacity = '0';
-      setTimeout(() => {
-        lightboxImg.style.transform = 'scale(1)';
-        lightboxImg.style.opacity = '1';
-      }, 50);
-    });
   }
 
   function closeLB() {
-    lightboxImg.style.transform = 'scale(0.9)';
-    lightboxImg.style.opacity = '0';
-    setTimeout(() => {
-      lightbox.classList.remove('bs-show');
-      document.body.style.overflow = '';
-    }, 200);
+    lightbox.classList.remove('bs-show');
+    document.body.style.overflow = '';
   }
 
   function showPrev() {
@@ -1621,6 +1626,19 @@
     if (e.key === 'ArrowRight') showNext();
     if (e.key === 'Escape') closeLB();
   });
+
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    let startX = 0;
+    lightbox.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', e => {
+      const diff = e.changedTouches[0].clientX - startX;
+      if (Math.abs(diff) > 50) {
+        diff > 0 ? showPrev() : showNext();
+      }
+    });
+  }
 
   // Video play overlay
   const mainVideo = document.getElementById('bsGalleryVideo');
