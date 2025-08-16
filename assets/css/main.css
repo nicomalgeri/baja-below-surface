@@ -1445,6 +1445,12 @@ body.scrolled .elementor-location-header {
   .exp-subtitle {
     color: #fff;
   }
+  .exp-hero .page-title,
+  .exp-hero .exp-subtitle {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 /* Ensure background images cover on small screens */
