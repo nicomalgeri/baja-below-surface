@@ -462,22 +462,29 @@
 
     /* Gallery preview layout */
     .bs-gallery-preview {
+
+      --bs-section-padding: 0.5rem;
+
+      
       --bs-section-padding: 2rem;
+
       width: 100vw;
       margin-left: calc(50% - 50vw);
       padding: var(--bs-section-padding) 3vw;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 0.5rem;
     }
     .bs-gallery-content {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 2rem;
+      gap: 0.5rem;
     }
     @media (max-width: 768px) {
       .bs-gallery-preview {
+        --bs-gallery-gap: 0.5rem;
         --bs-gallery-gap: 2rem;
         padding: var(--bs-section-padding) 3vw;
         gap: var(--bs-gallery-gap);
@@ -1304,7 +1311,7 @@
       --bs-shadow: 0 22px 48px -18px rgba(0,0,0,.6), 0 6px 16px -6px rgba(0,0,0,.45);
       --bs-row-height: 78vh;
       --bs-thumb-radius: 20px;
-      --bs-gap: 20px;
+      --bs-gap: 8px;
     }
 
     * { box-sizing: border-box; }
@@ -1319,6 +1326,7 @@
     }
 
     .bs-fullscreen-gallery {
+      --bs-section-padding: 0.5rem;
       position: relative;
       width: 100vw;
       margin-left: calc(50% - 50vw);
@@ -1580,11 +1588,11 @@
       .bs-row-wrap { height: 52vh; padding: 0 0.5rem; }
     }
     @media (max-width: 768px) {
-      /* Reduce vertical spacing and keep consistent gaps on mobile */
-      .bs-fullscreen-gallery {
-        --bs-section-padding: 1.5rem;
-        padding: var(--bs-section-padding) 1rem;
-      }
+        /* Reduce vertical spacing and keep consistent gaps on mobile */
+        .bs-fullscreen-gallery {
+          --bs-section-padding: 0.5rem;
+          padding: var(--bs-section-padding) 1rem;
+        }
       .bs-row-wrap { height: 44vh; }
       .bs-close-btn,
       .bs-nav-btn {
@@ -1704,6 +1712,7 @@
   const galleryImages = document.querySelectorAll('#bsGalleryRow img');
   const galleryCard = document.getElementById('bsGalleryCard');
   const gallerySection = document.getElementById('bsGallerySection');
+  const galleryPreview = document.querySelector('.bs-gallery-preview');
   let currentIndex = 0;
 
   function openLightbox(idx) {
@@ -1718,6 +1727,9 @@
     document.body.style.overflow = '';
     if (gallerySection) {
       gallerySection.classList.remove('bs-open');
+    }
+    if (galleryPreview) {
+      galleryPreview.hidden = false;
     }
     if (galleryCard) {
       galleryCard.scrollIntoView({ behavior: 'smooth' });
@@ -1803,6 +1815,9 @@
     }
     const openSection = () => {
       overlayText.textContent = 'Open';
+      if (galleryPreview) {
+        galleryPreview.hidden = true;
+      }
       gallerySection.classList.add('bs-open');
       openLightbox(0);
       gallerySection.scrollIntoView({ behavior: 'smooth' });
