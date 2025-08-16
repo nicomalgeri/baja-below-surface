@@ -732,10 +732,10 @@ html, body {
   min-height: 200px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 1rem;
-  text-align: center;
+  text-align: left;
   transition: background .3s ease, box-shadow .3s ease, filter .3s ease;
 }
 
@@ -745,6 +745,8 @@ html, body {
   margin: 0 0 .75rem;
   font-size: clamp(1.6rem,2.8vw,2rem);
   font-weight: 700;
+  color: #fff;
+  text-align: left;
   color: var(--highlight);
 }
 
@@ -756,13 +758,14 @@ html, body {
   line-height: 1.5;
   color: #fff;
   max-height: 3.3em;
+  text-align: left;
 }
 
 .daytrips .services__btn,
 .expeditions .services__btn,
 .charter .services__btn,
 .exp-cta .services__btn {
-  align-self: center;
+  align-self: flex-start;
   background: var(--highlight);
   color: var(--ink);
   padding: .75rem 1.5rem;
@@ -1046,7 +1049,18 @@ body.scrolled .elementor-location-header {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
+  .services__card {
+    max-width: none !important;
+  }
+
+  .services__grid:has(.services__card:nth-child(7):last-child) .services__card:nth-child(7),
+  .services__card:nth-child(7):last-child {
+    grid-column: 1;
+    justify-self: stretch;
+    max-width: none;
+  }
+
 }
 
 @media (max-width: 480px) {
