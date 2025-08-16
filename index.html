@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Home – Below Surface</title>
 
-<link rel="preload" href="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" as="video" type="video/mp4" media="(min-width: 768px)" crossorigin="anonymous">
-<link rel="preload" href="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" as="video" type="video/mp4" media="(max-width: 767px)" crossorigin="anonymous">
+  <link rel="preconnect" href="https://www.dropbox.com" crossorigin>
+  <link rel="preload" href="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" as="video" media="(min-width: 768px)" crossorigin="anonymous">
+  <link rel="preload" href="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" as="video" media="(max-width: 767px)" crossorigin="anonymous">
 
   <style>
     /* ========================================
@@ -91,143 +92,76 @@
     }
     
     /* ========================================
-       🎬 HERO VIDEO SECTION (updated)
+       🎬 HERO STYLES
        ======================================== */
-    .bs-hero {
+    .bs-hero-wrapper {
       position: relative;
       width: 100vw;
       left: 50%;
       right: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
-      min-height: 100vh;             /* full-viewport */
+      min-height: 100vh;
       overflow: hidden;
       isolation: isolate;
-      background: #000;
     }
-
-    /* Fallback images if video can't play */
-    .bs-hero.bs-fallback {
-      background: url('assets/mediaimages/Desktop%20Static.png') center center / cover no-repeat;
+    .bs-hero-wrapper.bs-fallback {
+      background: url('assets/mediaimages/Desktop%20Static.png') center/cover no-repeat;
     }
     @media (max-width: 767px) {
-      .bs-hero.bs-fallback {
+      .bs-hero-wrapper.bs-fallback {
         background-image: url('assets/mediaimages/Mobile%20Static.png');
       }
     }
-
-    /* Two separate <video> tags so CSS decides which shows */
-    .bs-hero video {
+    .bs-hero-video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: brightness(.85) saturate(1.1);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--bs-duration-normal) ease;
       z-index: 0;
     }
-    .bs-hero .bs-video--desktop { display: block; }
-    .bs-hero .bs-video--mobile  { display: none; }
-
-    @media (max-width: 767px) {
-      .bs-hero .bs-video--desktop { display: none; }
-      .bs-hero .bs-video--mobile  { display: block; }
+    .bs-hero-video.is-loaded {
+      opacity: 1;
+      visibility: visible;
     }
-
-    /* Gradient overlay on top of video */
     .bs-hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(0,0,0,.70) 0%,
-        rgba(0,0,0,.50) 16%,
-        rgba(0,0,0,.30) 34%,
-        rgba(0,0,0,.18) 52%,
-        rgba(0,0,0,.12) 64%,
-        rgba(0,0,0,.10) 72%,
-        rgba(0,0,0,.08) 85%,
-        rgba(0,0,0,.10) 100%
-      );
-      z-index: 1;
+      background: linear-gradient(180deg, rgba(0,0,0,.70) 0%, rgba(0,0,0,.10) 100%);
       pointer-events: none;
+      z-index: 1;
     }
-
-    /* (Optional) content placed over the video */
-    .bs-hero-inner {
+    .bs-hero-content {
       position: relative;
       z-index: 2;
-      min-height: inherit;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: clamp(1.5rem, 4vw, 3rem);
-      color: #fff;
-    }
-    /* ========================================
-       🦸 HERO CONTENT
-       ======================================== */
-    .bs-hero {
-      position: relative;
-      width: 100%;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      z-index: 2;
-    }
-
-    .bs-hero__content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      text-align: center;
-      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-    }
-
-    .bs-hero__text {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: min(1000px, 92vw);
-      margin: 0;
-      font: 700 clamp(0.75rem, 1vw + 0.25rem, 1.5rem) / 1.25 inherit;
-      color: var(--bs-primary);
-      opacity: 0;
+      align-items: center;
       text-align: center;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-wrap: balance;
-      animation: bs-fade-text 10s infinite;
-      pointer-events: none;
+      padding: clamp(1.5rem,4vw,3rem);
     }
-
-    .bs-hero__text--2 {
-      animation-delay: 5s;
+    .bs-hero-content h1 {
+      color: #f6e7b0;
+      margin: 0 0 1rem;
     }
-
-    @keyframes bs-fade-text {
-      0%, 50%, 100% { opacity: 0; }
-      8%, 40% { opacity: 1; }
+    .bs-hero-content p {
+      color: #fff;
+      margin: 0 0 2rem;
     }
-
-    .bs-hero__scroll {
+    .bs-hero-scroll {
       position: absolute;
       left: 50%;
-      bottom: clamp(16px, 3vh, 32px);
+      bottom: clamp(16px,3vh,32px);
       transform: translateX(-50%);
-      width: clamp(44px, 8vw, 52px);
-      height: clamp(44px, 8vw, 52px);
+      width: clamp(44px,8vw,52px);
+      height: clamp(44px,8vw,52px);
       background: rgba(255,255,255,.05);
       border-radius: 50%;
       display: flex;
@@ -240,14 +174,12 @@
       border: none;
       text-decoration: none;
     }
-
-    .bs-hero__scroll:hover {
+    .bs-hero-scroll:hover {
       background: rgba(33,38,45,.8);
       box-shadow: var(--bs-shadow-glow);
       transform: translateX(-50%) translateY(-4px);
     }
-
-    .bs-hero__scroll svg {
+    .bs-hero-scroll svg {
       width: 20px;
       height: 20px;
       stroke: var(--bs-primary);
@@ -255,9 +187,8 @@
       fill: none;
       transition: transform var(--bs-duration-fast) ease;
     }
-
     @keyframes bs-bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); }
       40% { transform: translateX(-50%) translateY(8px); }
       60% { transform: translateX(-50%) translateY(4px); }
     }
@@ -479,10 +410,6 @@
 
     /* Gallery preview layout */
     .bs-gallery-preview {
-
-      --bs-section-padding: 0.5rem;
-
-      
       --bs-section-padding: 2rem;
 
       width: 100vw;
@@ -501,7 +428,6 @@
     }
     @media (max-width: 768px) {
       .bs-gallery-preview {
-        --bs-gallery-gap: 0.5rem;
         --bs-gallery-gap: 2rem;
         padding: var(--bs-section-padding) 3vw;
         gap: var(--bs-gallery-gap);
@@ -528,11 +454,7 @@
     }
 
     @media (max-width: 768px) {
-      .bs-hero__text {
-        font-size: clamp(0.85rem, 4vw + 0.25rem, 1.25rem);
-      }
-
-      .bs-hero__scroll {
+      .bs-hero-scroll {
         bottom: 32px;
         bottom: calc(env(safe-area-inset-bottom) + 32px);
         width: 44px;
@@ -552,13 +474,12 @@
        ♿ ACCESSIBILITY & REDUCED MOTION
        ======================================== */
     @media (prefers-reduced-motion: reduce) {
-      .bs-service-card,
-      .bs-hero__text {
+      .bs-service-card {
         animation: none !important;
         transform: none !important;
       }
-      
-      .bs-hero__scroll {
+
+      .bs-hero-scroll {
         animation: none;
       }
       
@@ -571,7 +492,7 @@
 
     /* Focus indicators for accessibility */
     .bs-service-card:focus-within,
-    .bs-hero__scroll:focus {
+    .bs-hero-scroll:focus {
       outline: 2px solid var(--bs-primary);
       outline-offset: 4px;
     }
@@ -609,67 +530,31 @@
 
 <body>
   <div class="bs-container">
+  <!-- === HERO START === -->
   <div class="bs-hero-wrapper bs-fallback">
-      <!-- Video Background -->
-      <video
-        id="bsMainVideo"
-        class="bs-hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true"
-        style="display: none;"
-        crossorigin="anonymous"
+    <video id="bsHeroVideoDesktop" class="bs-hero-video" muted playsinline autoplay loop preload="none" poster="assets/mediaimages/Desktop%20Static.png" aria-hidden="true"></video>
+    <video id="bsHeroVideoMobile" class="bs-hero-video" muted playsinline autoplay loop preload="none" poster="assets/mediaimages/Mobile%20Static.png" aria-hidden="true"></video>
+    <div class="bs-hero-overlay" aria-hidden="true"></div>
+    <header class="bs-hero-content" id="bsTop" role="banner">
+      <h1>Unlock The Underwater Mysteries</h1>
+      <p>Join Us for an Experience Where the Hidden Depths Come to Life</p>
+      <a
+        href="#bsServices"
+        class="bs-hero-scroll"
+        aria-label="Scroll to Services section"
+        role="button"
       >
-          <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
-          <div class="bs-sr-only">Your browser does not support the video tag.</div>
-        </video>
-      <video
-        id="bsMainVideoMobile"
-        class="bs-hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true"
-        style="display: none;"
-        crossorigin="anonymous"
-      >
-        <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&st=bxyn8sza&raw=1" type="video/mp4">
-        <div class="bs-sr-only">Your browser does not support the video tag.</div>
-      </video>
-      
-      <div class="bs-hero-overlay" aria-hidden="true"></div>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="bs-sr-only">Scroll to Services</span>
+      </a>
+    </header>
+  </div>
+  <!-- === HERO END === -->
 
-      <!-- Hero Section -->
-      <header class="bs-hero" id="bsTop" role="banner">
-        <div class="bs-hero__content">
-          <h1 class="bs-hero__text bs-hero__text--1">
-            Unlock The Underwater Mysteries
-          </h1>
-          <h1 class="bs-hero__text bs-hero__text--2" aria-hidden="true">
-            Join Us for an Experience Where the Hidden Depths Come to Life
-          </h1>
-          
-          <a 
-            href="#bsServices" 
-            class="bs-hero__scroll" 
-            aria-label="Scroll to Services section"
-            role="button"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="bs-sr-only">Scroll to Services</span>
-          </a>
-        </div>
-      </header>
-
-      <!-- Services Section -->
-      <section class="bs-services" id="bsServices" aria-labelledby="bsServicesHeading">
+  <!-- Services Section -->
+  <section class="bs-services" id="bsServices" aria-labelledby="bsServicesHeading">
         <h2 id="bsServicesHeading" class="bs-sr-only">Our Marine Adventure Services</h2>
         
         <div class="bs-services__grid" role="list">
@@ -818,104 +703,65 @@
         }
       };
 
-      // Video Management Module
-      const VideoManager = {
+      // Hero Video Module
+      const HeroVideo = {
         init: function() {
-          this.video = BSUtils.safeQuery('#bsMainVideo');
-          this.mobileVideo = BSUtils.safeQuery('#bsMainVideoMobile');
-          if (!this.video && !this.mobileVideo) return;
-
-          this.setupResponsiveVideo();
-          this.setupVideoErrorHandling();
-
-          // Resize listener with debouncing
-          window.addEventListener('resize', BSUtils.debounce(this.setupResponsiveVideo.bind(this), 250));
-        },
-
-        setupResponsiveVideo: function() {
           const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
-          if (wrapper) {
-            wrapper.classList.add('bs-fallback');
-          }
-
-          const isMobile = window.innerWidth < 768;
-
-          if (isMobile) {
-            if (this.video) {
-              this.video.pause();
-              this.video.style.display = 'none';
-            }
-            if (this.mobileVideo) {
-              this.mobileVideo.style.display = '';
-              const playPromise = this.mobileVideo.play();
-              if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                  console.warn('BS: Mobile video autoplay failed:', error);
-                });
-              }
-              if (wrapper) {
-                wrapper.classList.remove('bs-fallback');
-              }
-            }
-            return;
-          }
-
-          if (!this.video) return;
-
-          if (this.mobileVideo) {
-            this.mobileVideo.pause();
-            this.mobileVideo.style.display = 'none';
-          }
-          this.video.style.display = 'none';
+          if (!wrapper) return;
+          const desktop = BSUtils.safeQuery('#bsHeroVideoDesktop', wrapper);
+          const mobile = BSUtils.safeQuery('#bsHeroVideoMobile', wrapper);
+          if (!desktop || !mobile) return;
 
           const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
-          const currentSource = this.video.querySelector('source');
+          const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
+          let active = null;
 
-          if (!currentSource || currentSource.getAttribute('src') !== desktopSrc) {
-            this.video.pause();
-            this.video.innerHTML = '';
-
-            const newSource = document.createElement('source');
-            newSource.src = desktopSrc;
-            newSource.type = 'video/mp4';
-
-            this.video.appendChild(newSource);
-            this.video.load();
-          }
-
-          const playPromise = this.video.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(error => {
-              console.warn('BS: Video autoplay failed:', error);
-            });
-          }
-        },
-
-          setupVideoErrorHandling: function() {
-            if (!this.video) return;
-
-            this.video.addEventListener('error', (e) => {
-            console.error('BS: Video error:', e);
-            const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
-            if (wrapper) {
-              wrapper.classList.add('bs-fallback');
-            }
-            this.video.style.display = 'none';
-          });
-
-          this.video.addEventListener('loadeddata', () => {
-            console.log('BS: Video loaded successfully');
-            const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
-            if (wrapper) {
+          const load = (type) => {
+            const video = type === 'desktop' ? desktop : mobile;
+            const other = type === 'desktop' ? mobile : desktop;
+            const src = type === 'desktop' ? desktopSrc : mobileSrc;
+            if (active === type) return;
+            other.pause();
+            other.removeAttribute('src');
+            other.load();
+            other.classList.remove('is-loaded');
+            video.src = src;
+            video.load();
+            video.addEventListener('loadeddata', () => {
+              video.classList.add('is-loaded');
               wrapper.classList.remove('bs-fallback');
-            }
-            this.video.style.display = '';
-            const playPromise = this.video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(error => {
-                console.warn('BS: Video autoplay failed:', error);
-              });
-            }
+              video.play().catch(()=>{});
+            }, { once: true });
+            video.addEventListener('error', () => {
+              wrapper.classList.add('bs-fallback');
+              video.classList.remove('is-loaded');
+            }, { once: true });
+            active = type;
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const type = window.innerWidth >= 768 ? 'desktop' : 'mobile';
+                load(type);
+              } else {
+                desktop.pause();
+                mobile.pause();
+              }
+            });
+          }, { threshold: 0.1 });
+
+          observer.observe(wrapper);
+
+          let resizeTimer;
+          window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+              const type = window.innerWidth >= 768 ? 'desktop' : 'mobile';
+              if (type !== active) {
+                load(type);
+              }
+            }, 200);
           });
         }
       };
@@ -1056,7 +902,7 @@
         },
 
         setupScrollButton: function() {
-          const scrollButton = BSUtils.safeQuery('.bs-hero__scroll');
+          const scrollButton = BSUtils.safeQuery('.bs-hero-scroll');
           if (!scrollButton) return;
 
           scrollButton.addEventListener('click', (e) => {
@@ -1135,7 +981,7 @@
           ErrorHandler.init();
           
           // Initialize all modules
-          VideoManager.init();
+          HeroVideo.init();
           ServiceCards.init();
           Navigation.init();
           
@@ -1717,7 +1563,6 @@
           </div>
           </section>
         </div>
-      </div>
 
   <script>
   /* ===== Lightbox ===== */
