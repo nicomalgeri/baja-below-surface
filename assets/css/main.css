@@ -271,7 +271,8 @@ html, body {
         rgba(0,0,0,0.65)
       ),
       url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About-Us-Mobile.jpg?raw=true")
-        top center / contain no-repeat;
+        top center/cover no-repeat;
+    background-attachment: scroll, fixed;
     min-height: 100vh;
   }
 }
