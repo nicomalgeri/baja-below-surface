@@ -104,11 +104,15 @@
       margin-right: -50vw;
       overflow: hidden;
       isolation: isolate;
+      background: #000;
+    }
+
+    .bs-hero-wrapper.bs-fallback {
       background: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true') center center/cover no-repeat;
     }
 
     @media (max-width: 767px) {
-      .bs-hero-wrapper {
+      .bs-hero-wrapper.bs-fallback {
         background-image: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Mobile%20Static.png?raw=true');
       }
     }
@@ -507,16 +511,16 @@
   <div class="bs-container">
   <div class="bs-hero-wrapper">
       <!-- Video Background -->
-        <video
-          id="bsMainVideo"
-          class="bs-hero-video bs-loading"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-hidden="true"
-        >
+      <video
+        id="bsMainVideo"
+        class="bs-hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
           <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
           <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
           <div class="bs-sr-only">Your browser does not support the video tag.</div>
@@ -715,19 +719,23 @@
 
         setupResponsiveVideo: function() {
           if (!this.video) return;
+          const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
+          if (wrapper) {
+            wrapper.classList.remove('bs-fallback');
+          }
+          this.video.style.display = '';
 
           const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
           const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
           const isMobile = window.innerWidth < 768;
           const targetSrc = isMobile ? mobileSrc : desktopSrc;
-          
+
           const currentSource = this.video.querySelector('source');
           if (currentSource && currentSource.getAttribute('src') === targetSrc) {
             return; // Source is already correct
           }
 
           this.video.pause();
-          this.video.classList.remove('bs-loaded');
           this.video.innerHTML = '';
           
           const newSource = document.createElement('source');
@@ -747,22 +755,24 @@
           }
         },
 
-        setupVideoErrorHandling: function() {
-          if (!this.video) return;
+          setupVideoErrorHandling: function() {
+            if (!this.video) return;
 
-          this.video.addEventListener('error', (e) => {
+            this.video.addEventListener('error', (e) => {
             console.error('BS: Video error:', e);
-            // Hide video overlay on error to prevent black screen
-            const overlay = BSUtils.safeQuery('.bs-hero-overlay');
-            if (overlay) {
-              overlay.style.opacity = '0.9';
+            const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
+            if (wrapper) {
+              wrapper.classList.add('bs-fallback');
             }
+            this.video.style.display = 'none';
           });
 
           this.video.addEventListener('loadeddata', () => {
             console.log('BS: Video loaded successfully');
-            this.video.classList.add('bs-loaded');
-            // Ensure autoplay once enough data is loaded
+            const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
+            if (wrapper) {
+              wrapper.classList.remove('bs-fallback');
+            }
             const playPromise = this.video.play();
             if (playPromise !== undefined) {
               playPromise.catch(error => {
