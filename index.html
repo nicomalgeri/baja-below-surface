@@ -182,7 +182,7 @@
       transform: translate(-50%, -50%);
       width: min(1000px, 92vw);
       margin: 0;
-      font: 700 clamp(1rem, 1.5vw + 0.5rem, 2rem) / 1.25 inherit;
+      font: 700 clamp(0.75rem, 1vw + 0.25rem, 1.5rem) / 1.25 inherit;
       color: var(--bs-primary);
       opacity: 0;
       text-align: center;
@@ -512,7 +512,7 @@
 
     @media (max-width: 768px) {
       .bs-hero__text {
-        font-size: clamp(1.25rem, 5vw + 0.5rem, 2rem);
+        font-size: clamp(0.85rem, 4vw + 0.25rem, 1.25rem);
       }
 
       .bs-hero__scroll {
@@ -736,10 +736,10 @@
               </div>
             </div>
           </article>
-    </div>
-  </div>
+        </div>
+      </section>
 
-  <script>
+    <script>
     /**
      * Below Surface - Enhanced JavaScript Module
      * Optimized for WordPress/Elementor compatibility
@@ -1610,7 +1610,7 @@
     <button class="bs-close-btn" id="bsCloseLightbox" aria-label="Close">&times;</button>
     <button class="bs-nav-btn bs-prev-btn" id="bsPrevBtn" aria-label="Previous">&#10094;</button>
     <div class="bs-lightbox-img-wrapper">
-      <img id="bsLightboxImg" src="" alt="" />
+  <img id="bsLightboxImg" src="#" alt="" />
     </div>
     <button class="bs-nav-btn bs-next-btn" id="bsNextBtn" aria-label="Next">&#10095;</button>
   </div>
@@ -1697,8 +1697,9 @@
               <button class="bs-video-play" id="bsVideoPlay" aria-label="Play Video"></button>
             </div>
           </div>
-        </section>
+          </section>
         </div>
+      </div>
 
   <script>
   /* ===== Lightbox ===== */
