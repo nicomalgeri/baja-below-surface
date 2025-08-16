@@ -417,6 +417,48 @@
       opacity: 1;
     }
 
+    /* Gallery preview card */
+    .bs-gallery-card__thumbs {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+    .bs-gallery-card__thumbs img {
+      flex: 0 0 25%;
+      width: 25%;
+      height: 25%;
+      object-fit: cover;
+    }
+    .bs-gallery-card__overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: rgba(33,38,45,.75);
+      color: var(--bs-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity var(--bs-duration-normal) var(--bs-easing);
+    }
+    .bs-gallery-card__icon {
+      width: 22px;
+      height: 22px;
+      transition: transform var(--bs-duration-fast) var(--bs-easing);
+    }
+    .bs-gallery-card:hover .bs-gallery-card__overlay,
+    .bs-gallery-card.bs-overlay-visible .bs-gallery-card__overlay {
+      opacity: 1;
+    }
+    .bs-gallery-card:hover .bs-gallery-card__icon {
+      transform: translateX(2px);
+    }
+
     /* ========================================
        📱 RESPONSIVE DESIGN
        ======================================== */
@@ -636,6 +678,34 @@
                   </svg>
                 </button>
               </div>
+            </div>
+          </article>
+
+          <!-- Gallery -->
+          <article
+            class="bs-service-card bs-gallery-card bs-loading"
+            id="bsGalleryCard"
+            style="--delay: 1.35s;"
+            role="listitem"
+          >
+            <div class="bs-gallery-card__thumbs" aria-hidden="true">
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" alt="" />
+            </div>
+            <div class="bs-gallery-card__overlay">
+              <span class="bs-gallery-card__text">Photo Gallery</span>
+              <svg class="bs-gallery-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
+              </svg>
             </div>
           </article>
         </div>
@@ -1210,9 +1280,11 @@
     .bs-fullscreen-gallery {
       position: relative;
       width: 100vw;
-      min-height: 100vh;
       margin-left: calc(50% - 50vw);
-      padding: var(--bs-section-padding) 3vw; /* uniform padding: top/bottom */
+      padding: 0 3vw;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: stretch;
@@ -1220,6 +1292,13 @@
         radial-gradient(60% 90% at 10% 0%, rgba(0,0,0,.15), transparent 60%),
         radial-gradient(70% 100% at 90% 100%, rgba(0,0,0,.2), transparent 62%),
         url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true') center/cover no-repeat; /* no parallax */
+      transition: opacity var(--bs-duration-normal) var(--bs-easing), max-height var(--bs-duration-normal) var(--bs-easing), padding var(--bs-duration-normal) var(--bs-easing);
+    }
+
+    .bs-fullscreen-gallery.bs-open {
+      padding: var(--bs-section-padding) 3vw; /* uniform padding: top/bottom */
+      max-height: 5000px;
+      opacity: 1;
     }
 
     /* Title */
@@ -1472,7 +1551,7 @@
     }
   </style>
 
-<section class="bs-fullscreen-gallery" aria-label="Below Surface Gallery">
+<section class="bs-fullscreen-gallery" id="bsGallerySection" aria-label="Below Surface Gallery">
 
   <h1 class="bs-gallery-title">Gallery</h1>
 
@@ -1646,6 +1725,32 @@
     });
     mainVideo.addEventListener('pause', () => {
       mainVideo.parentElement.classList.remove('bs-playing');
+    });
+  }
+
+  // Gallery preview card interaction
+  const galleryCard = document.getElementById('bsGalleryCard');
+  const gallerySection = document.getElementById('bsGallerySection');
+  if (galleryCard && gallerySection) {
+    const overlayText = galleryCard.querySelector('.bs-gallery-card__text');
+    if (window.matchMedia('(hover: none)').matches) {
+      galleryCard.classList.add('bs-overlay-visible');
+    }
+    const openSection = () => {
+      overlayText.textContent = 'Open';
+      gallerySection.classList.add('bs-open');
+      updateRow();
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        overlayText.textContent = 'Photo Gallery';
+      }, 600);
+    };
+    galleryCard.addEventListener('click', openSection);
+    galleryCard.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openSection();
+      }
     });
   }
 </script>
