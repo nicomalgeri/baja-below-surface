@@ -293,7 +293,7 @@ body.about-page {
 }
 
 body.about-page .site-footer {
-  background: transparent;
+  background: #000;
 }
 
 /* ===== GALLERY SECTION ===== */
@@ -1574,7 +1574,7 @@ h3 { font-size: clamp(2rem, 4vw, 3rem); }
 
 /* Site Footer */
 .site-footer {
-  background: var(--bg-dark);
+  background: #000;
   color: var(--highlight);
   padding: 2rem 1rem;
   font-size: 0.875rem;
