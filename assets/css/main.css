@@ -1308,6 +1308,9 @@ body.scrolled .elementor-location-header {
 
 /* ===== DAY TRIPS: MOBILE LAYOUT MATCHING EXPEDITIONS ===== */
 @media (max-width: 768px) {
+  .daytrips.section {
+    min-height: 100vh;
+  }
   .daytrips .services__grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
