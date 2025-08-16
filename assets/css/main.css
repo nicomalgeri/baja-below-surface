@@ -637,6 +637,9 @@ html, body {
   padding: clamp(4rem,10vh,6rem) clamp(2rem,6vw,6rem);
   isolation: isolate;
 }
+.daytrips.section {
+  background: url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sealion%20Snorkel.jpeg?raw=true") center center/cover no-repeat;
+}
 .expeditions.section {
     background: url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true") center center/cover no-repeat;
 }
