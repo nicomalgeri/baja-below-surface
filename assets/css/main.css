@@ -1398,3 +1398,12 @@ body.scrolled .elementor-location-header {
     color: var(--highlight);
   }
 }
+
+/* Ensure background images cover on small screens */
+@media (max-width: 768px) {
+  [style*="background-image"] {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+}
