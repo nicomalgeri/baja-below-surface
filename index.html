@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="preconnect" href="https://bajabelowsurface.com">
   <link rel="preconnect" href="https://www.dropbox.com" crossorigin>
-  <link rel="preload" href="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" as="video" type="video/mp4" media="(max-width: 767px)" crossorigin="anonymous">
   <link rel="preload" href="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" as="video" type="video/mp4" media="(min-width: 768px)" crossorigin="anonymous">
 
   <style>
@@ -606,10 +605,19 @@
         style="display: none;"
         crossorigin="anonymous"
       >
-          <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
           <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
           <div class="bs-sr-only">Your browser does not support the video tag.</div>
         </video>
+      <iframe
+        id="bsMainVideoMobile"
+        class="bs-hero-video"
+        src="https://www.youtube.com/embed/2WZCaNRrGBI?autoplay=1&mute=1&playsinline=1&controls=0&loop=1&playlist=2WZCaNRrGBI"
+        title="Background video"
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        style="display: none;"
+      ></iframe>
       
       <div class="bs-hero-overlay" aria-hidden="true"></div>
 
@@ -791,49 +799,64 @@
       const VideoManager = {
         init: function() {
           this.video = BSUtils.safeQuery('#bsMainVideo');
-          if (!this.video) return;
+          this.mobileIframe = BSUtils.safeQuery('#bsMainVideoMobile');
+          if (!this.video && !this.mobileIframe) return;
 
           this.setupResponsiveVideo();
           this.setupVideoErrorHandling();
-          
+
           // Resize listener with debouncing
           window.addEventListener('resize', BSUtils.debounce(this.setupResponsiveVideo.bind(this), 250));
         },
 
         setupResponsiveVideo: function() {
-          if (!this.video) return;
           const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
           if (wrapper) {
             wrapper.classList.add('bs-fallback');
           }
+
+          const isMobile = window.innerWidth < 768;
+
+          if (isMobile) {
+            if (this.video) {
+              this.video.pause();
+              this.video.style.display = 'none';
+            }
+            if (this.mobileIframe) {
+              this.mobileIframe.style.display = '';
+              if (wrapper) {
+                wrapper.classList.remove('bs-fallback');
+              }
+            }
+            return;
+          }
+
+          if (!this.video) return;
+
+          if (this.mobileIframe) {
+            this.mobileIframe.style.display = 'none';
+          }
           this.video.style.display = 'none';
 
           const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
-          const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
-          const isMobile = window.innerWidth < 768;
-          const targetSrc = isMobile ? mobileSrc : desktopSrc;
-
           const currentSource = this.video.querySelector('source');
-          if (currentSource && currentSource.getAttribute('src') === targetSrc) {
-            return; // Source is already correct
+
+          if (!currentSource || currentSource.getAttribute('src') !== desktopSrc) {
+            this.video.pause();
+            this.video.innerHTML = '';
+
+            const newSource = document.createElement('source');
+            newSource.src = desktopSrc;
+            newSource.type = 'video/mp4';
+
+            this.video.appendChild(newSource);
+            this.video.load();
           }
 
-          this.video.pause();
-          this.video.innerHTML = '';
-          
-          const newSource = document.createElement('source');
-          newSource.src = targetSrc;
-          newSource.type = 'video/mp4';
-          
-          this.video.appendChild(newSource);
-          this.video.load();
-
-          // Auto-play with error handling
           const playPromise = this.video.play();
           if (playPromise !== undefined) {
             playPromise.catch(error => {
               console.warn('BS: Video autoplay failed:', error);
-              // Video autoplay was prevented, which is normal on some devices
             });
           }
         },
