@@ -762,6 +762,13 @@
           this.video.addEventListener('loadeddata', () => {
             console.log('BS: Video loaded successfully');
             this.video.classList.add('bs-loaded');
+            // Ensure autoplay once enough data is loaded
+            const playPromise = this.video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(error => {
+                console.warn('BS: Video autoplay failed:', error);
+              });
+            }
           });
         }
       };
