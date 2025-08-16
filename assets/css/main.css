@@ -1517,13 +1517,16 @@ body.scrolled .elementor-location-header {
 
 @media (max-width: 768px) {
   .exp-hero {
-    padding: clamp(1.5rem,4vh,2rem) 1rem 1rem;
+    padding: clamp(2rem,6vh,3rem) 1rem 1rem;
     background-size: cover;
     background-position: center;
   }
   .exp-subtitle {
     color: #fff;
     margin: 0 auto 0.75rem;
+  }
+  .exp-hero .page-title {
+    padding-top: clamp(4rem,12vh,6rem);
   }
   .exp-hero .page-title,
   .exp-hero .exp-subtitle {
