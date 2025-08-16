@@ -464,15 +464,13 @@
       width: 100vw;
       margin-left: calc(50% - 50vw);
       padding: var(--bs-section-padding) 3vw;
-    }
-    .bs-gallery-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 2rem;
     }
     @media (max-width: 768px) {
-      .bs-gallery-content {
+      .bs-gallery-preview {
         flex-direction: column;
       }
     }
@@ -1584,6 +1582,33 @@
 <!-- Gallery -->
         <section class="bs-gallery-preview" aria-label="Below Surface Gallery">
           <h1 class="bs-gallery-title">Gallery</h1>
+
+          <article
+            class="bs-service-card bs-gallery-card bs-loaded"
+            id="bsGalleryCard"
+            style="--delay: 1.35s;"
+            role="listitem"
+          >
+            <div class="bs-gallery-card__thumbs" aria-hidden="true">
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20&%20Marlin.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Expeditions%20Photo.jpeg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Grey%20Whale.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Orcas.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Sea%20lion.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Shipwreck%20Turtle.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Snappers.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WINTER%20WHALES.jpg?raw=true" alt="" />
+              <img loading="lazy" src="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/WHALE%20SHARK.jpg?raw=true" alt="" />
+            </div>
+            <div class="bs-gallery-card__overlay">
+              <span class="bs-gallery-card__text">Photo Gallery</span>
+              <svg class="bs-gallery-card__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 2l-1.41 1.41L16.17 9H4v2h12.17l-5.58 5.59L12 18l8-8z"/>
+              </svg>
+
+              
           <div class="bs-gallery-content">
             <article
               class="bs-service-card bs-gallery-card bs-loaded"
@@ -1618,7 +1643,16 @@
                 Your browser does not support the video tag.
               </video>
               <button class="bs-video-play" id="bsVideoPlay" aria-label="Play Video"></button>
+
             </div>
+          </article>
+          <div class="bs-video-wrapper">
+            <video id="bsGalleryVideo" playsinline preload="metadata" poster="https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Desktop%20Static.png?raw=true">
+              <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
+              <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
+              Your browser does not support the video tag.
+            </video>
+            <button class="bs-video-play" id="bsVideoPlay" aria-label="Play Video"></button>
           </div>
         </section>
         </div>
