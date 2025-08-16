@@ -192,9 +192,19 @@ html, body {
   .expeditions .services__grid,
   .charter .services__grid {
     grid-template-columns: 1fr !important;
-    max-width: 400px !important;
     gap: 1.5rem !important;
     justify-content: center !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .daytrips .services__card,
+  .expeditions .services__card,
+  .charter .services__card {
+    width: 75% !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
