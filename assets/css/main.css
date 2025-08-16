@@ -279,6 +279,23 @@ html, body {
   }
 }
 
+/* About Us page: extend background image to full page */
+body.about-page {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.25),
+      rgba(0,0,0,0.55) 60%,
+      rgba(0,0,0,0.65)
+    ),
+    url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Baitball%20%26%20Marlin.jpg?raw=true") center center / cover no-repeat;
+  background-attachment: scroll, fixed;
+}
+
+body.about-page .site-footer {
+  background: transparent;
+}
+
 /* ===== GALLERY SECTION ===== */
 .parallax-gallery {
   position: relative;
