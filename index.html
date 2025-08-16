@@ -7,8 +7,8 @@
 
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="preconnect" href="https://bajabelowsurface.com">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/nicomalgeri/baja-below-surface@main/assets/mediaimages/heroresponsive.mov" as="video" type="video/mov" media="(max-width: 767px)">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/nicomalgeri/baja-below-surface@main/assets/mediaimages/herodesktop.mov" as="video" type="video/mov" media="(min-width: 768px)">
+  <link rel="preload" href="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" as="video" type="video/mp4" media="(max-width: 767px)">
+  <link rel="preload" href="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" as="video" type="video/mp4" media="(min-width: 768px)">
 
   <style>
     /* ========================================
@@ -104,7 +104,13 @@
       margin-right: -50vw;
       overflow: hidden;
       isolation: isolate;
-      background: url('https://bajabelowsurface.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-12-at-21.09.42-scaled.jpeg') center/cover no-repeat;
+      background: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Desktop%20Static.png?raw=true') center/cover no-repeat;
+    }
+
+    @media (max-width: 767px) {
+      .bs-hero-wrapper {
+        background-image: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Mobile%20Static.png?raw=true');
+      }
     }
 
     .bs-hero-video {
@@ -504,7 +510,6 @@
         <video
           id="bsMainVideo"
           class="bs-hero-video bs-loading"
-          poster="https://bajabelowsurface.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-12-at-21.09.42-scaled.jpeg"
           autoplay
           muted
           loop
@@ -512,8 +517,8 @@
           preload="metadata"
           aria-hidden="true"
         >
-          <source src="https://bajabelowsurface.com/assets/Media/Main%20Video%20Responsive.mov" type="video/mp4" media="(max-width: 767px)">
-          <source src="https://bajabelowsurface.com/assets/Media/Main%20Video.mov" type="video/mp4" media="(min-width: 768px)">
+          <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
+          <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
           <div class="bs-sr-only">Your browser does not support the video tag.</div>
         </video>
       
@@ -711,8 +716,8 @@
         setupResponsiveVideo: function() {
           if (!this.video) return;
 
-          const desktopSrc = 'https://bajabelowsurface.com/wp-content/uploads/2025/08/Main-Video.mov';
-          const mobileSrc = 'https://bajabelowsurface.com/wp-content/uploads/2025/08/Main-Video-Responsive.mov';
+          const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
+          const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
           const isMobile = window.innerWidth < 768;
           const targetSrc = isMobile ? mobileSrc : desktopSrc;
           
