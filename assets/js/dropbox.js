@@ -84,21 +84,3 @@
     wrap(el);
   });
 })();
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const footer = document.createElement('footer');
-  footer.className = 'site-footer';
-  const year = new Date().getFullYear();
-  footer.innerHTML = `
-    <div class="footer__content">
-      <a href="mailto:dani@bajabelowsurface.com">dani@bajabelowsurface.com</a>
-      <span class="separator">•</span>
-      <a href="https://wa.me/526242104724" target="_blank" rel="noopener">+52 624 210 4724</a>
-      <span class="separator">•</span>
-      <a href="https://instagram.com/bajabelowsurface" target="_blank" rel="noopener">@bajabelowsurface</a>
-    </div>
-    <p class="footer__copy">&copy; ${year} Below Surface</p>
-  `;
-  document.body.appendChild(footer);
-});

@@ -188,15 +188,15 @@ html, body {
 
 /* For smaller screens, ensure single column is centered */
 @media (max-width: 768px) {
-  .daytrips .services__grid,
-  .expeditions .services__grid,
-  .charter .services__grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    justify-content: center !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
+    .daytrips .services__grid,
+    .expeditions .services__grid,
+    .charter .services__grid {
+      grid-template-columns: 1fr !important;
+      gap: 1.5rem !important;
+      justify-content: center !important;
+      max-width: 100% !important;
+      padding: 0 1.5rem !important;
+    }
 
   .daytrips .services__card,
   .expeditions .services__card,
@@ -256,6 +256,8 @@ html, body {
       rgba(0,0,0,0.65)
     ),
     url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Socorro%20Island.jpeg?raw=true") center bottom / cover no-repeat;
+  background-attachment: scroll, fixed;
+  min-height: 100vh;
   color: #fff;
   isolation: isolate;
   overflow: visible;
@@ -273,10 +275,8 @@ html, body {
       url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About-Us-Mobile.jpg?raw=true")
         top center/cover no-repeat;
     background-attachment: scroll, fixed;
-      url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true")
-        top center / contain no-repeat;
     min-height: 100vh;
-    padding: clamp(2rem,6vh,3rem) clamp(1rem,4vw,2rem);
+    padding: clamp(2rem,6vh,3rem) 1.5rem;
   }
 }
 
@@ -690,15 +690,27 @@ html, body {
 /* Consistent page titles */
 .page-title {
   text-align: center;
-  font: 700 clamp(2.5rem,5vw,3.5rem)/1.2 inherit;
+  font-size: clamp(2.5rem,5vw,3.5rem);
+  line-height: 1.2;
+  font-weight: 700;
   color: var(--highlight);
   margin: 0 0 clamp(1rem,2vh,1.5rem);
 }
 
 .daytrips .page-title,
 .expeditions .page-title,
-.charter .page-title {
+.charter .page-title,
+.about .page-title {
   padding-top: clamp(2rem, 8vh, 3rem);
+}
+
+@media (max-width: 768px) {
+  .daytrips .page-title,
+  .expeditions .page-title,
+  .charter .page-title,
+  .about .page-title {
+    padding-top: clamp(4rem, 12vh, 6rem);
+  }
 }
 
 .daytrips .services__desc,
@@ -1552,9 +1564,12 @@ h3 { font-size: clamp(2rem, 4vw, 3rem); }
 .site-footer {
   background: var(--bg-dark);
   color: var(--highlight);
-  text-align: center;
   padding: 2rem 1rem;
   font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .site-footer a {
   color: var(--highlight);
@@ -1565,8 +1580,21 @@ h3 { font-size: clamp(2rem, 4vw, 3rem); }
   text-decoration: underline;
 }
 .site-footer .footer__content {
-  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  margin-bottom: 1rem;
+}
+.site-footer .footer__copy {
+  margin-bottom: 0;
 }
 .site-footer .separator {
   margin: 0 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    font-size: 0.75rem;
+  }
 }
