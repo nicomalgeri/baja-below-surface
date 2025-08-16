@@ -57,6 +57,10 @@
     if (!src) return;
     const isLocal = /(^\/|wp-content|bajabelowsurface\.com|static\.wixstatic\.com|^\.\/?)/i.test(src);
     if (!isLocal) return;
+    if (!img.closest('.bs-logo') && !img.hasAttribute('loading')) {
+      img.setAttribute('loading', 'lazy');
+    }
+    img.decoding = 'async';
     const titleText = img.closest('.services__card')?.querySelector('.services__title, h3')?.textContent?.toLowerCase() || '';
     const key = (titleText.match(/mobula|whale.?shark|balandra|esp[ií]ritu|pulmo|sea.?lion|socorro|manta/) || [null])[0];
     const cloud = nextLink(key);
