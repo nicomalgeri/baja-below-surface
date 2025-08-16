@@ -469,6 +469,15 @@ html, body {
 @media (max-width: 620px) {
   .contact {
     padding: clamp(3rem, 8vh, 4rem) clamp(1.2rem, 5vw, 2rem);
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, .25),
+        rgba(0, 0, 0, .55) 60%,
+        rgba(0, 0, 0, .65)
+      ),
+      url('https://previews.dropbox.com/p/thumb/ACsTewZSsES4FsAt1aVBMDvkarZt68B_Uz1Z1NicpYi0EXJzwGb4jmoxCNr4vRezMp68nkrFNuVJ5dTuvGcA8wKYPFLNGfM-W6wds38uf-zvWQyE4xwPUf0IubhJTteuqXf9iqj_b-7LtTft8kfhZAbcXQsQ9_JqlM7lmlYVyhFTDhNFYN-GH-MV1RO4T8CjdzdL1ViO66ixsTZgD8wzxN_YHOxSsLPWF9ZycmxJoI5H25edHgFi2gtzeFP5_LpfJ3X2Taj4xPHl0JuXrMJxa678ohk_zE0_ihpPguU8udpMXHaQobKUHMR1BAOxOHE52CA/p.jpeg')
+      center/cover no-repeat;
   }
 }
 
