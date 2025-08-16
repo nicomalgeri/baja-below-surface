@@ -245,7 +245,7 @@ html, body {
       rgba(0,0,0,0.55) 60%,
       rgba(0,0,0,0.65)
     ),
-    url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Socorro%20Island.jpeg?raw=true") center center / cover no-repeat;
+    url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Socorro%20Island.jpeg?raw=true") center bottom / cover no-repeat;
   color: #fff;
   isolation: isolate;
   overflow: visible;
@@ -253,7 +253,7 @@ html, body {
 
 @media (max-width: 768px) {
   .about {
-    background-position: top center;
+    background-position: bottom center;
   }
 }
 
