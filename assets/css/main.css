@@ -1552,9 +1552,12 @@ h3 { font-size: clamp(2rem, 4vw, 3rem); }
 .site-footer {
   background: var(--bg-dark);
   color: var(--highlight);
-  text-align: center;
   padding: 2rem 1rem;
   font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .site-footer a {
   color: var(--highlight);
@@ -1565,8 +1568,21 @@ h3 { font-size: clamp(2rem, 4vw, 3rem); }
   text-decoration: underline;
 }
 .site-footer .footer__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   margin-bottom: 0.5rem;
+}
+.site-footer .footer__copy {
+  margin-bottom: 0;
 }
 .site-footer .separator {
   margin: 0 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    font-size: 0.75rem;
+  }
 }
