@@ -1592,6 +1592,17 @@
     }
   </style>
 
+<div class="bs-lightbox" id="bsLightbox" aria-modal="true" role="dialog">
+  <div class="bs-lightbox-content">
+    <button class="bs-close-btn" id="bsCloseLightbox" aria-label="Close">&times;</button>
+    <button class="bs-nav-btn bs-prev-btn" id="bsPrevBtn" aria-label="Previous">&#10094;</button>
+    <div class="bs-lightbox-img-wrapper">
+      <img id="bsLightboxImg" src="" alt="" />
+    </div>
+    <button class="bs-nav-btn bs-next-btn" id="bsNextBtn" aria-label="Next">&#10095;</button>
+  </div>
+</div>
+
 <section class="bs-fullscreen-gallery" id="bsGallerySection" aria-label="Below Surface Gallery">
 
   <h1 class="bs-gallery-title">Gallery</h1>
@@ -1780,7 +1791,7 @@
     const openSection = () => {
       overlayText.textContent = 'Open';
       gallerySection.classList.add('bs-open');
-      updateRow();
+      openLightbox(0);
       gallerySection.scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => {
         overlayText.textContent = 'Photo Gallery';
