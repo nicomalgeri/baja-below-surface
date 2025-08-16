@@ -1267,11 +1267,13 @@ body.scrolled .elementor-location-header {
   .daytrips .services__grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
-    max-width: none !important;
+    max-width: 400px !important;
+    justify-content: center !important;
   }
 
   .daytrips .services__card {
-    max-width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto !important;
   }
 
   .daytrips .services__img {
