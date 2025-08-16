@@ -276,6 +276,7 @@ html, body {
       url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true")
         top center / contain no-repeat;
     min-height: 100vh;
+    padding: clamp(2rem,6vh,3rem) clamp(1rem,4vw,2rem);
   }
 }
 
@@ -678,6 +679,14 @@ html, body {
   }
 }
 
+@media (max-width: 768px) {
+  .daytrips.section,
+  .expeditions.section,
+  .charter.section {
+    padding: clamp(2rem,6vh,3rem) clamp(1rem,4vw,2rem);
+  }
+}
+
 /* Consistent page titles */
 .page-title {
   text-align: center;
@@ -695,6 +704,14 @@ html, body {
   font-size: clamp(1.1rem,2vw,1.4rem);
   color: var(--text-light);
   line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .daytrips .services__desc,
+  .expeditions .services__desc,
+  .charter .services__desc {
+    margin-bottom: clamp(1rem,3vh,1.5rem);
+  }
 }
 
 .daytrips .services__grid,
@@ -1478,7 +1495,7 @@ body.scrolled .elementor-location-header {
 
 @media (max-width: 768px) {
   .exp-hero {
-    padding: var(--bs-section-padding) 1rem;
+    padding: clamp(2rem,6vh,3rem) 1rem;
     min-height: 100vh;
     background-size: cover;
     background-position: center;
@@ -1486,7 +1503,7 @@ body.scrolled .elementor-location-header {
   }
   .exp-subtitle {
     color: #fff;
-
+    margin: 0 auto 0.75rem;
   }
   .exp-hero .page-title,
   .exp-hero .exp-subtitle {
@@ -1495,17 +1512,6 @@ body.scrolled .elementor-location-header {
     padding-right: 1rem;
   }
 }
-
-
-    @media (max-width: 768px) {
-    .exp-hero {
-      padding-top: calc(var(--bs-section-padding) + 2rem);
-    }
-    .exp-subtitle {
-      color: #fff;
-    }
-
-    }
 
 /* Ensure background images cover on small screens */
 @media (max-width: 768px) {
@@ -1526,10 +1532,3 @@ h1 { font-size: clamp(3rem, 6vw, 4rem); }
 h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
 h3 { font-size: clamp(2rem, 4vw, 3rem); }
 
-/* Reduce excessive padding on Expedition detail pages for mobile */
-@media (max-width: 768px) {
-  .exp-hero {
-    padding: 3rem 1rem;
-    min-height: auto;
-  }
-}
