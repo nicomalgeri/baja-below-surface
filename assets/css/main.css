@@ -256,6 +256,8 @@ html, body {
       rgba(0,0,0,0.65)
     ),
     url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Socorro%20Island.jpeg?raw=true") center bottom / cover no-repeat;
+  background-attachment: scroll, fixed;
+  min-height: 100vh;
   color: #fff;
   isolation: isolate;
   overflow: visible;
@@ -273,8 +275,6 @@ html, body {
       url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About-Us-Mobile.jpg?raw=true")
         top center/cover no-repeat;
     background-attachment: scroll, fixed;
-      url("https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Dani%20Tormo%20Sub.jpg?raw=true")
-        top center / contain no-repeat;
     min-height: 100vh;
     padding: clamp(2rem,6vh,3rem) 1.5rem;
   }
