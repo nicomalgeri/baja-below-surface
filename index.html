@@ -108,12 +108,12 @@
     }
 
     .bs-hero-wrapper.bs-fallback {
-      background: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/About%20Us.jpeg?raw=true') center center/cover no-repeat;
+      background: url('assets/mediaimages/Desktop%20Static.png') center center/cover no-repeat;
     }
 
     @media (max-width: 767px) {
       .bs-hero-wrapper.bs-fallback {
-        background-image: url('https://github.com/nicomalgeri/baja-below-surface/blob/main/assets/mediaimages/Mobile%20Static.png?raw=true');
+        background-image: url('assets/mediaimages/Mobile%20Static.png');
       }
     }
 
@@ -509,7 +509,7 @@
 
 <body>
   <div class="bs-container">
-  <div class="bs-hero-wrapper">
+  <div class="bs-hero-wrapper bs-fallback">
       <!-- Video Background -->
       <video
         id="bsMainVideo"
@@ -520,6 +520,7 @@
         playsinline
         preload="auto"
         aria-hidden="true"
+        style="display: none;"
       >
           <source src="https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1" type="video/mp4" media="(max-width: 767px)">
           <source src="https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1" type="video/mp4" media="(min-width: 768px)">
@@ -721,9 +722,9 @@
           if (!this.video) return;
           const wrapper = BSUtils.safeQuery('.bs-hero-wrapper');
           if (wrapper) {
-            wrapper.classList.remove('bs-fallback');
+            wrapper.classList.add('bs-fallback');
           }
-          this.video.style.display = '';
+          this.video.style.display = 'none';
 
           const desktopSrc = 'https://www.dropbox.com/scl/fi/dwr71773bzfcfvi64rqn8/Main-Video.mov?rlkey=5hmsrj1fjqy86kja6nzlkclok&raw=1';
           const mobileSrc = 'https://www.dropbox.com/scl/fi/1it20errhgmn8ts5rpif1/Main-Video-Mobile.mov?rlkey=ifu73s7nn0xebyzasgofgons6&raw=1';
@@ -744,7 +745,7 @@
           
           this.video.appendChild(newSource);
           this.video.load();
-          
+
           // Auto-play with error handling
           const playPromise = this.video.play();
           if (playPromise !== undefined) {
@@ -773,6 +774,7 @@
             if (wrapper) {
               wrapper.classList.remove('bs-fallback');
             }
+            this.video.style.display = '';
             const playPromise = this.video.play();
             if (playPromise !== undefined) {
               playPromise.catch(error => {
