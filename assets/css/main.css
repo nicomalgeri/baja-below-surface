@@ -1379,7 +1379,7 @@ body.scrolled .elementor-location-header {
   .back-arrow{ top: 18px; left: 20px; }
 }
 
-.exp-hero{ padding: var(--bs-section-padding) 1rem 0; text-align:center; display:flex; flex-direction:column; align-items:center; background-size:cover; background-position:center; background-repeat:no-repeat; }
+.exp-hero{ padding: var(--bs-section-padding) 1rem 0; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background-size:cover; background-position:center; background-repeat:no-repeat; }
 .exp-subtitle{ color: #fff; font-size: clamp(1.05rem,2.6vw,1.35rem); margin: 0 auto 1.25rem; max-width: 820px; }
 
 .exp-body{ max-width: 980px; margin: 0 auto; padding: 0 clamp(.5rem,2vw,1rem); display: grid; gap: clamp(1rem,2.8vw,1.75rem); justify-items: stretch; }
@@ -1440,8 +1440,6 @@ body.scrolled .elementor-location-header {
 @media (min-width: 1024px) {
   .exp-hero {
     padding-top: calc(var(--bs-section-padding) + 2rem);
-    min-height: calc(100vh - 80px);
-    justify-content: center;
   }
   .page-title {
     font-size: clamp(1.8rem, 3.2vw, 2.4rem);
@@ -1451,17 +1449,14 @@ body.scrolled .elementor-location-header {
   }
 }
 
-@media (max-width: 768px) {
-  .exp-hero {
-    padding-top: calc(var(--bs-section-padding) + 2rem);
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
+  @media (max-width: 768px) {
+    .exp-hero {
+      padding-top: calc(var(--bs-section-padding) + 2rem);
+    }
+    .exp-subtitle {
+      color: #fff;
+    }
   }
-  .exp-subtitle {
-    color: #fff;
-  }
-}
 
 /* Ensure background images cover on small screens */
 @media (max-width: 768px) {
