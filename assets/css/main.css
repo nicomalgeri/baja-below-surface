@@ -251,6 +251,12 @@ html, body {
   overflow: visible;
 }
 
+@media (max-width: 768px) {
+  .about {
+    background-position: top center;
+  }
+}
+
 /* ===== GALLERY SECTION ===== */
 .parallax-gallery {
   position: relative;
