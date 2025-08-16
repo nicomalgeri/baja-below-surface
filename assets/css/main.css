@@ -1548,3 +1548,25 @@ h1 { font-size: clamp(3rem, 6vw, 4rem); }
 h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
 h3 { font-size: clamp(2rem, 4vw, 3rem); }
 
+/* Site Footer */
+.site-footer {
+  background: var(--bg-dark);
+  color: var(--highlight);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+}
+.site-footer a {
+  color: var(--highlight);
+  text-decoration: none;
+}
+.site-footer a:hover,
+.site-footer a:focus {
+  text-decoration: underline;
+}
+.site-footer .footer__content {
+  margin-bottom: 0.5rem;
+}
+.site-footer .separator {
+  margin: 0 0.5rem;
+}
