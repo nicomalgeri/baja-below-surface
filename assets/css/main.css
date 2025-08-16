@@ -1297,23 +1297,23 @@ body.scrolled .elementor-location-header {
 @media (min-width: 769px){
   .back-arrow{ top: 18px; left: 20px; }
 }
-.exp-page{ padding-top: 80px; }
+.exp-page{ padding-top: 80px; padding-bottom: 40px; }
 @media (min-width: 769px){
-  .exp-page{ padding-top: 100px; }
+  .exp-page{ padding-top: 100px; padding-bottom: 60px; }
 }
 
-.exp-hero{ max-width: 980px; margin: 0 auto; padding: clamp(2rem,6vw,3rem) 1rem 0; text-align:center; }
-.exp-hero-img{ width:100%; aspect-ratio:16/9; background-size:cover; background-position:center; border-radius:32px; margin-bottom:clamp(1rem,3vw,1.5rem); }
+.exp-hero{ max-width: 980px; margin: 0 auto; padding: clamp(2rem,6vw,3rem) 1rem; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.exp-hero-img{ width:100%; max-width:620px; aspect-ratio:16/9; background-size:cover; background-position:center; border-radius:32px; margin:0 auto clamp(1rem,3vw,1.5rem); }
 
 .exp-title{ color: var(--highlight); font-weight: 800; font-size: clamp(2rem,4vw,3rem); margin: 0 0 .5rem; }
-.exp-subtitle{ color: #e7eef1; opacity:.95; font-size: clamp(1.05rem,2.6vw,1.35rem); margin: 0 auto 1.25rem; max-width: 820px; }
+.exp-subtitle{ color: #fff; opacity:.95; font-size: clamp(1.05rem,2.6vw,1.35rem); margin: 0 auto 1.25rem; max-width: 820px; }
 
 .exp-body{ max-width: 980px; margin: 0 auto; padding: clamp(1rem,3vw,1.5rem); display: grid; gap: clamp(1rem,2.8vw,1.75rem); }
-.exp-block{ background: rgba(15,27,33,.25); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: clamp(1rem,3vw,1.5rem); backdrop-filter: blur(10px) saturate(1.25); -webkit-backdrop-filter: blur(10px) saturate(1.25); }
+.exp-block{ background: rgba(15,27,33,.25); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; padding: clamp(1rem,3vw,1.5rem); backdrop-filter: blur(10px) saturate(1.25); -webkit-backdrop-filter: blur(10px) saturate(1.25); color:#fff; }
 .exp-block h2{ margin: 0 0 .6rem; color: var(--highlight); font-size: clamp(1.25rem,2.4vw,1.6rem); }
 .exp-list{ margin: 0; padding-left: 1.1rem; display: grid; gap: .35rem; }
 .exp-list li{ line-height: 1.55; }
-.exp-note{ font-weight: 600; color: #e7eef1; }
+.exp-note{ font-weight: 600; color: #fff; }
 .exp-price{ font-weight: 700; color: #fff; }
 
 .exp-cta{ display:flex; justify-content:center; padding: .5rem 0 1rem; }
