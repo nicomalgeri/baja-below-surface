@@ -690,7 +690,9 @@ html, body {
 /* Consistent page titles */
 .page-title {
   text-align: center;
-  font: 700 clamp(2.5rem,5vw,3.5rem)/1.2 inherit;
+  font-size: clamp(2.5rem,5vw,3.5rem);
+  line-height: 1.2;
+  font-weight: 700;
   color: var(--highlight);
   margin: 0 0 clamp(1rem,2vh,1.5rem);
 }
@@ -1572,7 +1574,7 @@ h3 { font-size: clamp(2rem, 4vw, 3rem); }
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 .site-footer .footer__copy {
   margin-bottom: 0;
