@@ -699,8 +699,18 @@ html, body {
 
 .daytrips .page-title,
 .expeditions .page-title,
-.charter .page-title {
+.charter .page-title,
+.about .page-title {
   padding-top: clamp(2rem, 8vh, 3rem);
+}
+
+@media (max-width: 768px) {
+  .daytrips .page-title,
+  .expeditions .page-title,
+  .charter .page-title,
+  .about .page-title {
+    padding-top: clamp(4rem, 12vh, 6rem);
+  }
 }
 
 .daytrips .services__desc,
